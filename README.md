@@ -52,15 +52,15 @@
 <!-- ═══════════════════════════════════════════════════════════════════════════ -->
 
 <p align="center">
-  <img src="./assets/ai-brain.svg" alt="Animated AI Neural Brain — Shabil Ahmed" width="500" />
+  <img src="https://raw.githubusercontent.com/shabil2284/shabil2284/main/assets/ai-brain.svg" alt="3D AI Neural Intelligence Brain — Shabil Ahmed" width="760" />
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Neural%20Architecture-Active-38bdf8?style=flat-square&logo=tensorflow&logoColor=white" alt="Neural Architecture Active" />
+  <img src="https://img.shields.io/badge/Neural%20Architecture-3D%20Active-38bdf8?style=flat-square&logo=tensorflow&logoColor=white" alt="Neural Architecture Active" />
   &nbsp;
-  <img src="https://img.shields.io/badge/LLM%20Pipelines-Production-7c3aed?style=flat-square&logo=openai&logoColor=white" alt="LLM Pipelines" />
+  <img src="https://img.shields.io/badge/24%20Skill%20Nodes-Pulsing%20%26%20Synchronized-7c3aed?style=flat-square&logo=openai&logoColor=white" alt="24 Skill Nodes" />
   &nbsp;
-  <img src="https://img.shields.io/badge/Agentic%20Systems-Deployed-06b6d4?style=flat-square&logo=chainlink&logoColor=white" alt="Agentic Systems" />
+  <img src="https://img.shields.io/badge/Agentic%20Orchestration-MCP%20Engine-06b6d4?style=flat-square&logo=chainlink&logoColor=white" alt="Agentic Orchestration" />
 </p>
 
 <br/>
