@@ -1,333 +1,850 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 400" width="500" height="400">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" width="800" height="520">
   <defs>
-    <radialGradient id="bgGrad" cx="50%" cy="50%" r="60%">
-      <stop offset="0%" style="stop-color:#0d1117;stop-opacity:1"/>
-      <stop offset="100%" style="stop-color:#020408;stop-opacity:1"/>
+
+    <!-- ═══ GRADIENTS ═══ -->
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="70%">
+      <stop offset="0%"   stop-color="#040d1a"/>
+      <stop offset="100%" stop-color="#010408"/>
     </radialGradient>
-    <radialGradient id="brainGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:0.15"/>
-      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:0"/>
+
+    <!-- Brain sphere depth shading — left hemisphere -->
+    <radialGradient id="hemL" cx="38%" cy="35%" r="62%">
+      <stop offset="0%"   stop-color="#1e4a7a" stop-opacity="0.9"/>
+      <stop offset="30%"  stop-color="#0a2140" stop-opacity="0.8"/>
+      <stop offset="70%"  stop-color="#040e1f" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#020810" stop-opacity="1"/>
     </radialGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+
+    <!-- Brain sphere depth shading — right hemisphere -->
+    <radialGradient id="hemR" cx="62%" cy="35%" r="62%">
+      <stop offset="0%"   stop-color="#2d1060" stop-opacity="0.9"/>
+      <stop offset="30%"  stop-color="#150838" stop-opacity="0.8"/>
+      <stop offset="70%"  stop-color="#06031a" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#020810" stop-opacity="1"/>
+    </radialGradient>
+
+    <!-- Inner core glow -->
+    <radialGradient id="coreGlow" cx="50%" cy="45%" r="55%">
+      <stop offset="0%"   stop-color="#0ea5e9" stop-opacity="0.18"/>
+      <stop offset="40%"  stop-color="#7c3aed" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Orbital ring gradient -->
+    <linearGradient id="orb1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#0ea5e9" stop-opacity="0"/>
+      <stop offset="30%"  stop-color="#38bdf8" stop-opacity="0.9"/>
+      <stop offset="70%"  stop-color="#06b6d4" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="orb2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#7c3aed" stop-opacity="0"/>
+      <stop offset="30%"  stop-color="#8b5cf6" stop-opacity="0.8"/>
+      <stop offset="70%"  stop-color="#a78bfa" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#7c3aed" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="orb3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#06b6d4" stop-opacity="0"/>
+      <stop offset="50%"  stop-color="#22d3ee" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Node gradients -->
+    <radialGradient id="nodeBlue" cx="35%" cy="30%" r="65%">
+      <stop offset="0%"   stop-color="#ffffff"/>
+      <stop offset="30%"  stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </radialGradient>
+    <radialGradient id="nodePurple" cx="35%" cy="30%" r="65%">
+      <stop offset="0%"   stop-color="#ffffff"/>
+      <stop offset="30%"  stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#5b21b6"/>
+    </radialGradient>
+    <radialGradient id="nodeCyan" cx="35%" cy="30%" r="65%">
+      <stop offset="0%"   stop-color="#ffffff"/>
+      <stop offset="30%"  stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#0e7490"/>
+    </radialGradient>
+
+    <!-- ═══ FILTERS ═══ -->
+    <filter id="glow3" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-    <filter id="strongGlow">
-      <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
-      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    <filter id="glow6" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-    <filter id="softGlow">
-      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    <filter id="glow12" x="-120%" y="-120%" width="340%" height="340%">
+      <feGaussianBlur stdDeviation="12" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-    <!-- Node pulse animations -->
+    <filter id="textGlow" x="-20%" y="-50%" width="140%" height="200%">
+      <feGaussianBlur stdDeviation="2.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softBlur" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="1.5"/>
+    </filter>
+
+    <!-- ═══ CLIP PATH — brain shape ═══ -->
+    <clipPath id="brainClip">
+      <ellipse cx="400" cy="230" rx="175" ry="145"/>
+    </clipPath>
+
+    <!-- ═══ CSS ANIMATIONS ═══ -->
     <style>
-      .node-core { animation: nodePulse 3s ease-in-out infinite; }
-      .node-core-2 { animation: nodePulse 3s ease-in-out infinite 0.5s; }
-      .node-core-3 { animation: nodePulse 3s ease-in-out infinite 1s; }
-      .node-core-4 { animation: nodePulse 3s ease-in-out infinite 1.5s; }
-      .node-core-5 { animation: nodePulse 3s ease-in-out infinite 2s; }
-      .node-core-6 { animation: nodePulse 3s ease-in-out infinite 2.5s; }
-      .node-ring { animation: ringPulse 3s ease-in-out infinite; }
-      .node-ring-2 { animation: ringPulse 3s ease-in-out infinite 0.5s; }
-      .node-ring-3 { animation: ringPulse 3s ease-in-out infinite 1s; }
-      .node-ring-4 { animation: ringPulse 3s ease-in-out infinite 1.5s; }
-      .node-ring-5 { animation: ringPulse 3s ease-in-out infinite 2s; }
-      .node-ring-6 { animation: ringPulse 3s ease-in-out infinite 2.5s; }
-      .conn-1 { animation: connFlow 4s linear infinite; }
-      .conn-2 { animation: connFlow 4s linear infinite 0.7s; }
-      .conn-3 { animation: connFlow 4s linear infinite 1.4s; }
-      .conn-4 { animation: connFlow 4s linear infinite 2.1s; }
-      .conn-5 { animation: connFlow 4s linear infinite 2.8s; }
-      .conn-6 { animation: connFlow 5s linear infinite 1s; }
-      .conn-7 { animation: connFlow 5s linear infinite 2s; }
-      .conn-8 { animation: connFlow 5s linear infinite 3s; }
-      .conn-9 { animation: connFlow 6s linear infinite 0s; }
-      .conn-10 { animation: connFlow 6s linear infinite 2s; }
-      .signal-1 { animation: signalTravel 4s linear infinite; }
-      .signal-2 { animation: signalTravel 4s linear infinite 1.3s; }
-      .signal-3 { animation: signalTravel 4s linear infinite 2.6s; }
-      .signal-4 { animation: signalTravel 5s linear infinite 0.5s; }
-      .signal-5 { animation: signalTravel 5s linear infinite 2s; }
-      .signal-6 { animation: signalTravel 3.5s linear infinite 0.8s; }
-      .brain-outline { animation: brainPulse 4s ease-in-out infinite; }
-      .glow-bg { animation: glowBg 4s ease-in-out infinite; }
-      .particle-1 { animation: float1 6s ease-in-out infinite; }
-      .particle-2 { animation: float2 7s ease-in-out infinite 1s; }
-      .particle-3 { animation: float3 5s ease-in-out infinite 2s; }
-      .particle-4 { animation: float1 8s ease-in-out infinite 0.5s; }
-      .particle-5 { animation: float2 6s ease-in-out infinite 3s; }
-      .particle-6 { animation: float3 7s ease-in-out infinite 1.5s; }
-      .particle-7 { animation: float1 5s ease-in-out infinite 2.5s; }
-      .particle-8 { animation: float2 8s ease-in-out infinite 0.3s; }
-      .label-1 { animation: labelFade 6s ease-in-out infinite; }
-      .label-2 { animation: labelFade 6s ease-in-out infinite 2s; }
-      .label-3 { animation: labelFade 6s ease-in-out infinite 4s; }
-      .circuit-1 { animation: circuitPulse 4s ease-in-out infinite; }
-      .circuit-2 { animation: circuitPulse 4s ease-in-out infinite 1.3s; }
-      .circuit-3 { animation: circuitPulse 4s ease-in-out infinite 2.6s; }
-      @keyframes nodePulse {
-        0%, 100% { opacity: 0.7; r: 5; }
-        50% { opacity: 1; r: 7; }
+      /* ─── Orbital ring rotation ─── */
+      .orb-ring-1 { animation: rotateOrb1 8s linear infinite; transform-origin: 400px 230px; }
+      .orb-ring-2 { animation: rotateOrb2 11s linear infinite; transform-origin: 400px 230px; }
+      .orb-ring-3 { animation: rotateOrb3 14s linear infinite reverse; transform-origin: 400px 230px; }
+
+      @keyframes rotateOrb1 { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+      @keyframes rotateOrb2 { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+      @keyframes rotateOrb3 { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+      /* ─── Signal travellers on orbital paths ─── */
+      .sig1 { animation: orbitSig1 8s linear infinite; }
+      .sig2 { animation: orbitSig2 11s linear infinite 2s; }
+      .sig3 { animation: orbitSig3 14s linear infinite 1s; }
+      .sig4 { animation: orbitSig1 6s linear infinite 3s; }
+      .sig5 { animation: orbitSig2 9s linear infinite 0.5s; }
+
+      /* ─── Node pulse ─── */
+      .nb  { animation: pulseBlue   2.4s ease-in-out infinite; }
+      .nb2 { animation: pulseBlue   2.4s ease-in-out infinite 0.3s; }
+      .nb3 { animation: pulseBlue   2.4s ease-in-out infinite 0.6s; }
+      .nb4 { animation: pulseBlue   2.4s ease-in-out infinite 0.9s; }
+      .nb5 { animation: pulseBlue   2.4s ease-in-out infinite 1.2s; }
+      .nb6 { animation: pulseBlue   2.4s ease-in-out infinite 1.5s; }
+      .nb7 { animation: pulseBlue   2.4s ease-in-out infinite 1.8s; }
+      .nb8 { animation: pulseBlue   2.4s ease-in-out infinite 2.1s; }
+      .np  { animation: pulsePurple 2.8s ease-in-out infinite; }
+      .np2 { animation: pulsePurple 2.8s ease-in-out infinite 0.4s; }
+      .np3 { animation: pulsePurple 2.8s ease-in-out infinite 0.8s; }
+      .np4 { animation: pulsePurple 2.8s ease-in-out infinite 1.2s; }
+      .np5 { animation: pulsePurple 2.8s ease-in-out infinite 1.6s; }
+      .np6 { animation: pulsePurple 2.8s ease-in-out infinite 2.0s; }
+      .nc  { animation: pulseCyan   3.2s ease-in-out infinite; }
+      .nc2 { animation: pulseCyan   3.2s ease-in-out infinite 0.5s; }
+      .nc3 { animation: pulseCyan   3.2s ease-in-out infinite 1.0s; }
+      .nc4 { animation: pulseCyan   3.2s ease-in-out infinite 1.5s; }
+      .nc5 { animation: pulseCyan   3.2s ease-in-out infinite 2.0s; }
+      .nc6 { animation: pulseCyan   3.2s ease-in-out infinite 2.5s; }
+
+      /* node ring halos */
+      .nb-ring  { animation: ringBlue   2.4s ease-in-out infinite; }
+      .nb2-ring { animation: ringBlue   2.4s ease-in-out infinite 0.3s; }
+      .np-ring  { animation: ringPurple 2.8s ease-in-out infinite; }
+      .np2-ring { animation: ringPurple 2.8s ease-in-out infinite 0.4s; }
+      .nc-ring  { animation: ringCyan   3.2s ease-in-out infinite; }
+      .nc2-ring { animation: ringCyan   3.2s ease-in-out infinite 0.5s; }
+
+      @keyframes pulseBlue {
+        0%,100% { r: 5; opacity: 0.75; }
+        50%      { r: 7; opacity: 1; }
       }
-      @keyframes ringPulse {
-        0%, 100% { opacity: 0.3; r: 10; }
-        50% { opacity: 0.7; r: 13; }
+      @keyframes pulsePurple {
+        0%,100% { r: 5; opacity: 0.7; }
+        50%      { r: 7; opacity: 1; }
       }
-      @keyframes connFlow {
-        0%, 100% { opacity: 0.1; }
-        50% { opacity: 0.5; }
+      @keyframes pulseCyan {
+        0%,100% { r: 5; opacity: 0.65; }
+        50%      { r: 7; opacity: 1; }
       }
-      @keyframes signalTravel {
-        0% { opacity: 0; }
-        10% { opacity: 1; }
-        90% { opacity: 1; }
-        100% { opacity: 0; }
+      @keyframes ringBlue {
+        0%,100% { r: 11; opacity: 0.25; }
+        50%      { r: 15; opacity: 0.5; }
       }
-      @keyframes brainPulse {
-        0%, 100% { opacity: 0.5; }
-        50% { opacity: 0.9; }
+      @keyframes ringPurple {
+        0%,100% { r: 11; opacity: 0.2; }
+        50%      { r: 15; opacity: 0.45; }
       }
-      @keyframes glowBg {
-        0%, 100% { opacity: 0.3; }
-        50% { opacity: 0.7; }
+      @keyframes ringCyan {
+        0%,100% { r: 11; opacity: 0.2; }
+        50%      { r: 15; opacity: 0.4; }
       }
-      @keyframes float1 {
-        0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.6; }
-        33% { transform: translateY(-8px) translateX(4px); opacity: 1; }
-        66% { transform: translateY(4px) translateX(-4px); opacity: 0.4; }
+
+      /* ─── Skill label cycling ─── */
+      /* 24 labels, each visible for ~3s within a 72s total cycle */
+      /* Each = 4.16% of total, displayed at different offsets */
+      .skill-label { opacity: 0; animation-duration: 72s; animation-timing-function: ease-in-out; animation-iteration-count: infinite; font-family: 'JetBrains Mono', 'Courier New', monospace; }
+      .sk01 { animation-name: skillShow; animation-delay: 0s; }
+      .sk02 { animation-name: skillShow; animation-delay: 3s; }
+      .sk03 { animation-name: skillShow; animation-delay: 6s; }
+      .sk04 { animation-name: skillShow; animation-delay: 9s; }
+      .sk05 { animation-name: skillShow; animation-delay: 12s; }
+      .sk06 { animation-name: skillShow; animation-delay: 15s; }
+      .sk07 { animation-name: skillShow; animation-delay: 18s; }
+      .sk08 { animation-name: skillShow; animation-delay: 21s; }
+      .sk09 { animation-name: skillShow; animation-delay: 24s; }
+      .sk10 { animation-name: skillShow; animation-delay: 27s; }
+      .sk11 { animation-name: skillShow; animation-delay: 30s; }
+      .sk12 { animation-name: skillShow; animation-delay: 33s; }
+      .sk13 { animation-name: skillShow; animation-delay: 36s; }
+      .sk14 { animation-name: skillShow; animation-delay: 39s; }
+      .sk15 { animation-name: skillShow; animation-delay: 42s; }
+      .sk16 { animation-name: skillShow; animation-delay: 45s; }
+      .sk17 { animation-name: skillShow; animation-delay: 48s; }
+      .sk18 { animation-name: skillShow; animation-delay: 51s; }
+      .sk19 { animation-name: skillShow; animation-delay: 54s; }
+      .sk20 { animation-name: skillShow; animation-delay: 57s; }
+      .sk21 { animation-name: skillShow; animation-delay: 60s; }
+      .sk22 { animation-name: skillShow; animation-delay: 63s; }
+      .sk23 { animation-name: skillShow; animation-delay: 66s; }
+      .sk24 { animation-name: skillShow; animation-delay: 69s; }
+
+      @keyframes skillShow {
+        0%     { opacity: 0; }
+        4%     { opacity: 1; }
+        10%    { opacity: 1; }
+        14%    { opacity: 0; }
+        100%   { opacity: 0; }
       }
-      @keyframes float2 {
-        0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.4; }
-        33% { transform: translateY(6px) translateX(-6px); opacity: 0.9; }
-        66% { transform: translateY(-6px) translateX(3px); opacity: 0.6; }
+
+      /* connector line matching each label */
+      .conn-label { opacity: 0; animation-duration: 72s; animation-timing-function: ease-in-out; animation-iteration-count: infinite; }
+      .ck01 { animation-name: skillShow; animation-delay: 0s; }
+      .ck02 { animation-name: skillShow; animation-delay: 3s; }
+      .ck03 { animation-name: skillShow; animation-delay: 6s; }
+      .ck04 { animation-name: skillShow; animation-delay: 9s; }
+      .ck05 { animation-name: skillShow; animation-delay: 12s; }
+      .ck06 { animation-name: skillShow; animation-delay: 15s; }
+      .ck07 { animation-name: skillShow; animation-delay: 18s; }
+      .ck08 { animation-name: skillShow; animation-delay: 21s; }
+      .ck09 { animation-name: skillShow; animation-delay: 24s; }
+      .ck10 { animation-name: skillShow; animation-delay: 27s; }
+      .ck11 { animation-name: skillShow; animation-delay: 30s; }
+      .ck12 { animation-name: skillShow; animation-delay: 33s; }
+      .ck13 { animation-name: skillShow; animation-delay: 36s; }
+      .ck14 { animation-name: skillShow; animation-delay: 39s; }
+      .ck15 { animation-name: skillShow; animation-delay: 42s; }
+      .ck16 { animation-name: skillShow; animation-delay: 45s; }
+      .ck17 { animation-name: skillShow; animation-delay: 48s; }
+      .ck18 { animation-name: skillShow; animation-delay: 51s; }
+      .ck19 { animation-name: skillShow; animation-delay: 54s; }
+      .ck20 { animation-name: skillShow; animation-delay: 57s; }
+      .ck21 { animation-name: skillShow; animation-delay: 60s; }
+      .ck22 { animation-name: skillShow; animation-delay: 63s; }
+      .ck23 { animation-name: skillShow; animation-delay: 66s; }
+      .ck24 { animation-name: skillShow; animation-delay: 69s; }
+
+      /* ─── Particle float ─── */
+      .pt1 { animation: floatA 7s ease-in-out infinite; }
+      .pt2 { animation: floatB 9s ease-in-out infinite 1s; }
+      .pt3 { animation: floatC 6s ease-in-out infinite 2s; }
+      .pt4 { animation: floatA 8s ease-in-out infinite 3s; }
+      .pt5 { animation: floatB 10s ease-in-out infinite 0.5s; }
+      .pt6 { animation: floatC 7s ease-in-out infinite 4s; }
+      .pt7 { animation: floatA 9s ease-in-out infinite 1.5s; }
+      .pt8 { animation: floatB 6s ease-in-out infinite 2.5s; }
+      .pt9 { animation: floatC 8s ease-in-out infinite 3.5s; }
+      .pt10{ animation: floatA 11s ease-in-out infinite 0.3s; }
+      .pt11{ animation: floatB 7s ease-in-out infinite 4.5s; }
+      .pt12{ animation: floatC 9s ease-in-out infinite 1.8s; }
+
+      @keyframes floatA {
+        0%,100% { transform: translate(0,0) scale(1);   opacity: 0.5; }
+        33%      { transform: translate(-6px,-10px) scale(1.3); opacity: 0.9; }
+        66%      { transform: translate(5px,6px) scale(0.8);  opacity: 0.3; }
       }
-      @keyframes float3 {
-        0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.5; }
-        50% { transform: translateY(-10px) translateX(5px); opacity: 1; }
+      @keyframes floatB {
+        0%,100% { transform: translate(0,0) scale(1);   opacity: 0.4; }
+        33%      { transform: translate(8px,-7px) scale(1.4);  opacity: 1; }
+        66%      { transform: translate(-4px,9px) scale(0.7);  opacity: 0.2; }
       }
-      @keyframes labelFade {
-        0%, 100% { opacity: 0; }
-        20%, 80% { opacity: 0.9; }
+      @keyframes floatC {
+        0%,100% { transform: translate(0,0) scale(1);   opacity: 0.6; }
+        50%      { transform: translate(-5px,-12px) scale(1.5); opacity: 1; }
       }
-      @keyframes circuitPulse {
-        0%, 100% { opacity: 0.15; }
-        50% { opacity: 0.5; }
+
+      /* ─── Overall brain ambient pulse ─── */
+      .brain-ambient { animation: brainAmbient 4s ease-in-out infinite; }
+      @keyframes brainAmbient {
+        0%,100% { opacity: 0.55; }
+        50%      { opacity: 0.85; }
+      }
+
+      /* ─── Circuit trace pulse ─── */
+      .ctr1 { animation: ctrace 5s ease-in-out infinite; }
+      .ctr2 { animation: ctrace 5s ease-in-out infinite 1.6s; }
+      .ctr3 { animation: ctrace 5s ease-in-out infinite 3.2s; }
+      @keyframes ctrace {
+        0%,100% { opacity: 0.1; }
+        50%      { opacity: 0.4; }
+      }
+
+      /* ─── Top label fade cycle ─── */
+      .header-lbl { animation: headerCycle 6s ease-in-out infinite; }
+      @keyframes headerCycle {
+        0%,100% { opacity: 0.6; }
+        50%      { opacity: 1; }
+      }
+
+      /* ─── Scan line ─── */
+      .scan-line { animation: scanDown 6s linear infinite; }
+      @keyframes scanDown {
+        0%   { transform: translateY(-155px); opacity: 0; }
+        5%   { opacity: 0.6; }
+        95%  { opacity: 0.3; }
+        100% { transform: translateY(155px);  opacity: 0; }
       }
     </style>
   </defs>
 
-  <!-- Background -->
-  <rect width="500" height="400" fill="url(#bgGrad)"/>
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- BACKGROUND                                                      -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <rect width="800" height="520" fill="url(#bgGrad)"/>
 
-  <!-- Ambient glow -->
-  <ellipse cx="250" cy="195" rx="140" ry="110" fill="url(#brainGlow)" class="glow-bg"/>
-
-  <!-- Circuit board traces (background detail) -->
-  <g opacity="0.2">
-    <line x1="50" y1="80" x2="80" y2="80" stroke="#0ea5e9" stroke-width="1" class="circuit-1"/>
-    <line x1="80" y1="80" x2="80" y2="110" stroke="#0ea5e9" stroke-width="1" class="circuit-1"/>
-    <circle cx="80" cy="110" r="2" fill="#0ea5e9" class="circuit-1"/>
-    <line x1="420" y1="90" x2="440" y2="90" stroke="#7c3aed" stroke-width="1" class="circuit-2"/>
-    <line x1="440" y1="90" x2="440" y2="130" stroke="#7c3aed" stroke-width="1" class="circuit-2"/>
-    <circle cx="440" cy="130" r="2" fill="#7c3aed" class="circuit-2"/>
-    <line x1="60" y1="300" x2="60" y2="330" stroke="#06b6d4" stroke-width="1" class="circuit-3"/>
-    <line x1="60" y1="330" x2="100" y2="330" stroke="#06b6d4" stroke-width="1" class="circuit-3"/>
-    <circle cx="100" cy="330" r="2" fill="#06b6d4" class="circuit-3"/>
-    <line x1="430" y1="280" x2="460" y2="280" stroke="#0ea5e9" stroke-width="1" class="circuit-1"/>
-    <line x1="430" y1="295" x2="460" y2="295" stroke="#0ea5e9" stroke-width="1" class="circuit-2"/>
-    <line x1="430" y1="310" x2="455" y2="310" stroke="#0ea5e9" stroke-width="1" class="circuit-3"/>
+  <!-- Subtle grid pattern -->
+  <g opacity="0.04" stroke="#38bdf8" stroke-width="0.5">
+    <line x1="0" y1="130" x2="800" y2="130"/>
+    <line x1="0" y1="260" x2="800" y2="260"/>
+    <line x1="0" y1="390" x2="800" y2="390"/>
+    <line x1="200" y1="0" x2="200" y2="520"/>
+    <line x1="400" y1="0" x2="400" y2="520"/>
+    <line x1="600" y1="0" x2="600" y2="520"/>
   </g>
 
-  <!-- Brain outline (stylized) -->
-  <g filter="url(#glow)" class="brain-outline">
-    <!-- Left hemisphere -->
-    <path d="M 170 140 C 145 130 120 140 110 165 C 100 185 105 215 115 230 C 125 245 135 255 150 262 C 160 267 170 270 180 268 C 175 285 180 295 195 298 C 215 302 230 290 240 280 C 245 285 250 288 255 288" 
-          fill="none" stroke="#0ea5e9" stroke-width="1.5" opacity="0.6"/>
-    <!-- Right hemisphere -->
-    <path d="M 330 140 C 355 130 380 140 390 165 C 400 185 395 215 385 230 C 375 245 365 255 350 262 C 340 267 330 270 320 268 C 325 285 320 295 305 298 C 285 302 270 290 260 280 C 255 285 250 288 245 288"
-          fill="none" stroke="#7c3aed" stroke-width="1.5" opacity="0.6"/>
-    <!-- Top arch -->
-    <path d="M 170 140 C 185 110 215 95 250 93 C 285 95 315 110 330 140"
-          fill="none" stroke="#06b6d4" stroke-width="1.5" opacity="0.6"/>
-    <!-- Center divide -->
-    <line x1="250" y1="93" x2="250" y2="288" stroke="#38bdf8" stroke-width="0.8" stroke-dasharray="4,6" opacity="0.3"/>
-    <!-- Brain folds (sulci) -->
-    <path d="M 150 170 C 165 165 180 175 185 190" fill="none" stroke="#0ea5e9" stroke-width="1" opacity="0.4"/>
-    <path d="M 140 210 C 158 200 175 210 180 225" fill="none" stroke="#0ea5e9" stroke-width="1" opacity="0.4"/>
-    <path d="M 350 170 C 335 165 320 175 315 190" fill="none" stroke="#7c3aed" stroke-width="1" opacity="0.4"/>
-    <path d="M 360 210 C 342 200 325 210 320 225" fill="none" stroke="#7c3aed" stroke-width="1" opacity="0.4"/>
-    <path d="M 200 110 C 215 100 235 105 240 118" fill="none" stroke="#06b6d4" stroke-width="1" opacity="0.4"/>
-    <path d="M 300 110 C 285 100 265 105 260 118" fill="none" stroke="#06b6d4" stroke-width="1" opacity="0.4"/>
-    <!-- Cerebellum hint -->
-    <path d="M 195 298 C 215 310 235 315 250 315 C 265 315 285 310 305 298" fill="none" stroke="#38bdf8" stroke-width="1.2" opacity="0.5"/>
-    <path d="M 210 310 C 220 320 235 323 250 323" fill="none" stroke="#38bdf8" stroke-width="1" opacity="0.3"/>
-    <path d="M 290 310 C 280 320 265 323 250 323" fill="none" stroke="#38bdf8" stroke-width="1" opacity="0.3"/>
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- CIRCUIT BOARD TRACES — BACKGROUND DETAIL                       -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <g class="ctr1" stroke="#0ea5e9" stroke-width="0.8" fill="none">
+    <polyline points="40,80 80,80 80,120 130,120"/>
+    <circle cx="80" cy="80" r="2" fill="#0ea5e9"/>
+    <circle cx="130" cy="120" r="2" fill="#0ea5e9"/>
+    <polyline points="40,160 65,160 65,200"/>
+    <circle cx="65" cy="200" r="1.5" fill="#0ea5e9"/>
+  </g>
+  <g class="ctr2" stroke="#7c3aed" stroke-width="0.8" fill="none">
+    <polyline points="760,80 720,80 720,130 680,130"/>
+    <circle cx="720" cy="80" r="2" fill="#7c3aed"/>
+    <circle cx="680" cy="130" r="2" fill="#7c3aed"/>
+    <polyline points="760,180 735,180 735,220"/>
+    <circle cx="735" cy="220" r="1.5" fill="#7c3aed"/>
+  </g>
+  <g class="ctr3" stroke="#06b6d4" stroke-width="0.8" fill="none">
+    <polyline points="40,400 80,400 80,360 120,360"/>
+    <circle cx="80" cy="400" r="2" fill="#06b6d4"/>
+    <polyline points="760,400 720,400 720,360 680,360"/>
+    <circle cx="720" cy="400" r="2" fill="#06b6d4"/>
   </g>
 
-  <!-- Neural Nodes - Left Hemisphere -->
-  <g filter="url(#softGlow)">
-    <!-- Node A: top-left -->
-    <circle cx="175" cy="150" r="10" fill="none" stroke="#0ea5e9" stroke-width="1.2" class="node-ring"/>
-    <circle cx="175" cy="150" r="5" fill="#0ea5e9" class="node-core"/>
-    <!-- Node B: mid-left -->
-    <circle cx="140" cy="195" r="10" fill="none" stroke="#0ea5e9" stroke-width="1.2" class="node-ring-2"/>
-    <circle cx="140" cy="195" r="5" fill="#38bdf8" class="node-core-2"/>
-    <!-- Node C: lower-left -->
-    <circle cx="165" cy="245" r="10" fill="none" stroke="#06b6d4" stroke-width="1.2" class="node-ring-3"/>
-    <circle cx="165" cy="245" r="5" fill="#06b6d4" class="node-core-3"/>
-    <!-- Node D: inner-left -->
-    <circle cx="210" cy="175" r="10" fill="none" stroke="#38bdf8" stroke-width="1.2" class="node-ring-4"/>
-    <circle cx="210" cy="175" r="5" fill="#38bdf8" class="node-core-4"/>
-    <!-- Node E: inner-lower-left -->
-    <circle cx="205" cy="230" r="10" fill="none" stroke="#0ea5e9" stroke-width="1.2" class="node-ring-5"/>
-    <circle cx="205" cy="230" r="5" fill="#0ea5e9" class="node-core-5"/>
-    <!-- Node F: center-top-left -->
-    <circle cx="225" cy="130" r="10" fill="none" stroke="#06b6d4" stroke-width="1.2" class="node-ring-6"/>
-    <circle cx="225" cy="130" r="5" fill="#06b6d4" class="node-core-6"/>
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- HEADER LABEL                                                    -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <text x="400" y="38" text-anchor="middle"
+        font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="12" font-weight="700" letter-spacing="6"
+        fill="#38bdf8" class="header-lbl" filter="url(#textGlow)">
+    AI NEURAL INTELLIGENCE SYSTEM
+  </text>
+  <text x="400" y="56" text-anchor="middle"
+        font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="8.5" letter-spacing="2.5"
+        fill="#94a3b8" opacity="0.7">
+    DEEP LEARNING  ·  GENERATIVE AI  ·  AGENTIC AI  ·  LLMs
+  </text>
+
+  <!-- Thin line under header -->
+  <line x1="200" y1="66" x2="600" y2="66" stroke="#38bdf8" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- AMBIENT OUTER GLOW — depth halo                               -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <ellipse cx="400" cy="230" rx="210" ry="168" fill="none"
+           stroke="#0ea5e9" stroke-width="1" opacity="0.08"
+           filter="url(#glow12)" class="brain-ambient"/>
+  <ellipse cx="400" cy="230" rx="195" ry="155" fill="none"
+           stroke="#7c3aed" stroke-width="0.8" opacity="0.06"
+           filter="url(#glow12)" class="brain-ambient"/>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- 3D BRAIN — BODY (layered for depth illusion)                   -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+
+  <!-- Shadow layer — dark base -->
+  <ellipse cx="402" cy="234" rx="175" ry="145" fill="#010810" opacity="0.95"/>
+
+  <!-- Left hemisphere fill — lit from upper-left -->
+  <path d="M 400,88 C 365,84 320,92 285,112 C 250,132 225,160 218,192
+            C 212,218 220,250 240,268 C 258,284 282,290 310,292
+            C 330,294 360,290 380,285 C 390,282 398,279 400,278 Z"
+        fill="url(#hemL)" filter="url(#softBlur)"/>
+
+  <!-- Right hemisphere fill — lit from upper-right -->
+  <path d="M 400,88 C 435,84 480,92 515,112 C 550,132 575,160 582,192
+            C 588,218 580,250 560,268 C 542,284 518,290 490,292
+            C 470,294 440,290 420,285 C 410,282 402,279 400,278 Z"
+        fill="url(#hemR)" filter="url(#softBlur)"/>
+
+  <!-- Specular highlight — left top-left -->
+  <ellipse cx="333" cy="148" rx="52" ry="32" fill="#2a6fa8" opacity="0.22"
+           transform="rotate(-18,333,148)" filter="url(#softBlur)"/>
+
+  <!-- Specular highlight — right top -->
+  <ellipse cx="468" cy="145" rx="45" ry="28" fill="#4c1d9c" opacity="0.18"
+           transform="rotate(18,468,145)" filter="url(#softBlur)"/>
+
+  <!-- Core inner ambient -->
+  <ellipse cx="400" cy="225" rx="145" ry="118" fill="url(#coreGlow)"/>
+
+  <!-- Brain outline — primary silhouette -->
+  <path d="M 400,88
+            C 380,85 350,88 322,96 C 294,104 268,118 250,138
+            C 232,158 222,182 220,208 C 218,228 224,250 238,266
+            C 250,280 268,290 290,296 C 310,302 335,302 358,298
+            C 372,296 388,290 400,284"
+        fill="none" stroke="#38bdf8" stroke-width="1.6" opacity="0.75"
+        filter="url(#glow3)" class="brain-ambient"/>
+  <path d="M 400,88
+            C 420,85 450,88 478,96 C 506,104 532,118 550,138
+            C 568,158 578,182 580,208 C 582,228 576,250 562,266
+            C 550,280 532,290 510,296 C 490,302 465,302 442,298
+            C 428,296 412,290 400,284"
+        fill="none" stroke="#8b5cf6" stroke-width="1.6" opacity="0.75"
+        filter="url(#glow3)" class="brain-ambient"/>
+
+  <!-- Cerebellum -->
+  <path d="M 348,296 C 360,308 378,316 400,318 C 422,316 440,308 452,296"
+        fill="none" stroke="#06b6d4" stroke-width="1.4" opacity="0.65" class="brain-ambient"/>
+  <path d="M 362,308 C 372,318 388,322 400,323 C 412,322 428,318 438,308"
+        fill="none" stroke="#06b6d4" stroke-width="1" opacity="0.4" class="brain-ambient"/>
+
+  <!-- Corpus callosum (central divide) -->
+  <line x1="400" y1="90" x2="400" y2="284"
+        stroke="#38bdf8" stroke-width="0.6" stroke-dasharray="4,8"
+        opacity="0.25" class="brain-ambient"/>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- BRAIN FOLDS (sulci) — adds 3D realism                         -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <g class="brain-ambient" fill="none">
+    <!-- Left folds -->
+    <path d="M 268,152 C 282,144 300,152 306,168" stroke="#0ea5e9" stroke-width="0.9" opacity="0.5"/>
+    <path d="M 240,195 C 256,183 278,190 285,208" stroke="#0ea5e9" stroke-width="0.9" opacity="0.45"/>
+    <path d="M 248,245 C 264,235 284,240 290,255" stroke="#38bdf8" stroke-width="0.9" opacity="0.4"/>
+    <path d="M 310,118 C 322,108 342,112 346,126" stroke="#06b6d4" stroke-width="0.8" opacity="0.4"/>
+    <path d="M 350,270 C 362,262 378,266 382,278" stroke="#0ea5e9" stroke-width="0.8" opacity="0.4"/>
+    <!-- Right folds -->
+    <path d="M 532,152 C 518,144 500,152 494,168" stroke="#8b5cf6" stroke-width="0.9" opacity="0.5"/>
+    <path d="M 560,195 C 544,183 522,190 515,208" stroke="#8b5cf6" stroke-width="0.9" opacity="0.45"/>
+    <path d="M 552,245 C 536,235 516,240 510,255" stroke="#a78bfa" stroke-width="0.9" opacity="0.4"/>
+    <path d="M 490,118 C 478,108 458,112 454,126" stroke="#7c3aed" stroke-width="0.8" opacity="0.4"/>
+    <path d="M 450,270 C 438,262 422,266 418,278" stroke="#8b5cf6" stroke-width="0.8" opacity="0.4"/>
   </g>
 
-  <!-- Neural Nodes - Right Hemisphere -->
-  <g filter="url(#softGlow)">
-    <!-- Node G: top-right -->
-    <circle cx="325" cy="150" r="10" fill="none" stroke="#7c3aed" stroke-width="1.2" class="node-ring-2"/>
-    <circle cx="325" cy="150" r="5" fill="#7c3aed" class="node-core-2"/>
-    <!-- Node H: mid-right -->
-    <circle cx="360" cy="195" r="10" fill="none" stroke="#8b5cf6" stroke-width="1.2" class="node-ring-3"/>
-    <circle cx="360" cy="195" r="5" fill="#8b5cf6" class="node-core-3"/>
-    <!-- Node I: lower-right -->
-    <circle cx="335" cy="245" r="10" fill="none" stroke="#7c3aed" stroke-width="1.2" class="node-ring-4"/>
-    <circle cx="335" cy="245" r="5" fill="#7c3aed" class="node-core-4"/>
-    <!-- Node J: inner-right -->
-    <circle cx="290" cy="175" r="10" fill="none" stroke="#a78bfa" stroke-width="1.2" class="node-ring-5"/>
-    <circle cx="290" cy="175" r="5" fill="#a78bfa" class="node-core-5"/>
-    <!-- Node K: inner-lower-right -->
-    <circle cx="295" cy="230" r="10" fill="none" stroke="#8b5cf6" stroke-width="1.2" class="node-ring-6"/>
-    <circle cx="295" cy="230" r="5" fill="#8b5cf6" class="node-core-6"/>
-    <!-- Node L: center-top-right -->
-    <circle cx="275" cy="130" r="10" fill="none" stroke="#a78bfa" stroke-width="1.2" class="node-ring"/>
-    <circle cx="275" cy="130" r="5" fill="#a78bfa" class="node-core"/>
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- SCAN LINE — sweeps through brain giving 3D hologram effect     -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <g clip-path="url(#brainClip)">
+    <rect x="225" y="230" width="350" height="1.5"
+          fill="url(#orb1)" opacity="0.5" class="scan-line"/>
   </g>
 
-  <!-- Center node -->
-  <g filter="url(#strongGlow)">
-    <circle cx="250" cy="195" r="14" fill="none" stroke="#38bdf8" stroke-width="1.5" class="node-ring"/>
-    <circle cx="250" cy="195" r="7" fill="#38bdf8" class="node-core"/>
-  </g>
-  <!-- Center node ring 2 -->
-  <circle cx="250" cy="195" r="20" fill="none" stroke="#0ea5e9" stroke-width="0.5" opacity="0.3" class="node-ring-3"/>
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- ORBITAL RINGS — 3D rotation simulation                         -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
 
-  <!-- Neural Connections - Left side -->
-  <g opacity="0.5">
-    <line x1="175" y1="150" x2="225" y2="130" stroke="#0ea5e9" stroke-width="1" class="conn-1"/>
-    <line x1="175" y1="150" x2="210" y2="175" stroke="#0ea5e9" stroke-width="1" class="conn-2"/>
-    <line x1="175" y1="150" x2="140" y2="195" stroke="#0ea5e9" stroke-width="1" class="conn-3"/>
-    <line x1="140" y1="195" x2="165" y2="245" stroke="#38bdf8" stroke-width="1" class="conn-4"/>
-    <line x1="140" y1="195" x2="210" y2="175" stroke="#38bdf8" stroke-width="1" class="conn-5"/>
-    <line x1="210" y1="175" x2="205" y2="230" stroke="#06b6d4" stroke-width="1" class="conn-6"/>
-    <line x1="205" y1="230" x2="165" y2="245" stroke="#06b6d4" stroke-width="1" class="conn-7"/>
-    <line x1="225" y1="130" x2="210" y2="175" stroke="#0ea5e9" stroke-width="1" class="conn-8"/>
-    <line x1="205" y1="230" x2="250" y2="195" stroke="#38bdf8" stroke-width="1" class="conn-9"/>
-    <line x1="210" y1="175" x2="250" y2="195" stroke="#38bdf8" stroke-width="1" class="conn-10"/>
+  <!-- Outer orbit ring 1 — tilted horizontal -->
+  <g class="orb-ring-1">
+    <ellipse cx="400" cy="230" rx="168" ry="38"
+             fill="none" stroke="url(#orb1)" stroke-width="1.4" opacity="0.6"
+             filter="url(#glow3)"/>
   </g>
-
-  <!-- Neural Connections - Right side -->
-  <g opacity="0.5">
-    <line x1="325" y1="150" x2="275" y2="130" stroke="#7c3aed" stroke-width="1" class="conn-2"/>
-    <line x1="325" y1="150" x2="290" y2="175" stroke="#7c3aed" stroke-width="1" class="conn-3"/>
-    <line x1="325" y1="150" x2="360" y2="195" stroke="#7c3aed" stroke-width="1" class="conn-4"/>
-    <line x1="360" y1="195" x2="335" y2="245" stroke="#8b5cf6" stroke-width="1" class="conn-5"/>
-    <line x1="360" y1="195" x2="290" y2="175" stroke="#8b5cf6" stroke-width="1" class="conn-6"/>
-    <line x1="290" y1="175" x2="295" y2="230" stroke="#a78bfa" stroke-width="1" class="conn-7"/>
-    <line x1="295" y1="230" x2="335" y2="245" stroke="#a78bfa" stroke-width="1" class="conn-8"/>
-    <line x1="275" y1="130" x2="290" y2="175" stroke="#7c3aed" stroke-width="1" class="conn-9"/>
-    <line x1="295" y1="230" x2="250" y2="195" stroke="#8b5cf6" stroke-width="1" class="conn-10"/>
-    <line x1="290" y1="175" x2="250" y2="195" stroke="#8b5cf6" stroke-width="1" class="conn-1"/>
+  <!-- Outer orbit ring 2 — tilted diagonal -->
+  <g class="orb-ring-2">
+    <ellipse cx="400" cy="230" rx="155" ry="52"
+             fill="none" stroke="url(#orb2)" stroke-width="1.2" opacity="0.5"
+             filter="url(#glow3)" transform="rotate(35,400,230)"/>
+  </g>
+  <!-- Inner orbit ring 3 — steep tilt -->
+  <g class="orb-ring-3">
+    <ellipse cx="400" cy="230" rx="130" ry="28"
+             fill="none" stroke="url(#orb3)" stroke-width="1" opacity="0.45"
+             filter="url(#glow3)" transform="rotate(70,400,230)"/>
   </g>
 
-  <!-- Cross-hemisphere connections -->
-  <g opacity="0.3">
-    <line x1="225" y1="130" x2="275" y2="130" stroke="#06b6d4" stroke-width="1" stroke-dasharray="3,3" class="conn-3"/>
-    <line x1="210" y1="175" x2="290" y2="175" stroke="#06b6d4" stroke-width="0.8" stroke-dasharray="3,3" class="conn-6"/>
-    <line x1="205" y1="230" x2="295" y2="230" stroke="#38bdf8" stroke-width="0.8" stroke-dasharray="3,3" class="conn-9"/>
-  </g>
-
-  <!-- Signal pulse dots - animated along connections -->
-  <circle r="3" fill="#38bdf8" filter="url(#glow)" class="signal-1">
-    <animateMotion dur="4s" repeatCount="indefinite">
-      <mpath href="#path-la"/>
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- ORBITAL SIGNAL TRAVELLERS                                       -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- Signal 1 — travels ring 1 -->
+  <circle r="4" fill="#38bdf8" filter="url(#glow6)" class="sig1">
+    <animateMotion dur="8s" repeatCount="indefinite">
+      <mpath href="#orbPath1"/>
     </animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.05;0.95;1" dur="8s" repeatCount="indefinite"/>
   </circle>
-  <path id="path-la" d="M 175,150 L 210,175 L 250,195 L 290,175 L 325,150" fill="none"/>
+  <ellipse id="orbPath1" cx="400" cy="230" rx="168" ry="38" fill="none" visibility="hidden"/>
 
-  <circle r="3" fill="#7c3aed" filter="url(#glow)" class="signal-2">
-    <animateMotion dur="4s" repeatCount="indefinite" begin="1.3s">
-      <mpath href="#path-lb"/>
+  <!-- Signal 2 — travels ring 2 -->
+  <circle r="3.5" fill="#a78bfa" filter="url(#glow6)" class="sig2">
+    <animateMotion dur="11s" repeatCount="indefinite" begin="2s">
+      <mpath href="#orbPath2"/>
     </animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.05;0.95;1" dur="11s" begin="2s" repeatCount="indefinite"/>
   </circle>
-  <path id="path-lb" d="M 140,195 L 205,230 L 250,195 L 295,230 L 360,195" fill="none"/>
+  <ellipse id="orbPath2" cx="400" cy="230" rx="155" ry="52" fill="none" visibility="hidden" transform="rotate(35,400,230)"/>
 
-  <circle r="2.5" fill="#06b6d4" filter="url(#glow)" class="signal-3">
-    <animateMotion dur="5s" repeatCount="indefinite" begin="0.5s">
-      <mpath href="#path-lc"/>
+  <!-- Signal 3 — travels ring 3 -->
+  <circle r="3" fill="#22d3ee" filter="url(#glow6)" class="sig3">
+    <animateMotion dur="14s" repeatCount="indefinite" begin="1s">
+      <mpath href="#orbPath3"/>
     </animateMotion>
+    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.05;0.95;1" dur="14s" begin="1s" repeatCount="indefinite"/>
   </circle>
-  <path id="path-lc" d="M 225,130 L 250,195 L 275,130" fill="none"/>
+  <ellipse id="orbPath3" cx="400" cy="230" rx="130" ry="28" fill="none" visibility="hidden" transform="rotate(70,400,230)"/>
 
-  <circle r="2.5" fill="#a78bfa" filter="url(#glow)" class="signal-4">
-    <animateMotion dur="6s" repeatCount="indefinite" begin="2s">
-      <mpath href="#path-ld"/>
+  <!-- Signal 4 — counter-travel ring 1 -->
+  <circle r="3" fill="#38bdf8" filter="url(#glow3)" class="sig4">
+    <animateMotion dur="6s" repeatCount="indefinite" begin="3s" keyPoints="1;0" keyTimes="0;1" calcMode="linear">
+      <mpath href="#orbPath1"/>
     </animateMotion>
+    <animate attributeName="opacity" values="0;0.8;0.8;0" keyTimes="0;0.05;0.95;1" dur="6s" begin="3s" repeatCount="indefinite"/>
   </circle>
-  <path id="path-ld" d="M 165,245 L 205,230 L 210,175 L 225,130 L 275,130 L 290,175 L 295,230 L 335,245" fill="none"/>
 
-  <circle r="2" fill="#38bdf8" filter="url(#glow)" class="signal-5">
-    <animateMotion dur="3.5s" repeatCount="indefinite" begin="0.8s">
-      <mpath href="#path-le"/>
-    </animateMotion>
-  </circle>
-  <path id="path-le" d="M 325,150 L 290,175 L 250,195 L 210,175 L 175,150" fill="none"/>
-
-  <!-- Floating particles -->
-  <g filter="url(#softGlow)">
-    <circle cx="95" cy="155" r="2" fill="#0ea5e9" class="particle-1"/>
-    <circle cx="118" cy="280" r="1.5" fill="#38bdf8" class="particle-2"/>
-    <circle cx="78" cy="215" r="2" fill="#06b6d4" class="particle-3"/>
-    <circle cx="405" cy="160" r="2" fill="#7c3aed" class="particle-4"/>
-    <circle cx="420" cy="245" r="1.5" fill="#8b5cf6" class="particle-5"/>
-    <circle cx="390" cy="300" r="2" fill="#a78bfa" class="particle-6"/>
-    <circle cx="250" cy="60" r="2" fill="#38bdf8" class="particle-7"/>
-    <circle cx="250" cy="345" r="1.5" fill="#06b6d4" class="particle-8"/>
-    <!-- Small diamond particles -->
-    <rect x="88" y="128" width="4" height="4" rx="0.5" fill="#0ea5e9" transform="rotate(45 90 130)" class="particle-3"/>
-    <rect x="408" y="195" width="3" height="3" rx="0.5" fill="#7c3aed" transform="rotate(45 410 197)" class="particle-1"/>
-    <rect x="248" y="45" width="3" height="3" rx="0.5" fill="#06b6d4" transform="rotate(45 250 47)" class="particle-5"/>
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- INTERNAL NEURAL CONNECTION LINES                               -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <g opacity="0.4" filter="url(#glow3)" class="brain-ambient">
+    <!-- Left web -->
+    <line x1="295" y1="145" x2="355" y2="175" stroke="#38bdf8" stroke-width="0.9"/>
+    <line x1="295" y1="145" x2="300" y2="210" stroke="#0ea5e9" stroke-width="0.8"/>
+    <line x1="300" y1="210" x2="355" y2="175" stroke="#0ea5e9" stroke-width="0.8"/>
+    <line x1="300" y1="210" x2="320" y2="262" stroke="#06b6d4" stroke-width="0.8"/>
+    <line x1="355" y1="175" x2="380" y2="230" stroke="#38bdf8" stroke-width="0.9"/>
+    <line x1="380" y1="230" x2="320" y2="262" stroke="#0ea5e9" stroke-width="0.8"/>
+    <line x1="295" y1="145" x2="345" y2="108" stroke="#06b6d4" stroke-width="0.8"/>
+    <line x1="345" y1="108" x2="355" y2="175" stroke="#38bdf8" stroke-width="0.7"/>
+    <!-- Right web -->
+    <line x1="505" y1="145" x2="445" y2="175" stroke="#8b5cf6" stroke-width="0.9"/>
+    <line x1="505" y1="145" x2="500" y2="210" stroke="#7c3aed" stroke-width="0.8"/>
+    <line x1="500" y1="210" x2="445" y2="175" stroke="#7c3aed" stroke-width="0.8"/>
+    <line x1="500" y1="210" x2="480" y2="262" stroke="#a78bfa" stroke-width="0.8"/>
+    <line x1="445" y1="175" x2="420" y2="230" stroke="#8b5cf6" stroke-width="0.9"/>
+    <line x1="420" y1="230" x2="480" y2="262" stroke="#7c3aed" stroke-width="0.8"/>
+    <line x1="505" y1="145" x2="455" y2="108" stroke="#a78bfa" stroke-width="0.8"/>
+    <line x1="455" y1="108" x2="445" y2="175" stroke="#8b5cf6" stroke-width="0.7"/>
+    <!-- Cross-hemisphere -->
+    <line x1="380" y1="230" x2="420" y2="230" stroke="#06b6d4" stroke-width="0.8" stroke-dasharray="3,4"/>
+    <line x1="355" y1="175" x2="445" y2="175" stroke="#06b6d4" stroke-width="0.6" stroke-dasharray="3,5"/>
+    <line x1="345" y1="108" x2="455" y2="108" stroke="#38bdf8" stroke-width="0.6" stroke-dasharray="4,6"/>
+    <!-- Center to cerebellum -->
+    <line x1="400" y1="265" x2="400" y2="318" stroke="#06b6d4" stroke-width="0.8" stroke-dasharray="2,4"/>
   </g>
 
-  <!-- Labels -->
-  <g font-family="'Courier New', monospace" font-size="9" fill="#38bdf8" text-anchor="middle">
-    <text x="250" y="30" class="label-1" font-size="11" letter-spacing="4" font-weight="bold" fill="#0ea5e9">AI NEURAL SYSTEM</text>
-    <text x="250" y="45" class="label-2" font-size="8" letter-spacing="2" fill="#38bdf8" opacity="0.7">DEEP LEARNING  |  GENERATIVE AI  |  LLMs</text>
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- NEURAL NODES — 3D positioned across brain surface              -->
+  <!-- blue = ML/AI · purple = GenAI/Agentic · cyan = backend/cloud  -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <g filter="url(#glow6)">
+
+    <!-- NODE 01 — PyTorch · left-top -->
+    <circle cx="295" cy="145" r="11" fill="none" stroke="#38bdf8" stroke-width="0.8" class="nb-ring"/>
+    <circle cx="295" cy="145" r="5"  fill="url(#nodeBlue)" class="nb"/>
+
+    <!-- NODE 02 — TensorFlow · left-mid-top -->
+    <circle cx="300" cy="210" r="11" fill="none" stroke="#38bdf8" stroke-width="0.8" class="nb2-ring"/>
+    <circle cx="300" cy="210" r="5"  fill="url(#nodeBlue)" class="nb2"/>
+
+    <!-- NODE 03 — Scikit-learn · left-lower -->
+    <circle cx="320" cy="262" r="11" fill="none" stroke="#38bdf8" stroke-width="0.8" class="nb-ring"/>
+    <circle cx="320" cy="262" r="5"  fill="url(#nodeBlue)" class="nb3"/>
+
+    <!-- NODE 04 — Deep Learning · left-inner -->
+    <circle cx="355" cy="175" r="11" fill="none" stroke="#06b6d4" stroke-width="0.8" class="nc-ring"/>
+    <circle cx="355" cy="175" r="5"  fill="url(#nodeCyan)" class="nc"/>
+
+    <!-- NODE 05 — Computer Vision · left-center -->
+    <circle cx="380" cy="230" r="11" fill="none" stroke="#06b6d4" stroke-width="0.8" class="nc2-ring"/>
+    <circle cx="380" cy="230" r="5"  fill="url(#nodeCyan)" class="nc2"/>
+
+    <!-- NODE 06 — YOLO · top-left curve -->
+    <circle cx="345" cy="108" r="10" fill="none" stroke="#38bdf8" stroke-width="0.8" class="nb2-ring"/>
+    <circle cx="345" cy="108" r="4.5" fill="url(#nodeBlue)" class="nb4"/>
+
+    <!-- NODE 07 — LLM Engineering · right-top -->
+    <circle cx="505" cy="145" r="11" fill="none" stroke="#8b5cf6" stroke-width="0.8" class="np-ring"/>
+    <circle cx="505" cy="145" r="5"  fill="url(#nodePurple)" class="np"/>
+
+    <!-- NODE 08 — RAG · right-mid-top -->
+    <circle cx="500" cy="210" r="11" fill="none" stroke="#8b5cf6" stroke-width="0.8" class="np2-ring"/>
+    <circle cx="500" cy="210" r="5"  fill="url(#nodePurple)" class="np2"/>
+
+    <!-- NODE 09 — LangChain · right-lower -->
+    <circle cx="480" cy="262" r="11" fill="none" stroke="#a78bfa" stroke-width="0.8" class="np-ring"/>
+    <circle cx="480" cy="262" r="5"  fill="url(#nodePurple)" class="np3"/>
+
+    <!-- NODE 10 — Hugging Face · right-inner -->
+    <circle cx="445" cy="175" r="11" fill="none" stroke="#7c3aed" stroke-width="0.8" class="np2-ring"/>
+    <circle cx="445" cy="175" r="5"  fill="url(#nodePurple)" class="np4"/>
+
+    <!-- NODE 11 — Fine-Tuning · right-center -->
+    <circle cx="420" cy="230" r="11" fill="none" stroke="#8b5cf6" stroke-width="0.8" class="np-ring"/>
+    <circle cx="420" cy="230" r="5"  fill="url(#nodePurple)" class="np5"/>
+
+    <!-- NODE 12 — Sentence Transformers · top-right curve -->
+    <circle cx="455" cy="108" r="10" fill="none" stroke="#7c3aed" stroke-width="0.8" class="np2-ring"/>
+    <circle cx="455" cy="108" r="4.5" fill="url(#nodePurple)" class="np6"/>
+
+    <!-- NODE 13 — AI Agents · top center -->
+    <circle cx="400" cy="96" r="12" fill="none" stroke="#22d3ee" stroke-width="1" class="nc-ring"/>
+    <circle cx="400" cy="96" r="5.5" fill="url(#nodeCyan)" class="nc3"/>
+
+    <!-- NODE 14 — MCP · center-core (master node) -->
+    <circle cx="400" cy="200" r="16" fill="none" stroke="#38bdf8" stroke-width="1" class="nb-ring"/>
+    <circle cx="400" cy="200" r="8"  fill="url(#nodeBlue)" class="nb5"/>
+    <!-- Extra outer ring on master node -->
+    <circle cx="400" cy="200" r="22" fill="none" stroke="#38bdf8" stroke-width="0.5" opacity="0.3" class="nc-ring"/>
+
+    <!-- NODE 15 — Multi-Agent Systems · cerebellum -->
+    <circle cx="400" cy="318" r="10" fill="none" stroke="#22d3ee" stroke-width="0.8" class="nc2-ring"/>
+    <circle cx="400" cy="318" r="4.5" fill="url(#nodeCyan)" class="nc4"/>
+
+    <!-- NODE 16 — Tool Calling · left-low-side -->
+    <circle cx="250" cy="230" r="10" fill="none" stroke="#0ea5e9" stroke-width="0.8" class="nb-ring"/>
+    <circle cx="250" cy="230" r="4.5" fill="url(#nodeBlue)" class="nb6"/>
+
+    <!-- NODE 17 — Python · right-low-side -->
+    <circle cx="550" cy="230" r="10" fill="none" stroke="#06b6d4" stroke-width="0.8" class="nc-ring"/>
+    <circle cx="550" cy="230" r="4.5" fill="url(#nodeCyan)" class="nc5"/>
+
+    <!-- NODE 18 — FastAPI · lower-left -->
+    <circle cx="268" cy="290" r="10" fill="none" stroke="#0ea5e9" stroke-width="0.8" class="nb2-ring"/>
+    <circle cx="268" cy="290" r="4.5" fill="url(#nodeBlue)" class="nb7"/>
+
+    <!-- NODE 19 — Docker · lower-right -->
+    <circle cx="532" cy="290" r="10" fill="none" stroke="#06b6d4" stroke-width="0.8" class="nc2-ring"/>
+    <circle cx="532" cy="290" r="4.5" fill="url(#nodeCyan)" class="nc6"/>
+
+    <!-- NODE 20 — AWS · left-outer -->
+    <circle cx="232" cy="175" r="10" fill="none" stroke="#38bdf8" stroke-width="0.8" class="nb-ring"/>
+    <circle cx="232" cy="175" r="4.5" fill="url(#nodeBlue)" class="nb8"/>
+
+    <!-- NODE 21 — MLOps · right-outer -->
+    <circle cx="568" cy="175" r="10" fill="none" stroke="#8b5cf6" stroke-width="0.8" class="np-ring"/>
+    <circle cx="568" cy="175" r="4.5" fill="url(#nodePurple)" class="np6"/>
+
+    <!-- NODE 22 — CI/CD · top-left -->
+    <circle cx="262" cy="118" r="10" fill="none" stroke="#06b6d4" stroke-width="0.8" class="nc-ring"/>
+    <circle cx="262" cy="118" r="4.5" fill="url(#nodeCyan)" class="nc2"/>
+
+    <!-- NODE 23 — NLP · top-right -->
+    <circle cx="538" cy="118" r="10" fill="none" stroke="#a78bfa" stroke-width="0.8" class="np2-ring"/>
+    <circle cx="538" cy="118" r="4.5" fill="url(#nodePurple)" class="np3"/>
+
+    <!-- NODE 24 — OpenCV · bottom-center -->
+    <circle cx="400" cy="275" r="10" fill="none" stroke="#06b6d4" stroke-width="0.8" class="nc-ring"/>
+    <circle cx="400" cy="275" r="4.5" fill="url(#nodeCyan)" class="nc5"/>
   </g>
 
-  <!-- Left hemisphere label -->
-  <g font-family="'Courier New', monospace" font-size="8" fill="#0ea5e9" class="label-3">
-    <text x="118" y="140" text-anchor="middle" opacity="0.6">ML</text>
-    <text x="118" y="150" text-anchor="middle" opacity="0.6">ENGINE</text>
-  </g>
-  <!-- Right hemisphere label -->
-  <g font-family="'Courier New', monospace" font-size="8" fill="#8b5cf6" class="label-1">
-    <text x="382" y="140" text-anchor="middle" opacity="0.6">GEN AI</text>
-    <text x="382" y="150" text-anchor="middle" opacity="0.6">ENGINE</text>
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- SKILL LABEL CONNECTORS + TEXT — cycle one at a time            -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+
+  <!-- NODE 01 — PyTorch -->
+  <line x1="295" y1="145" x2="148" y2="138" stroke="#38bdf8" stroke-width="0.9" class="conn-label ck01"/>
+  <rect x="52" y="124" width="92" height="22" rx="4" fill="#0d1f35" stroke="#38bdf8" stroke-width="0.8" class="conn-label ck01"/>
+  <text x="98" y="139" text-anchor="middle" font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="10" font-weight="600" fill="#38bdf8" filter="url(#textGlow)"
+        class="skill-label sk01">PyTorch</text>
+
+  <!-- NODE 02 — TensorFlow -->
+  <line x1="300" y1="210" x2="140" y2="210" stroke="#38bdf8" stroke-width="0.9" class="conn-label ck02"/>
+  <rect x="44" y="197" width="92" height="22" rx="4" fill="#0d1f35" stroke="#38bdf8" stroke-width="0.8" class="conn-label ck02"/>
+  <text x="90" y="212" text-anchor="middle" font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="10" font-weight="600" fill="#38bdf8" filter="url(#textGlow)"
+        class="skill-label sk02">TensorFlow</text>
+
+  <!-- NODE 03 — Scikit-learn -->
+  <line x1="320" y1="262" x2="150" y2="275" stroke="#38bdf8" stroke-width="0.9" class="conn-label ck03"/>
+  <rect x="44" y="263" width="102" height="22" rx="4" fill="#0d1f35" stroke="#38bdf8" stroke-width="0.8" class="conn-label ck03"/>
+  <text x="95" y="278" text-anchor="middle" font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="10" font-weight="600" fill="#38bdf8" filter="url(#textGlow)"
+        class="skill-label sk03">Scikit-learn</text>
+
+  <!-- NODE 04 — Deep Learning -->
+  <line x1="355" y1="175" x2="150" y2="168" stroke="#06b6d4" stroke-width="0.9" class="conn-label ck04"/>
+  <rect x="42" y="156" width="104" height="22" rx="4" fill="#061520" stroke="#06b6d4" stroke-width="0.8" class="conn-label ck04"/>
+  <text x="94" y="171" text-anchor="middle" font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="10" font-weight="600" fill="#22d3ee" filter="url(#textGlow)"
+        class="skill-label sk04">Deep Learning</text>
+
+  <!-- NODE 05 — Computer Vision -->
+  <line x1="380" y1="230" x2="145" y2="237" stroke="#06b6d4" stroke-width="0.9" class="conn-label ck05"/>
+  <rect x="30" y="225" width="112" height="22" rx="4" fill="#061520" stroke="#06b6d4" stroke-width="0.8" class="conn-label ck05"/>
+  <text x="86" y="240" text-anchor="middle" font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="10" font-weight="600" fill="#22d3ee" filter="url(#textGlow)"
+        class="skill-label sk05">Computer Vision</text>
+
+  <!-- NODE 06 — YOLO -->
+  <line x1="345" y1="108" x2="175" y2="98" stroke="#38bdf8" stroke-width="0.9" class="conn-label ck06"/>
+  <rect x="118" y="86" width="54" height="22" rx="4" fill="#0d1f35" stroke="#38bdf8" stroke-width="0.8" class="conn-label ck06"/>
+  <text x="145" y="101" text-anchor="middle" font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="10" font-weight="600" fill="#38bdf8" filter="url(#textGlow)"
+        class="skill-label sk06">YOLO</text>
+
+  <!-- NODE 07 — LLM Engineering -->
+  <line x1="505" y1="145" x2="655" y2="138" stroke="#8b5cf6" stroke-width="0.9" class="conn-label ck07"/>
+  <rect x="658" y="124" width="108" height="22" rx="4" fill="#150830" stroke="#8b5cf6" stroke-width="0.8" class="conn-label ck07"/>
+  <text x="712" y="139" text-anchor="middle" font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="10" font-weight="600" fill="#a78bfa" filter="url(#textGlow)"
+        class="skill-label sk07">LLM Engineering</text>
+
+  <!-- NODE 08 — RAG -->
+  <line x1="500" y1="210" x2="664" y2="210" stroke="#8b5cf6" stroke-width="0.9" class="conn-label ck08"/>
+  <rect x="668" y="197" width="46" height="22" rx="4" fill="#150830" stroke="#8b5cf6" stroke-width="0.8" class="conn-label ck08"/>
+  <text x="691" y="212" text-anchor="middle" font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="10" font-weight="600" fill="#a78bfa" filter="url(#textGlow)"
+        class="skill-label sk08">RAG</text>
+
+  <!-- NODE 09 — LangChain -->
+  <line x1="480" y1="262" x2="655" y2="275" stroke="#a78bfa" stroke-width="0.9" class="conn-label ck09"/>
+  <rect x="658" y="263" width="88" height="22" rx="4" fill="#150830" stroke="#a78bfa" stroke-width="0.8" class="conn-label ck09"/>
+  <text x="702" y="278" text-anchor="middle" font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="10" font-weight="600" fill="#c4b5fd" filter="url(#textGlow)"
+        class="skill-label sk09">LangChain</text>
+
+  <!-- NODE 10 — Hugging Face -->
+  <line x1="445" y1="175" x2="654" y2="168" stroke="#7c3aed" stroke-width="0.9" class="conn-label ck10"/>
+  <rect x="658" y="156" width="96" height="22" rx="4" fill="#150830" stroke="#7c3aed" stroke-width="0.8" class="conn-label ck10"/>
+  <text x="706" y="171" text-anchor="middle" font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="10" font-weight="600" fill="#a78bfa" filter="url(#textGlow)"
+        class="skill-label sk10">Hugging Face</text>
+
+  <!-- NODE 11 — Fine-Tuning -->
+  <line x1="420" y1="230" x2="660" y2="237" stroke="#8b5cf6" stroke-width="0.9" class="conn-label ck11"/>
+  <rect x="662" y="225" width="90" height="22" rx="4" fill="#150830" stroke="#8b5cf6" stroke-width="0.8" class="conn-label ck11"/>
+  <text x="707" y="240" text-anchor="middle" font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="10" font-weight="600" fill="#a78bfa" filter="url(#textGlow)"
+        class="skill-label sk11">Fine-Tuning</text>
+
+  <!-- NODE 12 — Sentence Transformers -->
+  <line x1="455" y1="108" x2="628" y2="98" stroke="#7c3aed" stroke-width="0.9" class="conn-label ck12"/>
+  <rect x="630" y="86" width="140" height="22" rx="4" fill="#150830" stroke="#7c3aed" stroke-width="0.8" class="conn-label ck12"/>
+  <text x="700" y="101" text-anchor="middle" font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="10" font-weight="600" fill="#a78bfa" filter="url(#textGlow)"
+        class="skill-label sk12">Sent. Transformers</text>
+
+  <!-- NODE 13 — AI Agents · top -->
+  <line x1="400" y1="84" x2="400" y2="58" stroke="#22d3ee" stroke-width="0.9" class="conn-label ck13"/>
+  <rect x="345" y="40" width="110" height="22" rx="4" fill="#061520" stroke="#22d3ee" stroke-width="0.8" class="conn-label ck13"/>
+  <text x="400" y="55" text-anchor="middle" font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="10" font-weight="600" fill="#22d3ee" filter="url(#textGlow)"
+        class="skill-label sk13">AI Agents</text>
+
+  <!-- NODE 14 — MCP · center -->
+  <line x1="412" y1="192" x2="470" y2="168" stroke="#38bdf8" stroke-width="1" class="conn-label ck14"/>
+  <rect x="472" y="155" width="52" height="22" rx="4" fill="#0d1f35" stroke="#38bdf8" stroke-width="1" class="conn-label ck14"/>
+  <text x="498" y="170" text-anchor="middle" font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="10" font-weight="700" fill="#38bdf8" filter="url(#textGlow)"
+        class="skill-label sk14">MCP</text>
+
+  <!-- NODE 15 — Multi-Agent Systems · cerebellum -->
+  <line x1="400" y1="329" x2="400" y2="358" stroke="#22d3ee" stroke-width="0.9" class="conn-label ck15"/>
+  <rect x="316" y="358" width="168" height="22" rx="4" fill="#061520" stroke="#22d3ee" stroke-width="0.8" class="conn-label ck15"/>
+  <text x="400" y="373" text-anchor="middle" font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="10" font-weight="600" fill="#22d3ee" filter="url(#textGlow)"
+        class="skill-label sk15">Multi-Agent Systems</text>
+
+  <!-- NODE 16 — Tool Calling -->
+  <line x1="250" y1="230" x2="96" y2="310" stroke="#0ea5e9" stroke-width="0.9" class="conn-label ck16"/>
+  <rect x="20" y="299" width="90" height="22" rx="4" fill="#0d1f35" stroke="#0ea5e9" stroke-width="0.8" class="conn-label ck16"/>
+  <text x="65" y="314" text-anchor="middle" font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="10" font-weight="600" fill="#38bdf8" filter="url(#textGlow)"
+        class="skill-label sk16">Tool Calling</text>
+
+  <!-- NODE 17 — Python -->
+  <line x1="550" y1="230" x2="704" y2="310" stroke="#06b6d4" stroke-width="0.9" class="conn-label ck17"/>
+  <rect x="692" y="299" width="70" height="22" rx="4" fill="#061520" stroke="#06b6d4" stroke-width="0.8" class="conn-label ck17"/>
+  <text x="727" y="314" text-anchor="middle" font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="10" font-weight="600" fill="#22d3ee" filter="url(#textGlow)"
+        class="skill-label sk17">Python</text>
+
+  <!-- NODE 18 — FastAPI -->
+  <line x1="268" y1="290" x2="110" y2="336" stroke="#0ea5e9" stroke-width="0.9" class="conn-label ck18"/>
+  <rect x="20" y="325" width="86" height="22" rx="4" fill="#0d1f35" stroke="#0ea5e9" stroke-width="0.8" class="conn-label ck18"/>
+  <text x="63" y="340" text-anchor="middle" font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="10" font-weight="600" fill="#38bdf8" filter="url(#textGlow)"
+        class="skill-label sk18">FastAPI</text>
+
+  <!-- NODE 19 — Docker -->
+  <line x1="532" y1="290" x2="690" y2="336" stroke="#06b6d4" stroke-width="0.9" class="conn-label ck19"/>
+  <rect x="694" y="325" width="68" height="22" rx="4" fill="#061520" stroke="#06b6d4" stroke-width="0.8" class="conn-label ck19"/>
+  <text x="728" y="340" text-anchor="middle" font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="10" font-weight="600" fill="#22d3ee" filter="url(#textGlow)"
+        class="skill-label sk19">Docker</text>
+
+  <!-- NODE 20 — AWS -->
+  <line x1="232" y1="175" x2="88" y2="175" stroke="#38bdf8" stroke-width="0.9" class="conn-label ck20"/>
+  <rect x="20" y="163" width="64" height="22" rx="4" fill="#0d1f35" stroke="#38bdf8" stroke-width="0.8" class="conn-label ck20"/>
+  <text x="52" y="178" text-anchor="middle" font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="10" font-weight="600" fill="#38bdf8" filter="url(#textGlow)"
+        class="skill-label sk20">AWS</text>
+
+  <!-- NODE 21 — MLOps -->
+  <line x1="568" y1="175" x2="716" y2="175" stroke="#8b5cf6" stroke-width="0.9" class="conn-label ck21"/>
+  <rect x="718" y="163" width="64" height="22" rx="4" fill="#150830" stroke="#8b5cf6" stroke-width="0.8" class="conn-label ck21"/>
+  <text x="750" y="178" text-anchor="middle" font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="10" font-weight="600" fill="#a78bfa" filter="url(#textGlow)"
+        class="skill-label sk21">MLOps</text>
+
+  <!-- NODE 22 — CI/CD -->
+  <line x1="262" y1="118" x2="118" y2="108" stroke="#06b6d4" stroke-width="0.9" class="conn-label ck22"/>
+  <rect x="20" y="97" width="94" height="22" rx="4" fill="#061520" stroke="#06b6d4" stroke-width="0.8" class="conn-label ck22"/>
+  <text x="67" y="112" text-anchor="middle" font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="10" font-weight="600" fill="#22d3ee" filter="url(#textGlow)"
+        class="skill-label sk22">CI / CD</text>
+
+  <!-- NODE 23 — NLP -->
+  <line x1="538" y1="118" x2="682" y2="108" stroke="#a78bfa" stroke-width="0.9" class="conn-label ck23"/>
+  <rect x="686" y="97" width="46" height="22" rx="4" fill="#150830" stroke="#a78bfa" stroke-width="0.8" class="conn-label ck23"/>
+  <text x="709" y="112" text-anchor="middle" font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="10" font-weight="600" fill="#c4b5fd" filter="url(#textGlow)"
+        class="skill-label sk23">NLP</text>
+
+  <!-- NODE 24 — OpenCV -->
+  <line x1="400" y1="285" x2="310" y2="358" stroke="#06b6d4" stroke-width="0.9" class="conn-label ck24"/>
+  <rect x="244" y="358" width="66" height="22" rx="4" fill="#061520" stroke="#06b6d4" stroke-width="0.8" class="conn-label ck24"/>
+  <text x="277" y="373" text-anchor="middle" font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="10" font-weight="600" fill="#22d3ee" filter="url(#textGlow)"
+        class="skill-label sk24">OpenCV</text>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- FLOATING PARTICLES — ambient neural data                        -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <g filter="url(#glow3)">
+    <circle cx="82" cy="230" r="2.5" fill="#38bdf8" class="pt1"/>
+    <circle cx="720" cy="230" r="2.5" fill="#8b5cf6" class="pt2"/>
+    <circle cx="400" cy="440" r="2"   fill="#06b6d4" class="pt3"/>
+    <circle cx="130" cy="380" r="2"   fill="#0ea5e9" class="pt4"/>
+    <circle cx="670" cy="380" r="2"   fill="#7c3aed" class="pt5"/>
+    <circle cx="400" cy="22"  r="2"   fill="#22d3ee" class="pt6"/>
+    <circle cx="140" cy="58"  r="1.5" fill="#38bdf8" class="pt7"/>
+    <circle cx="660" cy="58"  r="1.5" fill="#a78bfa" class="pt8"/>
+    <circle cx="58"  cy="300" r="1.8" fill="#06b6d4" class="pt9"/>
+    <circle cx="742" cy="300" r="1.8" fill="#8b5cf6" class="pt10"/>
+    <circle cx="200" cy="430" r="1.5" fill="#0ea5e9" class="pt11"/>
+    <circle cx="600" cy="430" r="1.5" fill="#7c3aed" class="pt12"/>
+    <!-- diamond particles -->
+    <rect x="398" y="468" width="4" height="4" rx="0.5" fill="#06b6d4" transform="rotate(45 400 470)" class="pt3"/>
+    <rect x="88" y="430" width="3.5" height="3.5" rx="0.5" fill="#38bdf8" transform="rotate(45 90 432)" class="pt7"/>
+    <rect x="708" y="430" width="3.5" height="3.5" rx="0.5" fill="#a78bfa" transform="rotate(45 710 432)" class="pt11"/>
   </g>
 
-  <!-- Center label -->
-  <g font-family="'Courier New', monospace" font-size="7" fill="#06b6d4" text-anchor="middle" class="label-2">
-    <text x="250" y="358" letter-spacing="3" opacity="0.6">SHABIL AHMED</text>
-  </g>
-
-  <!-- Bottom binary decorative text -->
-  <text x="250" y="373" font-family="'Courier New', monospace" font-size="6" fill="#0ea5e9" text-anchor="middle" opacity="0.25" class="label-1">
-    01001001 01001110 01010100 01000101 01001100 01001100 01001001 01000111 01000101 01001110 01000011 01000101
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- FOOTER IDENTITY                                                 -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <line x1="200" y1="494" x2="600" y2="494" stroke="#38bdf8" stroke-width="0.4" opacity="0.25"/>
+  <text x="400" y="508" text-anchor="middle"
+        font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="8" letter-spacing="4" fill="#38bdf8" opacity="0.5">
+    SHABIL AHMED  ·  AI / ML ENGINEER  ·  DOHA, QATAR
+  </text>
+  <text x="400" y="520" text-anchor="middle"
+        font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="6" letter-spacing="2" fill="#94a3b8" opacity="0.3">
+    01000001 01001001  ·  01001101 01001100  ·  01000111 01000101 01001110 01000001 01001001
   </text>
 </svg>
