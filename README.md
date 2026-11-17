@@ -1,4 +1,6 @@
-# SHABIL AHMED — AI/ML ENGINEER
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
+<!--                    SHABIL AHMED — GITHUB PROFILE README                   -->
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
 
 <!-- ===== ANIMATED HEADER BANNER ===== -->
 <p align="center">
@@ -24,8 +26,8 @@
     <img src="https://img.shields.io/badge/GitHub-shabil2284-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
   </a>
   &nbsp;
-  <a href="mailto:shabil.ahmed112@outlook.com">
-    <img src="https://img.shields.io/badge/Email-Contact-0078D4?style=for-the-badge&logo=microsoftoutlook&logoColor=white" alt="Email" />
+  <a href="mailto:shabil.ahemd112@outlook.com">
+    <img src="https://img.shields.io/badge/Email-shabil.ahemd112%40outlook.com-0078D4?style=for-the-badge&logo=microsoftoutlook&logoColor=white" alt="Email" />
   </a>
   &nbsp;
   <img src="https://komarev.com/ghpvc/?username=shabil2284&label=Profile+Views&color=0ea5e9&style=for-the-badge" alt="Profile views" />
@@ -40,47 +42,37 @@
   <img src="https://img.shields.io/badge/Status-Open%20to%20Opportunities-22c55e?style=for-the-badge&logo=checkmarx&logoColor=white" alt="Open to opportunities" />
 </p>
 
+<!-- ===== DIVIDER ===== -->
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" alt="divider" width="100%" />
 
-<!-- ═══════════════════════════════════════════════════════════════ -->
-<!--                  INTERACTIVE AI NEURAL BRAIN                   -->
-<!-- ═══════════════════════════════════════════════════════════════ -->
+<br/>
 
-<h2 align="center">Interactive AI Neural Architecture</h2>
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
+<!--                          ANIMATED AI BRAIN                                -->
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
 
 <p align="center">
-  <a href="https://shabil2284.github.io/shabil2284/" target="_blank">
-    <img
-      src="https://raw.githubusercontent.com/shabil2284/shabil2284/main/assets/ai-brain-preview.gif"
-      alt="Animated transparent 3D AI neural brain — Click to explore interactive neural architecture"
-      width="760"
-    />
-  </a>
+  <img src="https://raw.githubusercontent.com/shabil2284/shabil2284/main/assets/ai-brain.svg" alt="3D AI Neural Intelligence Brain — Shabil Ahmed" width="760" />
 </p>
 
 <p align="center">
-  <a href="https://shabil2284.github.io/shabil2284/">
-    <img src="https://img.shields.io/badge/EXPLORE-INTERACTIVE%20AI%20NEURAL%20SYSTEM-38bdf8?style=for-the-badge&logo=three.js&logoColor=white" alt="Explore Interactive AI Neural System" />
-  </a>
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Rendering-Three.js%20%7C%20WebGL-06b6d4?style=flat-square" alt="Three.js WebGL" />
+  <img src="https://img.shields.io/badge/Neural%20Architecture-3D%20Active-38bdf8?style=flat-square&logo=tensorflow&logoColor=white" alt="Neural Architecture Active" />
   &nbsp;
-  <img src="https://img.shields.io/badge/Interaction-Raycasting-7c3aed?style=flat-square" alt="Raycasting" />
+  <img src="https://img.shields.io/badge/24%20Skill%20Nodes-Pulsing%20%26%20Synchronized-7c3aed?style=flat-square&logo=openai&logoColor=white" alt="24 Skill Nodes" />
   &nbsp;
-  <img src="https://img.shields.io/badge/Experience-Interactive%203D-38bdf8?style=flat-square" alt="Interactive 3D" />
+  <img src="https://img.shields.io/badge/Agentic%20Orchestration-MCP%20Engine-06b6d4?style=flat-square&logo=chainlink&logoColor=white" alt="Agentic Orchestration" />
 </p>
 
-<p align="center">
-  <sub>Explore the neural architecture, discover individual engineering skills, and interact with the 3D visualization.</sub>
-</p>
+<br/>
 
+<!-- ===== DIVIDER ===== -->
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" alt="divider" width="100%" />
 
-<!-- ═══════════════════════════════════════════════════════════════ -->
-<!--                     PROFESSIONAL PROFILE                       -->
-<!-- ═══════════════════════════════════════════════════════════════ -->
+<br/>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
+<!--                        PROFESSIONAL INTRODUCTION                          -->
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
 
 ## Professional Profile
 
@@ -94,8 +86,8 @@ My backend infrastructure runs on **FastAPI** and **Python**, deployed through *
 
 ```yaml
 name            : Shabil Ahmed
-location        : Doha, Qatar
-title           : AI/ML Engineer | Generative AI Developer | Agentic AI
+location        : Doha, Qatar (QID Valid — NOC Available)
+title           : AI/ML Engineer | Generative AI Developer | Agentic AI Specialist
 
 specializations :
   - Retrieval-Augmented Generation (RAG)
@@ -113,13 +105,20 @@ active_focus    :
 philosophy      : "Build AI that reasons reliably, scales gracefully, and delivers measurable value."
 ```
 
+<br/>
+
+<!-- ===== DIVIDER ===== -->
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" alt="divider" width="100%" />
 
-<!-- ═══════════════════════════════════════════════════════════════ -->
-<!--                      TECHNICAL EXPERTISE                       -->
-<!-- ═══════════════════════════════════════════════════════════════ -->
+<br/>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
+<!--                          TECHNICAL EXPERTISE                              -->
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
 
 ## Technical Expertise
+
+<br/>
 
 **AI and Machine Learning**
 
@@ -233,13 +232,20 @@ philosophy      : "Build AI that reasons reliably, scales gracefully, and delive
   <img src="https://img.shields.io/badge/MLflow-0194E2?style=for-the-badge&logo=mlflow&logoColor=white" alt="MLflow" />
 </p>
 
+<br/>
+
+<!-- ===== DIVIDER ===== -->
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" alt="divider" width="100%" />
 
-<!-- ═══════════════════════════════════════════════════════════════ -->
-<!--                       FEATURED PROJECTS                        -->
-<!-- ═══════════════════════════════════════════════════════════════ -->
+<br/>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
+<!--                         FEATURED PROJECTS                                 -->
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
 
 ## Featured Engineering Projects
+
+<br/>
 
 <table width="100%">
 <tr>
@@ -249,10 +255,9 @@ philosophy      : "Build AI that reasons reliably, scales gracefully, and delive
 
 **Domain:** Agentic AI | Generative AI | Automated Trading
 
-An AI-assisted trading agent built on the **Model Context Protocol (MCP)** with ChatGPT integration. The system supports market data retrieval, technical analysis, and trade workflows through a natural-language agent interface.
+A fully autonomous AI trading agent built on the **Model Context Protocol (MCP)** with ChatGPT integration. The system executes real-time market data retrieval, technical analysis, and trade decisions through a natural-language agent loop — no manual intervention required.
 
-**Technologies:**
-
+**Technologies:**  
 `Python` `MCP` `ChatGPT API` `Angel One Smart API` `WebSocket` `Agentic AI`
 
 <a href="https://github.com/shabil2284/day-trader-skill-Chatgpt-MCP">
@@ -268,8 +273,7 @@ An AI-assisted trading agent built on the **Model Context Protocol (MCP)** with 
 
 An intelligent natural-language query engine for Excel data. Users interact with spreadsheet data conversationally — asking questions in plain English and receiving structured, context-aware answers via an LLM-powered backend with semantic retrieval.
 
-**Technologies:**
-
+**Technologies:**  
 `Python` `LangChain` `LLMs` `RAG` `FastAPI` `Pandas` `Excel`
 
 <a href="https://github.com/shabil2284/AI-Enhanced-Excel-Query-Solution">
@@ -285,10 +289,9 @@ An intelligent natural-language query engine for Excel data. Users interact with
 
 **Domain:** Algorithmic Trading | Real-Time Data | WebSocket
 
-An automated trading platform leveraging **Angel One Smart API** with live WebSocket market feeds. Implements technical indicators, signal generation, and order execution workflows with risk management controls.
+A production-ready automated trading platform leveraging **Angel One Smart API** with live WebSocket market feeds. Implements technical indicators, signal generation, and automated order execution with risk management controls.
 
-**Technologies:**
-
+**Technologies:**  
 `Python` `Angel One Smart API` `WebSocket` `REST API` `Technical Analysis`
 
 <a href="https://github.com/shabil2284/Angel-one-smart-Api-updated-websocket-version">
@@ -302,10 +305,9 @@ An automated trading platform leveraging **Angel One Smart API** with live WebSo
 
 **Domain:** Computer Vision | Agentic AI | Document Intelligence
 
-An agentic document intelligence system capable of analyzing complex document layouts using computer vision models. The system segments, classifies, and extracts structured information from unstructured documents.
+An agentic document intelligence system capable of analyzing complex document layouts using computer vision models. The system autonomously segments, classifies, and extracts structured information from unstructured documents with high precision.
 
-**Technologies:**
-
+**Technologies:**  
 `Python` `Computer Vision` `Agentic AI` `LangChain` `OCR` `FastAPI`
 
 <a href="https://github.com/shabil2284/Agentic-Aurora-AI">
@@ -321,10 +323,9 @@ An agentic document intelligence system capable of analyzing complex document la
 
 **Domain:** Computer Vision | Medical AI | Deep Learning
 
-A deep learning system for kidney cancer detection from medical imaging data. Built with convolutional neural network architectures trained and evaluated on medical imaging datasets.
+A deep learning system for kidney cancer detection from medical imaging data. Built with convolutional neural network architectures trained and evaluated on clinical-grade datasets, with model interpretability features for clinical validation.
 
-**Technologies:**
-
+**Technologies:**  
 `Python` `PyTorch` `TensorFlow` `Keras` `OpenCV` `Scikit-learn` `Medical Imaging`
 
 <a href="https://github.com/shabil2284/kidney-cancer-detection">
@@ -338,10 +339,9 @@ A deep learning system for kidney cancer detection from medical imaging data. Bu
 
 **Domain:** Full-Stack AI | Next.js | Portfolio Engineering
 
-An interactive AI/ML engineer portfolio built with Next.js, React Three Fiber, and Three.js. Features a WebGL 3D neural brain visualization, interactive skills discovery, animated hero section, and responsive design.
+A premium, interactive AI/ML engineer portfolio built with Next.js, React Three Fiber, and Three.js. Features a WebGL 3D neural brain visualization, interactive skills discovery, animated hero section, and responsive design tailored for AI/ML engineering identity.
 
-**Technologies:**
-
+**Technologies:**  
 `Next.js` `TypeScript` `Three.js` `React Three Fiber` `Tailwind CSS` `Vercel`
 
 <a href="https://github.com/shabil2284/ShabilsPortfolio-">
@@ -352,13 +352,20 @@ An interactive AI/ML engineer portfolio built with Next.js, React Three Fiber, a
 </tr>
 </table>
 
+<br/>
+
+<!-- ===== DIVIDER ===== -->
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" alt="divider" width="100%" />
 
-<!-- ═══════════════════════════════════════════════════════════════ -->
-<!--                       GITHUB ANALYTICS                          -->
-<!-- ═══════════════════════════════════════════════════════════════ -->
+<br/>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
+<!--                          GITHUB ANALYTICS                                 -->
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
 
 ## GitHub Analytics
+
+<br/>
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=shabil2284&show_icons=true&theme=tokyonight&bg_color=0d1117&border_color=38bdf8&icon_color=38bdf8&title_color=38bdf8&text_color=94a3b8&ring_color=7c3aed&hide_border=false&include_all_commits=true&count_private=true" alt="Shabil's GitHub Stats" height="180" />
@@ -370,10 +377,16 @@ An interactive AI/ML engineer portfolio built with Next.js, React Three Fiber, a
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=shabil2284&theme=tokyonight&background=0d1117&border=38bdf8&ring=38bdf8&fire=7c3aed&currStreakLabel=38bdf8&sideLabels=94a3b8&dates=94a3b8&sideNums=ffffff" alt="GitHub Streak" height="180" />
 </p>
 
+<br/>
+
+<!-- ===== ACTIVITY GRAPH ===== -->
 <p align="center">
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=shabil2284&theme=tokyo-night&bg_color=0d1117&color=38bdf8&line=38bdf8&point=7c3aed&area=true&area_color=38bdf8&hide_border=false&border_color=38bdf8&radius=8" alt="GitHub Activity Graph" width="97%" />
 </p>
 
+<br/>
+
+<!-- ===== TROPHIES ===== -->
 <details>
 <summary><strong>GitHub Trophies</strong></summary>
 <br/>
@@ -382,11 +395,16 @@ An interactive AI/ML engineer portfolio built with Next.js, React Three Fiber, a
 </p>
 </details>
 
+<br/>
+
+<!-- ===== DIVIDER ===== -->
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" alt="divider" width="100%" />
 
-<!-- ═══════════════════════════════════════════════════════════════ -->
-<!--                    CONTRIBUTION SNAKE                           -->
-<!-- ═══════════════════════════════════════════════════════════════ -->
+<br/>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
+<!--                      CONTRIBUTION SNAKE ANIMATION                        -->
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
 
 ## Contribution Activity
 
@@ -398,13 +416,18 @@ An interactive AI/ML engineer portfolio built with Next.js, React Three Fiber, a
   </picture>
 </p>
 
-> **Note:** To activate the contribution snake animation, create the GitHub Actions workflow at `.github/workflows/snake.yml` using the workflow file in this repository.
+> **Note:** To activate the contribution snake animation, create the GitHub Actions workflow at `.github/workflows/snake.yml` using the content in the [workflow file](.github/workflows/snake.yml) in this repository.
 
+<br/>
+
+<!-- ===== DIVIDER ===== -->
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" alt="divider" width="100%" />
 
-<!-- ═══════════════════════════════════════════════════════════════ -->
-<!--                         CONTACT                                -->
-<!-- ═══════════════════════════════════════════════════════════════ -->
+<br/>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
+<!--                            CONTACT SECTION                                -->
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
 
 ## Connect
 
@@ -413,8 +436,8 @@ An interactive AI/ML engineer portfolio built with Next.js, React Three Fiber, a
     <img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
   </a>
   &nbsp;
-  <a href="mailto:shabil.ahmed112@outlook.com">
-    <img src="https://img.shields.io/badge/Email-Contact-0078D4?style=for-the-badge&logo=microsoftoutlook&logoColor=white" alt="Email" />
+  <a href="mailto:shabil.ahemd112@outlook.com">
+    <img src="https://img.shields.io/badge/Email-shabil.ahemd112%40outlook.com-0078D4?style=for-the-badge&logo=microsoftoutlook&logoColor=white" alt="Email" />
   </a>
   &nbsp;
   <a href="https://github.com/shabil2284">
@@ -422,16 +445,20 @@ An interactive AI/ML engineer portfolio built with Next.js, React Three Fiber, a
   </a>
 </p>
 
+<br/>
+
 <p align="center">
   <img src="https://img.shields.io/badge/Available%20for-AI%20%2F%20ML%20Engineering%20Roles-38bdf8?style=for-the-badge&logo=tensorflow&logoColor=white" alt="Available for AI/ML roles" />
   &nbsp;
   <img src="https://img.shields.io/badge/Available%20for-AI%20Consulting%20%26%20Collaboration-7c3aed?style=for-the-badge&logo=chainlink&logoColor=white" alt="Available for consulting" />
 </p>
 
+<br/>
+
 <!-- ===== FOOTER WAVE ===== -->
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=120&section=footer&reversal=true" alt="Footer" width="100%" />
 
-<!-- ═══════════════════════════════════════════════════════════════ -->
-<!--         Built with precision. Engineered for intelligence.    -->
-<!--                     github.com/shabil2284                      -->
-<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
+<!--         Built with precision. Engineered for intelligence.                -->
+<!--                     github.com/shabil2284                                 -->
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
