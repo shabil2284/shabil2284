@@ -65,7 +65,11 @@
   <img src="https://img.shields.io/badge/Agentic%20Orchestration-MCP%20Engine-06b6d4?style=flat-square&logo=chainlink&logoColor=white" alt="Agentic Orchestration" />
 </p>
 
-<p align="center"><sub>The image is an animated preview. Hover interaction runs only on the linked page, because GitHub does not execute JavaScript in a README.</sub></p>
+<p align="center">
+  <a href="https://shabil2284.github.io/shabil2284/brain/">
+    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=15&duration=3000&pause=800&color=38BDF8&center=true&vCenter=true&repeat=true&width=520&lines=Click+on+the+brain+to+explore+my+AI+skills;Hover+over+nodes+to+reveal+each+skill;29+interactive+skill+nodes+await+you" alt="Click on the brain to explore my AI skills" />
+  </a>
+</p>
 
 <br/>
 
