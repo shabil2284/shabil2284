@@ -51,16 +51,33 @@
 <!--                          ANIMATED AI BRAIN                                -->
 <!-- ═══════════════════════════════════════════════════════════════════════════ -->
 
+<!-- ===== 3D NEURAL BRAIN — STATIC PREVIEW + INTERACTIVE LINK ===== -->
 <p align="center">
-  <img src="https://raw.githubusercontent.com/shabil2284/shabil2284/main/assets/ai-brain.svg" alt="3D AI Neural Intelligence Brain — Shabil Ahmed" width="760" />
+  <a href="https://shabil2284.github.io/neural-brain/" target="_blank" rel="noopener">
+    <img
+      src="./assets/brain-preview.png"
+      alt="Interactive 3D Neural Brain — hover over neural nodes to discover skills"
+      width="720"
+    />
+  </a>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Neural%20Architecture-3D%20Active-38bdf8?style=flat-square&logo=tensorflow&logoColor=white" alt="Neural Architecture Active" />
+  <a href="https://shabil2284.github.io/neural-brain/" target="_blank" rel="noopener">
+    <img src="https://img.shields.io/badge/LAUNCH%20INTERACTIVE%203D%20BRAIN%20%E2%80%94%20HOVER%20NODES%20TO%20REVEAL%20SKILLS-38bdf8?style=for-the-badge&logo=threedotjs&logoColor=white&labelColor=0a0f1a" alt="Launch Interactive 3D Brain" />
+  </a>
   &nbsp;
-  <img src="https://img.shields.io/badge/24%20Skill%20Nodes-Pulsing%20%26%20Synchronized-7c3aed?style=flat-square&logo=openai&logoColor=white" alt="24 Skill Nodes" />
-  &nbsp;
-  <img src="https://img.shields.io/badge/Agentic%20Orchestration-MCP%20Engine-06b6d4?style=flat-square&logo=chainlink&logoColor=white" alt="Agentic Orchestration" />
+  <a href="https://github.com/shabil2284/neural-brain">
+    <img src="https://img.shields.io/badge/SOURCE-181717?style=for-the-badge&logo=github&logoColor=white" alt="Source" />
+  </a>
+</p>
+
+<p align="center">
+  <sub>
+    The interactive 3D brain is a standalone WebGL experience hosted on GitHub Pages.
+    GitHub README does not execute custom JavaScript or WebGL — the image above is a static preview.
+    Click it to explore the live version.
+  </sub>
 </p>
 
 <br/>
