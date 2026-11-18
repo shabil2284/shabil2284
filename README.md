@@ -67,7 +67,7 @@
 
 <p align="center">
   <a href="https://shabil2284.github.io/shabil2284/brain/">
-    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=22&duration=2500&pause=900&color=38BDF8&center=true&vCenter=true&repeat=true&width=620&height=50&lines=%E2%9C%A6+Click+the+Brain+to+Explore+My+Skills+%E2%9C%A6;%E2%9A%A1+29+Interactive+AI+Skill+Nodes+%E2%9A%A1;%F0%9F%A7%A0+Hover+Over+Each+Node+to+Reveal+Skills" alt="Click the brain to explore my AI skills" />
+    <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=22&duration=2500&pause=900&color=38BDF8&center=true&vCenter=true&repeat=true&width=620&height=50&lines=%E2%96%B8+Click+the+Brain+to+Explore+My+Skills;%E2%97%86+29+Interactive+AI+%2F+ML+Skill+Nodes+%E2%97%86;%E2%97%88+Hover+Over+Each+Node+to+Reveal+Skills" alt="Click the brain to explore my AI skills" />
   </a>
 </p>
 
