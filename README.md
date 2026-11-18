@@ -26,8 +26,8 @@
     <img src="https://img.shields.io/badge/GitHub-shabil2284-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
   </a>
   &nbsp;
-  <a href="mailto:shabil.ahemd112@outlook.com">
-    <img src="https://img.shields.io/badge/Email-shabil.ahemd112%40outlook.com-0078D4?style=for-the-badge&logo=microsoftoutlook&logoColor=white" alt="Email" />
+  <a href="mailto:shabil.ahmed112@outlook.com">
+    <img src="https://img.shields.io/badge/Email-shabil.ahmed112%40outlook.com-0078D4?style=for-the-badge&logo=microsoftoutlook&logoColor=white" alt="Email" />
   </a>
   &nbsp;
   <img src="https://komarev.com/ghpvc/?username=shabil2284&label=Profile+Views&color=0ea5e9&style=for-the-badge" alt="Profile views" />
@@ -51,34 +51,21 @@
 <!--                          ANIMATED AI BRAIN                                -->
 <!-- ═══════════════════════════════════════════════════════════════════════════ -->
 
-<!-- ===== 3D NEURAL BRAIN — STATIC PREVIEW + INTERACTIVE LINK ===== -->
 <p align="center">
-  <a href="https://shabil2284.github.io/neural-brain/" target="_blank" rel="noopener">
-    <img
-      src="./assets/brain-preview.png"
-      alt="Interactive 3D Neural Brain — hover over neural nodes to discover skills"
-      width="720"
-    />
+  <a href="https://shabil2284.github.io/shabil2284/brain/">
+    <img src="https://raw.githubusercontent.com/shabil2284/shabil2284/main/assets/ai-brain.svg" alt="Neural skill map of Shabil Ahmed. Select to open the interactive 3D version." width="760" />
   </a>
 </p>
 
 <p align="center">
-  <a href="https://shabil2284.github.io/neural-brain/" target="_blank" rel="noopener">
-    <img src="https://img.shields.io/badge/LAUNCH%20INTERACTIVE%203D%20BRAIN%20%E2%80%94%20HOVER%20NODES%20TO%20REVEAL%20SKILLS-38bdf8?style=for-the-badge&logo=threedotjs&logoColor=white&labelColor=0a0f1a" alt="Launch Interactive 3D Brain" />
-  </a>
+  <a href="https://shabil2284.github.io/shabil2284/brain/"><img src="https://img.shields.io/badge/Interactive%203D-Open%20Skill%20Map-38bdf8?style=flat-square&logo=threedotjs&logoColor=white" alt="Open interactive 3D skill map" /></a>
   &nbsp;
-  <a href="https://github.com/shabil2284/neural-brain">
-    <img src="https://img.shields.io/badge/SOURCE-181717?style=for-the-badge&logo=github&logoColor=white" alt="Source" />
-  </a>
+  <img src="https://img.shields.io/badge/29%20Skill%20Nodes-Hover%20to%20Reveal-7c3aed?style=flat-square" alt="29 skill nodes" />
+  &nbsp;
+  <img src="https://img.shields.io/badge/Agentic%20Orchestration-MCP%20Engine-06b6d4?style=flat-square&logo=chainlink&logoColor=white" alt="Agentic Orchestration" />
 </p>
 
-<p align="center">
-  <sub>
-    The interactive 3D brain is a standalone WebGL experience hosted on GitHub Pages.
-    GitHub README does not execute custom JavaScript or WebGL — the image above is a static preview.
-    Click it to explore the live version.
-  </sub>
-</p>
+<p align="center"><sub>The image is an animated preview. Hover interaction runs only on the linked page, because GitHub does not execute JavaScript in a README.</sub></p>
 
 <br/>
 
@@ -453,8 +440,8 @@ A premium, interactive AI/ML engineer portfolio built with Next.js, React Three 
     <img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
   </a>
   &nbsp;
-  <a href="mailto:shabil.ahemd112@outlook.com">
-    <img src="https://img.shields.io/badge/Email-shabil.ahemd112%40outlook.com-0078D4?style=for-the-badge&logo=microsoftoutlook&logoColor=white" alt="Email" />
+  <a href="mailto:shabil.ahmed112@outlook.com">
+    <img src="https://img.shields.io/badge/Email-shabil.ahmed112%40outlook.com-0078D4?style=for-the-badge&logo=microsoftoutlook&logoColor=white" alt="Email" />
   </a>
   &nbsp;
   <a href="https://github.com/shabil2284">

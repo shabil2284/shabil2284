@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shabil Ahmed | Neural Skill Map</title>
+<style>
+:root{--c:#38bdf8}
+html,body{margin:0;height:100%;overflow:hidden;background:radial-gradient(ellipse at 50% 45%,#0b1530,#05070d 72%);color:#e2e8f0;font:12px ui-monospace,"JetBrains Mono",Consolas,monospace}
+.tr,.tr body{background:transparent}
+canvas{position:fixed;inset:0;width:100%;height:100%;touch-action:none}
+#ln{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
+#ln line{stroke:var(--c);stroke-width:1;filter:drop-shadow(0 0 3px var(--c));opacity:0;transition:opacity .35s}
+#ln.on line{opacity:.9}
+#lbl{position:fixed;left:0;top:0;display:flex;align-items:center;gap:8px;padding:7px 12px;border:1px solid var(--c);border-radius:8px;background:rgba(8,12,24,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff;font-weight:700;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;opacity:0;transition:opacity .35s;pointer-events:none;box-shadow:0 0 14px var(--c);animation:pu 2.2s ease-in-out infinite}
+#lbl.on{opacity:1}
+#lbl i{width:6px;height:6px;border-radius:50%;background:var(--c);box-shadow:0 0 8px var(--c);animation:bl 1s steps(2,end) infinite}
+#lbl img,#lbl svg{width:16px;height:16px;flex:none}
+#lbl svg{stroke:var(--c);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@keyframes bl{50%{opacity:.15}}
+@keyframes pu{50%{box-shadow:0 0 24px var(--c)}}
+#hint{position:fixed;left:0;right:0;bottom:6%;text-align:center;color:#64748b;letter-spacing:.08em;transition:opacity .6s;pointer-events:none}
+#back{position:fixed;left:16px;top:14px;color:#94a3b8;text-decoration:none}
+#back:focus-visible{outline:2px solid var(--c)}
+#fb{display:none;position:fixed;inset:0;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#94a3b8;gap:12px}
+#fb img{max-width:min(92vw,720px)}
+@media(prefers-reduced-motion:reduce){#lbl,#lbl i{animation:none}}
+</style></head><body>
+<a id="back" href="https://github.com/shabil2284">github.com/shabil2284</a>
+<svg id="ln"><line id="l1"/></svg><div id="lbl"></div>
+<p id="hint">Move your cursor or tap near a glowing node</p>
+<div id="fb"><img src="../assets/ai-brain.svg" alt="Neural skill map preview"><p>WebGL is unavailable here, so this is the static preview.</p></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+if(/transparent/.test(location.search))document.documentElement.className='tr';
+const GL=window.GL={ml:'<svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg>',
+gen:'<svg viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg>',
+agent:'<svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v5M12 12l-6 5M12 12l6 5"/></svg>',
+cv:'<svg viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>',
+eng:'<svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>',
+cloud:'<svg viewBox="0 0 24 24"><path d="M7 18a4 4 0 010-8 5 5 0 019.6-1A4.5 4.5 0 0117 18z"/></svg>'};
+const G=[['ml','#38bdf8',[0,.9,.45],[['Machine Learning'],['Deep Learning'],['PyTorch','pytorch'],['TensorFlow','tensorflow'],['Scikit-learn','scikitlearn']]],
+['gen','#a78bfa',[0,.15,1],[['Large Language Models'],['Generative AI'],['RAG'],['LLM Fine-Tuning'],['Hugging Face','huggingface'],['LangChain','langchain']]],
+['agent','#60a5fa',[0,.9,-.5],[['AI Agents'],['MCP','modelcontextprotocol'],['Multi-Agent Systems'],['Tool Calling']]],
+['cv','#22d3ee',[0,.1,-1],[['YOLOv8'],['OCR'],['OpenCV','opencv'],['Vision Transformers']]],
+['eng','#c084fc',[1,-.25,.1],[['Python','python'],['FastAPI','fastapi'],['SQL'],['REST APIs']]],
+['cloud','#38bdf8',null,[['AWS','amazonwebservices'],['AWS Bedrock'],['Docker','docker'],['Kubernetes','kubernetes'],['CI/CD','githubactions'],['MLOps']]]];
+(function(){
+const V=THREE.Vector3,S=matchMedia('(prefers-reduced-motion:reduce)').matches?0:1;
+let ren;try{ren=new THREE.WebGLRenderer({antialias:true,alpha:true,powerPreference:'low-power'})}catch(e){}
+if(!ren){document.getElementById('fb').style.display='flex';document.getElementById('hint').remove();return}
+ren.setClearColor(0,0);document.body.prepend(ren.domElement);
+const scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(45,1,.1,100),grp=new THREE.Group();scene.add(grp);
+let s=7;const R=()=>(s=(s*16807)%2147483647)/2147483647,g=()=>Math.sqrt(-2*Math.log(R()+1e-9))*Math.cos(6.2832*R()),rd=()=>new V(g(),g(),g()).normalize();
+const shape=d=>{const r=1+.045*Math.sin(7*d.x+1.3)*Math.sin(8*d.y+.7)*Math.sin(7*d.z+2.1)-.16*Math.exp(-((d.x/.1)**2))*Math.max(0,d.y);return new V(d.x*r,d.y*(d.y<0?.6:.78)*r,d.z*1.3*r).multiplyScalar(1.7)};
+const cb=d=>new V(d.x*.8,d.y*.45-1.2,d.z*.6-1.5);
+const P=[],M=[];
+G.forEach(([n,col,c,sk],gi)=>sk.forEach(([name,slug],i)=>{let p,t=0;
+ do{let d=n==='cloud'?rd():new V(...c).multiply(new V(n==='eng'&&i%2?-1:1,1,1)).normalize().add(rd().multiplyScalar(.55)).normalize();p=n==='cloud'?cb(d):shape(d)}
+ while(++t<60&&P.some(q=>q.distanceTo(p)<.5));P.push(p);M.push({name,slug,gi})}));
+const MJ=M.length,NS=innerWidth<640?220:380;
+for(let i=0;i<NS;i++){const d=rd();P.push(R()<.12?cb(d):shape(d).multiplyScalar(.8+.2*R()))}
+const cy=new THREE.Color('#38bdf8'),pr=new THREE.Color('#8b5cf6'),C=P.map((p,i)=>i<MJ?new THREE.Color(G[M[i].gi][1]):cy.clone().lerp(pr,Math.min(1,Math.max(0,p.y/2.6+.5))));
+const E=[],seen=new Set();
+P.forEach((a,i)=>P.map((b,j)=>[a.distanceToSquared(b),j]).sort((x,y)=>x[0]-y[0]).slice(1,4).forEach(([,j])=>{const k=i<j?i*1e4+j:j*1e4+i;if(!seen.has(k)){seen.add(k);E.push([i,j])}}));
+const lp=new Float32Array(E.length*6),lc=new Float32Array(E.length*6);
+E.forEach(([i,j],e)=>[i,j].forEach((n,t)=>{P[n].toArray(lp,e*6+t*3);C[n].toArray(lc,e*6+t*3)}));
+const lg=new THREE.BufferGeometry();lg.setAttribute('position',new THREE.BufferAttribute(lp,3));lg.setAttribute('color',new THREE.BufferAttribute(lc,3));
+grp.add(new THREE.LineSegments(lg,new THREE.LineBasicMaterial({vertexColors:true,transparent:true,opacity:.3,blending:THREE.AdditiveBlending,depthWrite:false})));
+const N=P.length,pa=new Float32Array(N*3),sz=new Float32Array(N),ph=new Float32Array(N),cl=new Float32Array(N*3),GA=new Float32Array(N);
+P.forEach((p,i)=>{p.toArray(pa,i*3);C[i].toArray(cl,i*3);sz[i]=i<MJ?13:4.5;ph[i]=R()*6.3});
+const ng=new THREE.BufferGeometry();[['position',pa,3],['sz',sz,1],['ph',ph,1],['cl',cl,3]].forEach(([k,a,n])=>ng.setAttribute(k,new THREE.BufferAttribute(a,n)));ng.setAttribute('gl',new THREE.BufferAttribute(GA,1));
+const nm=new THREE.ShaderMaterial({transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,uniforms:{t:{value:0},px:{value:1}},
+vertexShader:'attribute float sz,ph,gl;attribute vec3 cl;varying vec3 vc;varying float vg;uniform float t,px;void main(){vc=cl;vg=gl;vec4 mv=modelViewMatrix*vec4(position,1.);gl_PointSize=sz*(1.+gl*1.6)*(.75+.25*sin(t*1.6+ph))*px*(6./-mv.z);gl_Position=projectionMatrix*mv;}',
+fragmentShader:'varying vec3 vc;varying float vg;void main(){float d=length(gl_PointCoord-.5)*2.;if(d>1.)discard;gl_FragColor=vec4(vc*(1.+vg),pow(1.-d,2.)*(.9+vg*1.5));}'});
+grp.add(new THREE.Points(ng,nm));
+const NP=90,pe=[],pt=[],pp=new Float32Array(NP*3);for(let i=0;i<NP;i++){pe.push(E[R()*E.length|0]);pt.push(R())}
+const pg=new THREE.BufferGeometry();pg.setAttribute('position',new THREE.BufferAttribute(pp,3));
+grp.add(new THREE.Points(pg,new THREE.PointsMaterial({size:.05,color:0xbff3ff,transparent:true,opacity:.9,blending:THREE.AdditiveBlending,depthWrite:false})));
+const sm=new THREE.ShaderMaterial({transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,
+vertexShader:'varying vec3 n,v;varying float h;void main(){n=normalize(normalMatrix*normal);vec4 mv=modelViewMatrix*vec4(position,1.);v=normalize(-mv.xyz);h=position.y;gl_Position=projectionMatrix*mv;}',
+fragmentShader:'varying vec3 n,v;varying float h;void main(){float f=pow(1.-abs(dot(normalize(n),v)),2.4);vec3 c=mix(vec3(.22,.74,.97),vec3(.55,.36,.96),clamp(h*.4+.5,0.,1.));gl_FragColor=vec4(c*(.06+f*.9),.1+f*.55);}'});
+const sg=new THREE.SphereGeometry(1,72,54),sp=sg.attributes.position;
+for(let i=0;i<sp.count;i++)shape(new V().fromBufferAttribute(sp,i).normalize()).toArray(sp.array,i*3);
+sg.computeVertexNormals();grp.add(new THREE.Mesh(sg,sm));
+const c2=new THREE.Mesh(new THREE.SphereGeometry(1,32,24),sm);c2.scale.set(.8,.45,.6);c2.position.set(0,-1.2,-1.5);grp.add(c2);
+function rs(){const w=innerWidth,h=innerHeight,px=Math.min(devicePixelRatio,w<700?1.5:2);ren.setPixelRatio(px);ren.setSize(w,h);nm.uniforms.px.value=px;cam.aspect=w/h;cam.position.z=Math.max(7.5,2.7/(.4142*cam.aspect));cam.updateProjectionMatrix()}
+addEventListener('resize',rs);rs();
+const L=document.getElementById('lbl'),LN=document.getElementById('ln'),l1=document.getElementById('l1'),H=document.getElementById('hint'),mx={x:-1e4,y:-1e4},SX=[],SY=[],tmp=new V(),rad=matchMedia('(pointer:coarse)').matches?64:44;let act=-1;
+['pointermove','pointerdown'].forEach(k=>addEventListener(k,e=>{mx.x=e.clientX;mx.y=e.clientY}));
+document.documentElement.addEventListener('mouseleave',()=>mx.x=mx.y=-1e4);
+function show(i){if(i===act)return;act=i;
+ if(i<0){L.classList.remove('on');LN.classList.remove('on');return}
+ const m=M[i];document.documentElement.style.setProperty('--c',G[m.gi][1]);H.style.opacity=0;
+ L.innerHTML='<i></i>'+(m.slug?'<img src="https://cdn.simpleicons.org/'+m.slug+'/ffffff" alt="" onerror="this.outerHTML=GL.'+G[m.gi][0]+'">':GL[G[m.gi][0]])+'<span>'+m.name+'</span>';
+ L.classList.add('on');LN.classList.add('on')}
+let last=performance.now();
+function fr(now){requestAnimationFrame(fr);const t=now/1000,dt=Math.min(.05,(now-last)/1000);last=now;
+ nm.uniforms.t.value=t*S;grp.rotation.y=S?Math.sin(t*.15)*.45:.3;grp.rotation.x=S*Math.sin(t*.11)*.06;grp.position.y=S*Math.sin(t*.7)*.07;grp.updateMatrixWorld();
+ let b=-1,bd=rad;for(let i=0;i<MJ;i++){tmp.copy(P[i]).applyMatrix4(grp.matrixWorld).project(cam);SX[i]=(tmp.x+1)/2*innerWidth;SY[i]=(1-tmp.y)/2*innerHeight;const d=Math.hypot(SX[i]-mx.x,SY[i]-mx.y);if(d<bd){bd=d;b=i}}
+ show(b);for(let i=0;i<MJ;i++)GA[i]+=((i===act?1:0)-GA[i])*Math.min(1,dt*9);ng.attributes.gl.needsUpdate=true;
+ for(let i=0;i<NP;i++){pt[i]+=dt*.35*S;if(pt[i]>1){pt[i]=0;pe[i]=E[R()*E.length|0]}const a=P[pe[i][0]],c=P[pe[i][1]];pp[i*3]=a.x+(c.x-a.x)*pt[i];pp[i*3+1]=a.y+(c.y-a.y)*pt[i];pp[i*3+2]=a.z+(c.z-a.z)*pt[i]}
+ pg.attributes.position.needsUpdate=true;ren.render(scene,cam);
+ if(act>=0){const x=SX[act],y=SY[act],w=L.offsetWidth,h=L.offsetHeight;let dx=x-innerWidth/2,dy=y-innerHeight/2,n=Math.hypot(dx,dy);if(n<1){dx=0;dy=-1;n=1}
+  dx/=n;dy/=n;const ax=x+dx*64,ay=y+dy*64;let lx=dx>=0?ax:ax-w,ly=ay-h/2;lx=Math.min(Math.max(8,lx),innerWidth-w-8);ly=Math.min(Math.max(8,ly),innerHeight-h-8);
+  L.style.transform='translate('+lx+'px,'+ly+'px)';l1.setAttribute('x1',x);l1.setAttribute('y1',y);l1.setAttribute('x2',Math.min(Math.max(x,lx),lx+w));l1.setAttribute('y2',Math.min(Math.max(y,ly),ly+h))}}
+requestAnimationFrame(fr);
+})();
+</script></body></html>
