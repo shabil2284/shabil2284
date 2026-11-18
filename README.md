@@ -4,7 +4,7 @@
 
 <!-- ===== ANIMATED HEADER BANNER ===== -->
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=220&section=header&text=SHABIL%20AHMED&fontSize=52&fontColor=ffffff&animation=twinkling&fontAlignY=36&desc=AI%20%2F%20ML%20Engineer%20%7C%20Generative%20AI%20%7C%20Agentic%20AI%20%7C%20LLMs&descAlignY=57&descSize=19&descColor=38bdf8" alt="Shabil Mahmammad Rafeek — AI/ML Engineer" width="100%" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=220&section=header&text=SHABIL%20AHMED&fontSize=52&fontColor=ffffff&animation=twinkling&fontAlignY=36&desc=AI%20%2F%20ML%20Engineer%20%7C%20Generative%20AI%20%7C%20Agentic%20AI%20%7C%20LLMs&descAlignY=57&descSize=19&descColor=38bdf8" alt="Shabil Ahmed — AI/ML Engineer" width="100%" />
 </p>
 
 <!-- ===== ANIMATED TYPING HEADLINE ===== -->
