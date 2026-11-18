@@ -79,10 +79,25 @@
 <br/>
 
 <!-- ═══════════════════════════════════════════════════════════════════════════ -->
+<!--                      AI SYSTEM TERMINAL SECTION                           -->
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
+
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=15&duration=1800&pause=400&color=22C55E&center=true&vCenter=true&multiline=true&repeat=false&width=680&height=160&lines=%5B+SYSTEM+BOOT+%5D+Initializing+SHABIL.AI+...;%5B+STATUS+%5D+%E2%96%A0+ONLINE+%E2%96%A0+Core+Intelligence+Modules+Loaded;%5B+SPEC+%5D+Agentic+AI+%7C+LLM+Engineering+%7C+RAG+%7C+MCP;%5B+FOCUS+%5D+Autonomous+AI+Systems+%2B+Multi-Agent+Orchestration;%5B+DEPLOY+%5D+Production-Ready+%7C+Doha%2C+Qatar+%7C+Remote-Open" alt="AI system terminal boot" />
+</p>
+
+<br/>
+
+<!-- ===== DIVIDER ===== -->
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" alt="divider" width="100%" />
+
+<br/>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════ -->
 <!--                        PROFESSIONAL INTRODUCTION                          -->
 <!-- ═══════════════════════════════════════════════════════════════════════════ -->
 
-## Professional Profile
+## <img src="https://img.shields.io/badge/-Professional%20Profile-0d1117?style=flat-square&logo=readthedocs&logoColor=38bdf8" alt="" /> Professional Profile
 
 I am an **AI/ML Engineer** and **Generative AI Developer** based in Doha, Qatar, specializing in the design and deployment of intelligent systems that operate at the frontier of modern artificial intelligence.
 
@@ -124,11 +139,11 @@ philosophy      : "Build AI that reasons reliably, scales gracefully, and delive
 <!--                          TECHNICAL EXPERTISE                              -->
 <!-- ═══════════════════════════════════════════════════════════════════════════ -->
 
-## Technical Expertise
+## <img src="https://img.shields.io/badge/-Technical%20Ecosystem-0d1117?style=flat-square&logo=stackoverflowteams&logoColor=38bdf8" alt="" /> Technical Ecosystem
 
 <br/>
 
-**AI and Machine Learning**
+<img src="https://img.shields.io/badge/AI%20%26%20Machine%20Learning-0d1117?style=for-the-badge&logo=tensorflow&logoColor=FF6F00&labelColor=0d1117&color=1e293b" alt="AI & ML" />
 
 <p>
   <img src="https://skillicons.dev/icons?i=pytorch,tensorflow,sklearn&theme=dark" alt="PyTorch, TensorFlow, Scikit-learn" />
@@ -140,7 +155,7 @@ philosophy      : "Build AI that reasons reliably, scales gracefully, and delive
   <img src="https://img.shields.io/badge/Model%20Fine--Tuning-7c3aed?style=for-the-badge&logo=huggingface&logoColor=white" alt="Fine-Tuning" />
 </p>
 
-**Generative AI and LLMs**
+<img src="https://img.shields.io/badge/Generative%20AI%20%26%20LLMs-0d1117?style=for-the-badge&logo=openai&logoColor=06b6d4&labelColor=0d1117&color=1e293b" alt="GenAI & LLMs" />
 
 <p>
   <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=chainlink&logoColor=white" alt="LangChain" />
@@ -158,7 +173,7 @@ philosophy      : "Build AI that reasons reliably, scales gracefully, and delive
   <img src="https://img.shields.io/badge/Embeddings-06b6d4?style=for-the-badge&logo=openai&logoColor=white" alt="Embeddings" />
 </p>
 
-**Agentic AI and Multi-Agent Systems**
+<img src="https://img.shields.io/badge/Agentic%20AI%20%26%20Orchestration-0d1117?style=for-the-badge&logo=probot&logoColor=a78bfa&labelColor=0d1117&color=1e293b" alt="Agentic AI" />
 
 <p>
   <img src="https://img.shields.io/badge/MCP%20Protocol-181717?style=for-the-badge&logo=github&logoColor=white" alt="MCP" />
@@ -172,7 +187,7 @@ philosophy      : "Build AI that reasons reliably, scales gracefully, and delive
   <img src="https://img.shields.io/badge/Agent%20Orchestration-a78bfa?style=for-the-badge&logo=chainlink&logoColor=white" alt="Agent Orchestration" />
 </p>
 
-**Computer Vision**
+<img src="https://img.shields.io/badge/Computer%20Vision-0d1117?style=for-the-badge&logo=opencv&logoColor=00C7B7&labelColor=0d1117&color=1e293b" alt="Computer Vision" />
 
 <p>
   <img src="https://skillicons.dev/icons?i=opencv&theme=dark" alt="OpenCV" />
@@ -188,7 +203,7 @@ philosophy      : "Build AI that reasons reliably, scales gracefully, and delive
   <img src="https://img.shields.io/badge/OCR-0ea5e9?style=for-the-badge&logo=readthedocs&logoColor=white" alt="OCR" />
 </p>
 
-**Natural Language Processing**
+<img src="https://img.shields.io/badge/Natural%20Language%20Processing-0d1117?style=for-the-badge&logo=spacy&logoColor=09A3D5&labelColor=0d1117&color=1e293b" alt="NLP" />
 
 <p>
   <img src="https://img.shields.io/badge/BERT%20%2F%20DistilBERT-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black" alt="BERT" />
@@ -202,7 +217,7 @@ philosophy      : "Build AI that reasons reliably, scales gracefully, and delive
   <img src="https://img.shields.io/badge/Named%20Entity%20Recognition-7c3aed?style=for-the-badge&logo=spacy&logoColor=white" alt="NER" />
 </p>
 
-**Backend and APIs**
+<img src="https://img.shields.io/badge/Backend%20%26%20APIs-0d1117?style=for-the-badge&logo=fastapi&logoColor=009688&labelColor=0d1117&color=1e293b" alt="Backend & APIs" />
 
 <p>
   <img src="https://skillicons.dev/icons?i=python,fastapi,docker&theme=dark" alt="Python, FastAPI, Docker" />
@@ -214,7 +229,7 @@ philosophy      : "Build AI that reasons reliably, scales gracefully, and delive
   <img src="https://img.shields.io/badge/SQL-003B57?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQL" />
 </p>
 
-**Data Engineering and Vector Databases**
+<img src="https://img.shields.io/badge/Data%20Engineering%20%26%20Vector%20DBs-0d1117?style=for-the-badge&logo=databricks&logoColor=FF3621&labelColor=0d1117&color=1e293b" alt="Data Engineering" />
 
 <p>
   <img src="https://skillicons.dev/icons?i=pandas,numpy&theme=dark" alt="Pandas, NumPy" />
@@ -228,7 +243,7 @@ philosophy      : "Build AI that reasons reliably, scales gracefully, and delive
   <img src="https://img.shields.io/badge/Pinecone-000000?style=for-the-badge&logo=pinecone&logoColor=white" alt="Pinecone" />
 </p>
 
-**Cloud, MLOps and DevOps**
+<img src="https://img.shields.io/badge/Cloud%2C%20MLOps%20%26%20DevOps-0d1117?style=for-the-badge&logo=amazonaws&logoColor=FF9900&labelColor=0d1117&color=1e293b" alt="Cloud & MLOps" />
 
 <p>
   <img src="https://skillicons.dev/icons?i=aws,azure,gcp,docker,github&theme=dark" alt="AWS, Azure, GCP, Docker, GitHub" />
@@ -251,7 +266,7 @@ philosophy      : "Build AI that reasons reliably, scales gracefully, and delive
 <!--                         FEATURED PROJECTS                                 -->
 <!-- ═══════════════════════════════════════════════════════════════════════════ -->
 
-## Featured Engineering Projects
+## <img src="https://img.shields.io/badge/-Featured%20Engineering%20Projects-0d1117?style=flat-square&logo=githubactions&logoColor=38bdf8" alt="" /> Featured Engineering Projects
 
 <br/>
 
@@ -261,12 +276,17 @@ philosophy      : "Build AI that reasons reliably, scales gracefully, and delive
 
 ### Agentic AI Stock Trader — MCP + ChatGPT
 
-**Domain:** Agentic AI | Generative AI | Automated Trading
+<img src="https://img.shields.io/badge/Domain-Agentic%20AI-7c3aed?style=flat-square&logo=probot&logoColor=white" alt="Agentic AI" />
+<img src="https://img.shields.io/badge/Domain-Automated%20Trading-38bdf8?style=flat-square&logo=bitcoin&logoColor=white" alt="Trading" />
 
 A fully autonomous AI trading agent built on the **Model Context Protocol (MCP)** with ChatGPT integration. The system executes real-time market data retrieval, technical analysis, and trade decisions through a natural-language agent loop — no manual intervention required.
 
-**Technologies:**  
-`Python` `MCP` `ChatGPT API` `Angel One Smart API` `WebSocket` `Agentic AI`
+**Technologies:**
+
+<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python" />
+<img src="https://img.shields.io/badge/MCP-181717?style=flat-square&logo=github&logoColor=white" alt="MCP" />
+<img src="https://img.shields.io/badge/ChatGPT%20API-74aa9c?style=flat-square&logo=openai&logoColor=white" alt="ChatGPT API" />
+<img src="https://img.shields.io/badge/WebSocket-06b6d4?style=flat-square&logo=socketdotio&logoColor=white" alt="WebSocket" />
 
 <a href="https://github.com/shabil2284/day-trader-skill-Chatgpt-MCP">
   <img src="https://img.shields.io/badge/View%20Repository-181717?style=for-the-badge&logo=github&logoColor=white" alt="View Repository" />
@@ -277,12 +297,17 @@ A fully autonomous AI trading agent built on the **Model Context Protocol (MCP)*
 
 ### AI-Enhanced Excel Query Solution
 
-**Domain:** Generative AI | NLP | Business Intelligence
+<img src="https://img.shields.io/badge/Domain-Generative%20AI-06b6d4?style=flat-square&logo=openai&logoColor=white" alt="GenAI" />
+<img src="https://img.shields.io/badge/Domain-Business%20Intelligence-38bdf8?style=flat-square&logo=databricks&logoColor=white" alt="BI" />
 
 An intelligent natural-language query engine for Excel data. Users interact with spreadsheet data conversationally — asking questions in plain English and receiving structured, context-aware answers via an LLM-powered backend with semantic retrieval.
 
-**Technologies:**  
-`Python` `LangChain` `LLMs` `RAG` `FastAPI` `Pandas` `Excel`
+**Technologies:**
+
+<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python" />
+<img src="https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=chainlink&logoColor=white" alt="LangChain" />
+<img src="https://img.shields.io/badge/RAG-0ea5e9?style=flat-square&logo=elastic&logoColor=white" alt="RAG" />
+<img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI" />
 
 <a href="https://github.com/shabil2284/AI-Enhanced-Excel-Query-Solution">
   <img src="https://img.shields.io/badge/View%20Repository-181717?style=for-the-badge&logo=github&logoColor=white" alt="View Repository" />
@@ -295,12 +320,17 @@ An intelligent natural-language query engine for Excel data. Users interact with
 
 ### Automated Algorithmic Trading System
 
-**Domain:** Algorithmic Trading | Real-Time Data | WebSocket
+<img src="https://img.shields.io/badge/Domain-Algorithmic%20Trading-38bdf8?style=flat-square&logo=bitcoin&logoColor=white" alt="Algo Trading" />
+<img src="https://img.shields.io/badge/Domain-Real--Time%20Data-06b6d4?style=flat-square&logo=apache&logoColor=white" alt="Real-Time" />
 
 A production-ready automated trading platform leveraging **Angel One Smart API** with live WebSocket market feeds. Implements technical indicators, signal generation, and automated order execution with risk management controls.
 
-**Technologies:**  
-`Python` `Angel One Smart API` `WebSocket` `REST API` `Technical Analysis`
+**Technologies:**
+
+<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python" />
+<img src="https://img.shields.io/badge/WebSocket-06b6d4?style=flat-square&logo=socketdotio&logoColor=white" alt="WebSocket" />
+<img src="https://img.shields.io/badge/REST%20API-0ea5e9?style=flat-square&logo=fastapi&logoColor=white" alt="REST API" />
+<img src="https://img.shields.io/badge/Technical%20Analysis-7c3aed?style=flat-square&logo=chartdotjs&logoColor=white" alt="TA" />
 
 <a href="https://github.com/shabil2284/Angel-one-smart-Api-updated-websocket-version">
   <img src="https://img.shields.io/badge/View%20Repository-181717?style=for-the-badge&logo=github&logoColor=white" alt="View Repository" />
@@ -311,12 +341,17 @@ A production-ready automated trading platform leveraging **Angel One Smart API**
 
 ### Agentic Aurora AI — Intelligent Document Layout
 
-**Domain:** Computer Vision | Agentic AI | Document Intelligence
+<img src="https://img.shields.io/badge/Domain-Computer%20Vision-00C7B7?style=flat-square&logo=opencv&logoColor=white" alt="CV" />
+<img src="https://img.shields.io/badge/Domain-Document%20Intelligence-7c3aed?style=flat-square&logo=readthedocs&logoColor=white" alt="Doc AI" />
 
 An agentic document intelligence system capable of analyzing complex document layouts using computer vision models. The system autonomously segments, classifies, and extracts structured information from unstructured documents with high precision.
 
-**Technologies:**  
-`Python` `Computer Vision` `Agentic AI` `LangChain` `OCR` `FastAPI`
+**Technologies:**
+
+<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python" />
+<img src="https://img.shields.io/badge/Computer%20Vision-00C7B7?style=flat-square&logo=opencv&logoColor=white" alt="CV" />
+<img src="https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=chainlink&logoColor=white" alt="LangChain" />
+<img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI" />
 
 <a href="https://github.com/shabil2284/Agentic-Aurora-AI">
   <img src="https://img.shields.io/badge/View%20Repository-181717?style=for-the-badge&logo=github&logoColor=white" alt="View Repository" />
@@ -329,12 +364,17 @@ An agentic document intelligence system capable of analyzing complex document la
 
 ### Kidney Cancer Detection — Deep Learning
 
-**Domain:** Computer Vision | Medical AI | Deep Learning
+<img src="https://img.shields.io/badge/Domain-Medical%20AI-FF6F00?style=flat-square&logo=tensorflow&logoColor=white" alt="Medical AI" />
+<img src="https://img.shields.io/badge/Domain-Deep%20Learning-7c3aed?style=flat-square&logo=pytorch&logoColor=white" alt="Deep Learning" />
 
 A deep learning system for kidney cancer detection from medical imaging data. Built with convolutional neural network architectures trained and evaluated on clinical-grade datasets, with model interpretability features for clinical validation.
 
-**Technologies:**  
-`Python` `PyTorch` `TensorFlow` `Keras` `OpenCV` `Scikit-learn` `Medical Imaging`
+**Technologies:**
+
+<img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white" alt="PyTorch" />
+<img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white" alt="TensorFlow" />
+<img src="https://img.shields.io/badge/Keras-D00000?style=flat-square&logo=keras&logoColor=white" alt="Keras" />
+<img src="https://img.shields.io/badge/OpenCV-00C7B7?style=flat-square&logo=opencv&logoColor=white" alt="OpenCV" />
 
 <a href="https://github.com/shabil2284/kidney-cancer-detection">
   <img src="https://img.shields.io/badge/View%20Repository-181717?style=for-the-badge&logo=github&logoColor=white" alt="View Repository" />
@@ -345,12 +385,17 @@ A deep learning system for kidney cancer detection from medical imaging data. Bu
 
 ### AI Engineering Portfolio
 
-**Domain:** Full-Stack AI | Next.js | Portfolio Engineering
+<img src="https://img.shields.io/badge/Domain-Full--Stack%20AI-38bdf8?style=flat-square&logo=vercel&logoColor=white" alt="Full-Stack AI" />
+<img src="https://img.shields.io/badge/Domain-Portfolio%20Engineering-7c3aed?style=flat-square&logo=threedotjs&logoColor=white" alt="Portfolio" />
 
 A premium, interactive AI/ML engineer portfolio built with Next.js, React Three Fiber, and Three.js. Features a WebGL 3D neural brain visualization, interactive skills discovery, animated hero section, and responsive design tailored for AI/ML engineering identity.
 
-**Technologies:**  
-`Next.js` `TypeScript` `Three.js` `React Three Fiber` `Tailwind CSS` `Vercel`
+**Technologies:**
+
+<img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white" alt="Next.js" />
+<img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
+<img src="https://img.shields.io/badge/Three.js-000000?style=flat-square&logo=threedotjs&logoColor=white" alt="Three.js" />
+<img src="https://img.shields.io/badge/Tailwind-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind" />
 
 <a href="https://github.com/shabil2284/ShabilsPortfolio-">
   <img src="https://img.shields.io/badge/View%20Repository-181717?style=for-the-badge&logo=github&logoColor=white" alt="View Repository" />
@@ -371,7 +416,7 @@ A premium, interactive AI/ML engineer portfolio built with Next.js, React Three 
 <!--                          GITHUB ANALYTICS                                 -->
 <!-- ═══════════════════════════════════════════════════════════════════════════ -->
 
-## GitHub Analytics
+## <img src="https://img.shields.io/badge/-GitHub%20Analytics-0d1117?style=flat-square&logo=github&logoColor=38bdf8" alt="" /> GitHub Analytics
 
 <br/>
 
@@ -414,7 +459,7 @@ A premium, interactive AI/ML engineer portfolio built with Next.js, React Three 
 <!--                      CONTRIBUTION SNAKE ANIMATION                        -->
 <!-- ═══════════════════════════════════════════════════════════════════════════ -->
 
-## Contribution Activity
+## <img src="https://img.shields.io/badge/-Contribution%20Activity-0d1117?style=flat-square&logo=githubactions&logoColor=22c55e" alt="" /> Contribution Activity
 
 <p align="center">
   <picture>
@@ -423,8 +468,6 @@ A premium, interactive AI/ML engineer portfolio built with Next.js, React Three 
     <img alt="Contribution grid snake animation" src="https://raw.githubusercontent.com/shabil2284/shabil2284/output/github-contribution-grid-snake.svg" width="100%" />
   </picture>
 </p>
-
-> **Note:** To activate the contribution snake animation, create the GitHub Actions workflow at `.github/workflows/snake.yml` using the content in the [workflow file](.github/workflows/snake.yml) in this repository.
 
 <br/>
 
@@ -437,7 +480,7 @@ A premium, interactive AI/ML engineer portfolio built with Next.js, React Three 
 <!--                            CONTACT SECTION                                -->
 <!-- ═══════════════════════════════════════════════════════════════════════════ -->
 
-## Connect
+## <img src="https://img.shields.io/badge/-Connect-0d1117?style=flat-square&logo=linkedin&logoColor=38bdf8" alt="" /> Connect
 
 <p align="center">
   <a href="https://www.linkedin.com/in/shabil-ahmed-2337b3316/">
