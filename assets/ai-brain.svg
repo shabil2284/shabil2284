@@ -1,556 +1,573 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 480" width="760" height="480">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 500" width="760" height="500">
 <defs>
-  <radialGradient id="bg" cx="50%" cy="48%" r="60%">
-    <stop offset="0%" stop-color="#0b1530"/>
-    <stop offset="100%" stop-color="#05070d"/>
+  <!-- Background -->
+  <radialGradient id="bg" cx="50%" cy="50%" r="70%">
+    <stop offset="0%" stop-color="#0d1b3e"/>
+    <stop offset="100%" stop-color="#030509"/>
   </radialGradient>
 
-  <!-- Brain glow gradients -->
-  <radialGradient id="brainGlow" cx="50%" cy="45%" r="55%">
-    <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.08"/>
-    <stop offset="60%" stop-color="#7c3aed" stop-opacity="0.04"/>
-    <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+  <!-- 3D brain sphere - volumetric Fresnel glow effect -->
+  <radialGradient id="sphereCore" cx="42%" cy="38%" r="58%">
+    <stop offset="0%"   stop-color="#0a1628" stop-opacity="0.95"/>
+    <stop offset="55%"  stop-color="#071020" stop-opacity="0.98"/>
+    <stop offset="100%" stop-color="#030810" stop-opacity="1"/>
+  </radialGradient>
+
+  <!-- Fresnel rim glow (cyan) -->
+  <radialGradient id="fresnelCyan" cx="50%" cy="50%" r="50%">
+    <stop offset="60%"  stop-color="#38bdf8" stop-opacity="0"/>
+    <stop offset="85%"  stop-color="#38bdf8" stop-opacity="0.18"/>
+    <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.55"/>
+  </radialGradient>
+
+  <!-- Fresnel rim glow (purple) -->
+  <radialGradient id="fresnelPurple" cx="50%" cy="50%" r="50%">
+    <stop offset="60%"  stop-color="#7c3aed" stop-opacity="0"/>
+    <stop offset="85%"  stop-color="#7c3aed" stop-opacity="0.1"/>
+    <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.35"/>
+  </radialGradient>
+
+  <!-- Inner ambient glow -->
+  <radialGradient id="innerGlow" cx="38%" cy="35%" r="45%">
+    <stop offset="0%"   stop-color="#1e3a5f" stop-opacity="0.6"/>
+    <stop offset="100%" stop-color="#0d1b3e" stop-opacity="0"/>
+  </radialGradient>
+
+  <!-- Cerebellum sphere -->
+  <radialGradient id="cerebGlow" cx="45%" cy="35%" r="55%">
+    <stop offset="0%"   stop-color="#0a1628" stop-opacity="0.9"/>
+    <stop offset="70%"  stop-color="#071020" stop-opacity="0.95"/>
+    <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.3"/>
   </radialGradient>
 
   <!-- Node glow filters -->
-  <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
-    <feGaussianBlur stdDeviation="3.5" result="blur"/>
+  <filter id="nodeGlow" x="-150%" y="-150%" width="400%" height="400%">
+    <feGaussianBlur stdDeviation="5" result="blur"/>
     <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
   </filter>
-  <filter id="glowStrong" x="-120%" y="-120%" width="340%" height="340%">
-    <feGaussianBlur stdDeviation="6" result="blur"/>
-    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-  </filter>
-  <filter id="glowText" x="-20%" y="-60%" width="140%" height="220%">
-    <feGaussianBlur stdDeviation="4" result="blur"/>
-    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-  </filter>
-  <filter id="labelGlow" x="-10%" y="-40%" width="120%" height="180%">
+  <filter id="nodeGlowSm" x="-100%" y="-100%" width="300%" height="300%">
     <feGaussianBlur stdDeviation="3" result="blur"/>
     <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
   </filter>
+  <filter id="edgeGlow" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur stdDeviation="1.5" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="labelGlow" x="-15%" y="-60%" width="130%" height="220%">
+    <feGaussianBlur stdDeviation="4" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="sphereGlowFilter" x="-5%" y="-5%" width="110%" height="110%">
+    <feGaussianBlur stdDeviation="8" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
 
-  <!-- Clip for brain shape -->
-  <clipPath id="brainClip">
-    <ellipse cx="380" cy="210" rx="195" ry="155"/>
-  </clipPath>
-
-  <!-- Animations -->
   <style>
-    /* Brain body rotation simulation via subtle morphing */
-    .brain-outer { animation: brainPulse 4s ease-in-out infinite; }
-    @keyframes brainPulse {
-      0%,100% { opacity: 0.75; }
-      50% { opacity: 0.95; }
-    }
-
-    /* Floating whole brain group */
-    .brain-group { animation: float 6s ease-in-out infinite; transform-origin: 380px 230px; }
+    /* Floating brain */
+    .brain { animation: float 7s ease-in-out infinite; transform-origin: 380px 230px; }
     @keyframes float {
-      0%,100% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-10px); }
     }
 
-    /* Node pulse animations */
-    .node-ml { animation: nodePulse 2.1s ease-in-out infinite; }
-    .node-gen { animation: nodePulse 2.6s ease-in-out infinite 0.4s; }
-    .node-agent { animation: nodePulse 1.9s ease-in-out infinite 0.9s; }
-    .node-nlp { animation: nodePulse 2.4s ease-in-out infinite 0.2s; }
-    .node-cv { animation: nodePulse 2.2s ease-in-out infinite 0.7s; }
-    .node-cloud { animation: nodePulse 1.8s ease-in-out infinite 1.1s; }
-    .node-sm { animation: nodePulseSmall 3s ease-in-out infinite; }
-    @keyframes nodePulse {
-      0%,100% { opacity: 0.7; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.4); }
-    }
-    @keyframes nodePulseSmall {
-      0%,100% { opacity: 0.3; }
-      50% { opacity: 0.65; }
+    /* Node pulses */
+    .np { animation: np 2.2s ease-in-out infinite; }
+    .np1 { animation: np 1.9s ease-in-out infinite 0.3s; }
+    .np2 { animation: np 2.6s ease-in-out infinite 0.7s; }
+    .np3 { animation: np 2.0s ease-in-out infinite 1.1s; }
+    .np4 { animation: np 2.4s ease-in-out infinite 0.5s; }
+    .np5 { animation: np 1.8s ease-in-out infinite 0.9s; }
+    @keyframes np {
+      0%,100% { opacity: 0.65; transform: scale(1); }
+      50%      { opacity: 1;    transform: scale(1.5); }
     }
 
-    /* Edge pulse */
-    .edge { animation: edgePulse 3s ease-in-out infinite; }
-    @keyframes edgePulse {
-      0%,100% { opacity: 0.18; }
-      50% { opacity: 0.38; }
+    /* Small node twinkle */
+    .twinkle { animation: twinkle 3s ease-in-out infinite; }
+    @keyframes twinkle {
+      0%,100% { opacity: 0.25; }
+      50%      { opacity: 0.7; }
     }
 
-    /* Traveling particles */
-    .particle { animation: travelParticle linear infinite; }
-    @keyframes travelParticle {
-      0% { offset-distance: 0%; opacity: 0; }
-      5% { opacity: 0.9; }
-      95% { opacity: 0.9; }
-      100% { offset-distance: 100%; opacity: 0; }
+    /* Edge shimmer */
+    .edge { animation: edgeShimmer 4s ease-in-out infinite; }
+    @keyframes edgeShimmer {
+      0%,100% { opacity: 0.15; }
+      50%      { opacity: 0.4; }
     }
 
-    /* ---- SKILL LABEL CYCLING ANIMATIONS ---- */
-    /* Each label shows for 3s, total 29 skills × ~3s = ~87s cycle  */
-    /* We'll group them and use longer cycle with offsets */
-
-    .skill-label { opacity: 0; animation: skillShow 87s linear infinite; }
-    .skill-label text { font-family: ui-monospace, 'JetBrains Mono', Consolas, monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
-    .skill-label rect { rx: 5; ry: 5; }
-
-    @keyframes skillShow {
-      0%    { opacity: 0; }
-      0.5%  { opacity: 1; }
-      3%    { opacity: 1; }
-      3.5%  { opacity: 0; }
-      100%  { opacity: 0; }
+    /* Particle travel */
+    .pt { animation: ptMove linear infinite; }
+    @keyframes ptMove {
+      0%   { opacity: 0; }
+      5%   { opacity: 0.9; }
+      95%  { opacity: 0.9; }
+      100% { opacity: 0; }
     }
 
-    /* 29 skills, each 3s window in 87s cycle */
-    /* delay = skill_index * 3s */
-    .s0  { animation-delay: 0s; }
-    .s1  { animation-delay: 3s; }
-    .s2  { animation-delay: 6s; }
-    .s3  { animation-delay: 9s; }
-    .s4  { animation-delay: 12s; }
-    .s5  { animation-delay: 15s; }
-    .s6  { animation-delay: 18s; }
-    .s7  { animation-delay: 21s; }
-    .s8  { animation-delay: 24s; }
-    .s9  { animation-delay: 27s; }
-    .s10 { animation-delay: 30s; }
-    .s11 { animation-delay: 33s; }
-    .s12 { animation-delay: 36s; }
-    .s13 { animation-delay: 39s; }
-    .s14 { animation-delay: 42s; }
-    .s15 { animation-delay: 45s; }
-    .s16 { animation-delay: 48s; }
-    .s17 { animation-delay: 51s; }
-    .s18 { animation-delay: 54s; }
-    .s19 { animation-delay: 57s; }
-    .s20 { animation-delay: 60s; }
-    .s21 { animation-delay: 63s; }
-    .s22 { animation-delay: 66s; }
-    .s23 { animation-delay: 69s; }
-    .s24 { animation-delay: 72s; }
-    .s25 { animation-delay: 75s; }
-    .s26 { animation-delay: 78s; }
-    .s27 { animation-delay: 81s; }
-    .s28 { animation-delay: 84s; }
+    /* Skill label cycling */
+    .sl { opacity: 0; animation: slShow 87s linear infinite; }
+    .conn { opacity: 0; animation: slShow 87s linear infinite; }
+    @keyframes slShow {
+      0%   { opacity: 0; }
+      0.4% { opacity: 1; }
+      3.0% { opacity: 1; }
+      3.5% { opacity: 0; }
+      100% { opacity: 0; }
+    }
 
-    /* Blinking dot inside label */
+    .d0  { animation-delay: 0s; }  .d1  { animation-delay: 3s; }
+    .d2  { animation-delay: 6s; }  .d3  { animation-delay: 9s; }
+    .d4  { animation-delay: 12s; } .d5  { animation-delay: 15s; }
+    .d6  { animation-delay: 18s; } .d7  { animation-delay: 21s; }
+    .d8  { animation-delay: 24s; } .d9  { animation-delay: 27s; }
+    .d10 { animation-delay: 30s; } .d11 { animation-delay: 33s; }
+    .d12 { animation-delay: 36s; } .d13 { animation-delay: 39s; }
+    .d14 { animation-delay: 42s; } .d15 { animation-delay: 45s; }
+    .d16 { animation-delay: 48s; } .d17 { animation-delay: 51s; }
+    .d18 { animation-delay: 54s; } .d19 { animation-delay: 57s; }
+    .d20 { animation-delay: 60s; } .d21 { animation-delay: 63s; }
+    .d22 { animation-delay: 66s; } .d23 { animation-delay: 69s; }
+    .d24 { animation-delay: 72s; } .d25 { animation-delay: 75s; }
+    .d26 { animation-delay: 78s; } .d27 { animation-delay: 81s; }
+    .d28 { animation-delay: 84s; }
+
     .blink { animation: blink 1s steps(2,end) infinite; }
     @keyframes blink { 50% { opacity: 0.1; } }
 
-    /* Connector line to label */
-    .connector { opacity: 0; animation: skillShow 87s linear infinite; }
-
-    /* Rotating ring animation */
-    .ring { animation: ringRotate 20s linear infinite; transform-origin: 380px 215px; }
-    .ring2 { animation: ringRotate 30s linear infinite reverse; transform-origin: 380px 215px; }
-    @keyframes ringRotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    /* Background particle drift */
-    .bgp { animation: bgDrift linear infinite; }
-    @keyframes bgDrift {
-      from { transform: translate(0,0); opacity: 0; }
-      10% { opacity: 0.5; }
-      90% { opacity: 0.5; }
-      to { transform: translate(var(--dx), var(--dy)); opacity: 0; }
-    }
+    /* Ring orbit */
+    .ring1 { animation: orbit1 25s linear infinite; transform-origin: 380px 222px; }
+    .ring2 { animation: orbit2 35s linear infinite; transform-origin: 380px 222px; }
+    @keyframes orbit1 { to { transform: rotate(360deg); } }
+    @keyframes orbit2 { to { transform: rotate(-360deg); } }
   </style>
 </defs>
 
 <!-- Background -->
-<rect width="760" height="480" fill="url(#bg)"/>
+<rect width="760" height="500" fill="url(#bg)"/>
 
-<!-- Background ambient glow -->
-<ellipse cx="380" cy="215" rx="210" ry="170" fill="url(#brainGlow)"/>
+<!-- Ambient outer halo -->
+<ellipse cx="380" cy="225" rx="230" ry="185" fill="none" stroke="#38bdf8" stroke-width="40" opacity="0.03"/>
 
-<!-- Subtle background particles -->
-<g opacity="0.4">
-  <circle class="bgp" cx="120" cy="80" r="1" fill="#38bdf8" style="--dx:30px;--dy:-20px;animation-duration:8s;animation-delay:0s"/>
-  <circle class="bgp" cx="600" cy="60" r="1" fill="#a78bfa" style="--dx:-25px;--dy:15px;animation-duration:11s;animation-delay:2s"/>
-  <circle class="bgp" cx="680" cy="380" r="1" fill="#38bdf8" style="--dx:-20px;--dy:-30px;animation-duration:9s;animation-delay:4s"/>
-  <circle class="bgp" cx="80" cy="350" r="1" fill="#60a5fa" style="--dx:35px;--dy:-10px;animation-duration:12s;animation-delay:1s"/>
-  <circle class="bgp" cx="350" cy="430" r="1.2" fill="#38bdf8" style="--dx:10px;--dy:-40px;animation-duration:10s;animation-delay:3s"/>
-  <circle class="bgp" cx="500" cy="420" r="0.8" fill="#a78bfa" style="--dx:-15px;--dy:-35px;animation-duration:7s;animation-delay:5s"/>
-</g>
+<!-- ══════════════════════════════════════════════════ -->
+<!-- MAIN BRAIN GROUP                                   -->
+<!-- ══════════════════════════════════════════════════ -->
+<g class="brain">
 
-<!-- ============================================================ -->
-<!-- MAIN BRAIN GROUP (floating animation)                        -->
-<!-- ============================================================ -->
-<g class="brain-group">
-
-  <!-- Outer rotating rings (depth effect) -->
-  <g class="ring" opacity="0.12">
-    <ellipse cx="380" cy="215" rx="210" ry="55" fill="none" stroke="#38bdf8" stroke-width="0.8" stroke-dasharray="4 8"/>
+  <!-- ── Orbiting rings (3D depth cue) ── -->
+  <g class="ring1" opacity="0.12">
+    <ellipse cx="380" cy="222" rx="218" ry="52" fill="none" stroke="#38bdf8" stroke-width="0.8" stroke-dasharray="5 9"/>
   </g>
-  <g class="ring2" opacity="0.08">
-    <ellipse cx="380" cy="215" rx="170" ry="40" fill="none" stroke="#7c3aed" stroke-width="0.6" stroke-dasharray="3 12"/>
+  <g class="ring2" opacity="0.07">
+    <ellipse cx="380" cy="222" rx="175" ry="38" fill="none" stroke="#8b5cf6" stroke-width="0.6" stroke-dasharray="3 14"/>
   </g>
 
-  <!-- Brain outer shell - main lobe -->
-  <g class="brain-outer">
-    <ellipse cx="380" cy="210" rx="192" ry="152" fill="none" stroke="#38bdf8" stroke-width="1.2" opacity="0.55"/>
-    <!-- Depth shading inner -->
-    <ellipse cx="378" cy="205" rx="145" ry="118" fill="none" stroke="#38bdf8" stroke-width="0.5" opacity="0.2"/>
+  <!-- ── CEREBELLUM (lower lobe) ── -->
+  <!-- Fill -->
+  <ellipse cx="362" cy="345" rx="72" ry="50" fill="url(#cerebGlow)"/>
+  <!-- Rim glow cyan -->
+  <ellipse cx="362" cy="345" rx="72" ry="50" fill="none" stroke="#38bdf8" stroke-width="2.5" opacity="0.5"/>
+  <ellipse cx="362" cy="345" rx="72" ry="50" fill="none" stroke="#38bdf8" stroke-width="8"   opacity="0.07"/>
+  <!-- Inner structure -->
+  <ellipse cx="362" cy="342" rx="52" ry="35" fill="none" stroke="#38bdf8" stroke-width="0.5" opacity="0.2"/>
+  <line x1="330" y1="310" x2="395" y2="380" stroke="#38bdf8" stroke-width="0.4" opacity="0.15"/>
+  <line x1="395" y1="310" x2="330" y2="380" stroke="#38bdf8" stroke-width="0.4" opacity="0.15"/>
+
+  <!-- ── MAIN BRAIN LOBE ── -->
+  <!-- Deep fill -->
+  <ellipse cx="380" cy="218" rx="200" ry="158" fill="url(#sphereCore)"/>
+  <!-- Inner ambient -->
+  <ellipse cx="362" cy="200" rx="155" ry="120" fill="url(#innerGlow)"/>
+  <!-- Fresnel cyan rim -->
+  <ellipse cx="380" cy="218" rx="200" ry="158" fill="url(#fresnelCyan)"/>
+  <!-- Fresnel purple right rim -->
+  <ellipse cx="395" cy="218" rx="185" ry="145" fill="url(#fresnelPurple)"/>
+  <!-- Sharp rim cyan -->
+  <ellipse cx="380" cy="218" rx="200" ry="158" fill="none" stroke="#38bdf8" stroke-width="2"   opacity="0.65" filter="url(#sphereGlowFilter)"/>
+  <ellipse cx="380" cy="218" rx="200" ry="158" fill="none" stroke="#38bdf8" stroke-width="0.8" opacity="0.9"/>
+  <!-- Purple right accent -->
+  <ellipse cx="380" cy="218" rx="200" ry="158" fill="none" stroke="#8b5cf6" stroke-width="1.2" opacity="0.3" stroke-dasharray="180 450" stroke-dashoffset="90"/>
+  <!-- Surface highlight (specular) -->
+  <ellipse cx="332" cy="172" rx="52" ry="30" fill="#38bdf8" opacity="0.04" transform="rotate(-20,332,172)"/>
+
+  <!-- ── Internal neural mesh ── -->
+  <!-- Main structure lines clipped to brain -->
+  <g filter="url(#edgeGlow)">
+    <!-- Horizontal gyri -->
+    <path class="edge" d="M230,195 Q290,178 350,188 Q410,198 460,183 Q490,174 518,188" fill="none" stroke="#38bdf8" stroke-width="0.7" style="animation-delay:0.2s"/>
+    <path class="edge" d="M222,228 Q275,212 335,222 Q395,232 448,218 Q482,208 516,222" fill="none" stroke="#38bdf8" stroke-width="0.6" style="animation-delay:0.5s"/>
+    <path class="edge" d="M228,262 Q280,248 338,258 Q398,268 450,254 Q482,245 512,260" fill="none" stroke="#38bdf8" stroke-width="0.5" style="animation-delay:0.8s"/>
+    <path class="edge" d="M248,295 Q298,282 352,290 Q408,298 452,284" fill="none" stroke="#38bdf8" stroke-width="0.5" style="animation-delay:1.1s"/>
+    <path class="edge" d="M270,162 Q320,148 375,158 Q428,168 462,155" fill="none" stroke="#38bdf8" stroke-width="0.6" style="animation-delay:1.4s"/>
+    <!-- Vertical sulci -->
+    <path class="edge" d="M355,155 Q348,200 352,250 Q356,295 350,330" fill="none" stroke="#38bdf8" stroke-width="0.5" style="animation-delay:0.3s"/>
+    <path class="edge" d="M410,150 Q404,195 408,245 Q412,290 408,325" fill="none" stroke="#38bdf8" stroke-width="0.5" style="animation-delay:0.7s"/>
+    <path class="edge" d="M302,165 Q296,210 300,258 Q304,298 298,330" fill="none" stroke="#38bdf8" stroke-width="0.4" style="animation-delay:1.0s"/>
+    <path class="edge" d="M462,168 Q456,215 460,262 Q464,302 460,335" fill="none" stroke="#8b5cf6" stroke-width="0.4" style="animation-delay:0.6s"/>
   </g>
 
-  <!-- Brain outer shell - cerebellum lobe -->
-  <ellipse cx="362" cy="338" rx="68" ry="48" fill="none" stroke="#38bdf8" stroke-width="1" opacity="0.45"/>
-  <ellipse cx="362" cy="338" rx="50" ry="34" fill="none" stroke="#38bdf8" stroke-width="0.4" opacity="0.18"/>
-
-  <!-- Purple right lobe accent -->
-  <ellipse cx="470" cy="195" rx="88" ry="110" fill="none" stroke="#a78bfa" stroke-width="0.8" opacity="0.25" stroke-dasharray="6 4"/>
-
-  <!-- Internal structure lines (gyri/sulci) -->
-  <g opacity="0.22" stroke="#38bdf8" stroke-width="0.7" fill="none">
-    <path d="M250,170 Q310,145 370,160 Q420,175 460,165"/>
-    <path d="M240,210 Q290,195 340,205 Q400,215 445,200 Q485,188 510,200"/>
-    <path d="M252,250 Q300,235 355,245 Q410,255 455,240 Q490,230 515,245"/>
-    <path d="M270,290 Q315,278 365,285 Q415,292 455,278"/>
-    <path d="M310,155 Q350,135 390,148 Q430,160 455,148"/>
-    <path d="M280,320 Q320,308 360,316 Q400,323 435,310"/>
-  </g>
-
-  <!-- Neural edges / connections -->
-  <g class="edge" fill="none">
-    <!-- ML region connections (cyan) -->
-    <line x1="290" y1="175" x2="330" y2="195" stroke="#38bdf8" stroke-width="0.7" opacity="0.9" style="animation-delay:0.2s"/>
-    <line x1="330" y1="195" x2="308" y2="230" stroke="#38bdf8" stroke-width="0.7" opacity="0.9" style="animation-delay:0.5s"/>
-    <line x1="308" y1="230" x2="345" y2="255" stroke="#38bdf8" stroke-width="0.6" opacity="0.7" style="animation-delay:0.8s"/>
-    <line x1="290" y1="175" x2="308" y2="230" stroke="#38bdf8" stroke-width="0.5" opacity="0.5" style="animation-delay:1.1s"/>
-    <line x1="330" y1="195" x2="370" y2="210" stroke="#60a5fa" stroke-width="0.6" opacity="0.6" style="animation-delay:0.3s"/>
-
+  <!-- Triangle mesh edges (the polygon look) -->
+  <g class="edge" fill="none" stroke-width="0.6">
+    <!-- ML region (cyan) -->
+    <line x1="275" y1="182" x2="318" y2="202" stroke="#38bdf8" opacity="0.9" style="animation-delay:0.1s"/>
+    <line x1="318" y1="202" x2="295" y2="238" stroke="#38bdf8" opacity="0.9" style="animation-delay:0.4s"/>
+    <line x1="295" y1="238" x2="338" y2="258" stroke="#38bdf8" opacity="0.7" style="animation-delay:0.7s"/>
+    <line x1="275" y1="182" x2="295" y2="238" stroke="#38bdf8" opacity="0.5" style="animation-delay:1.0s"/>
+    <line x1="318" y1="202" x2="362" y2="218" stroke="#60a5fa" opacity="0.6" style="animation-delay:0.3s"/>
+    <line x1="275" y1="182" x2="338" y2="258" stroke="#38bdf8" opacity="0.3" style="animation-delay:1.6s"/>
     <!-- GenAI region (purple) -->
-    <line x1="420" y1="168" x2="460" y2="185" stroke="#a78bfa" stroke-width="0.7" opacity="0.9" style="animation-delay:0.6s"/>
-    <line x1="460" y1="185" x2="490" y2="215" stroke="#a78bfa" stroke-width="0.7" opacity="0.9" style="animation-delay:0.9s"/>
-    <line x1="490" y1="215" x2="470" y2="250" stroke="#a78bfa" stroke-width="0.6" opacity="0.7" style="animation-delay:1.2s"/>
-    <line x1="420" y1="168" x2="490" y2="215" stroke="#a78bfa" stroke-width="0.4" opacity="0.4" style="animation-delay:1.5s"/>
-    <line x1="460" y1="185" x2="420" y2="210" stroke="#c084fc" stroke-width="0.5" opacity="0.5" style="animation-delay:0.7s"/>
-
+    <line x1="425" y1="175" x2="468" y2="192" stroke="#a78bfa" opacity="0.9" style="animation-delay:0.5s"/>
+    <line x1="468" y1="192" x2="498" y2="222" stroke="#a78bfa" opacity="0.9" style="animation-delay:0.8s"/>
+    <line x1="498" y1="222" x2="478" y2="258" stroke="#a78bfa" opacity="0.7" style="animation-delay:1.1s"/>
+    <line x1="425" y1="175" x2="498" y2="222" stroke="#a78bfa" opacity="0.4" style="animation-delay:1.4s"/>
+    <line x1="468" y1="192" x2="425" y2="218" stroke="#c084fc" opacity="0.5" style="animation-delay:0.6s"/>
+    <line x1="425" y1="175" x2="478" y2="258" stroke="#8b5cf6" opacity="0.3" style="animation-delay:1.8s"/>
     <!-- Agentic (blue) -->
-    <line x1="370" y1="210" x2="420" y2="210" stroke="#60a5fa" stroke-width="0.7" opacity="0.8" style="animation-delay:0.4s"/>
-    <line x1="395" y1="145" x2="370" y2="210" stroke="#60a5fa" stroke-width="0.6" opacity="0.6" style="animation-delay:0.9s"/>
-    <line x1="395" y1="145" x2="420" y2="168" stroke="#60a5fa" stroke-width="0.5" opacity="0.5" style="animation-delay:1.3s"/>
-
-    <!-- NLP (cyan mix) -->
-    <line x1="345" y1="255" x2="370" y2="285" stroke="#22d3ee" stroke-width="0.7" opacity="0.8" style="animation-delay:0.5s"/>
-    <line x1="370" y1="285" x2="410" y2="270" stroke="#22d3ee" stroke-width="0.6" opacity="0.7" style="animation-delay:1.0s"/>
-    <line x1="410" y1="270" x2="470" y2="250" stroke="#22d3ee" stroke-width="0.6" opacity="0.6" style="animation-delay:0.8s"/>
-    <line x1="345" y1="255" x2="410" y2="270" stroke="#22d3ee" stroke-width="0.4" opacity="0.4" style="animation-delay:1.4s"/>
-
-    <!-- CV (teal) -->
-    <line x1="308" y1="230" x2="345" y2="255" stroke="#38bdf8" stroke-width="0.6" opacity="0.6" style="animation-delay:1.1s"/>
-    <line x1="263" y1="215" x2="308" y2="230" stroke="#38bdf8" stroke-width="0.6" opacity="0.5" style="animation-delay:0.6s"/>
-    <line x1="263" y1="215" x2="290" y2="175" stroke="#38bdf8" stroke-width="0.5" opacity="0.4" style="animation-delay:1.6s"/>
-
-    <!-- Cloud (bottom) -->
-    <line x1="345" y1="310" x2="370" y2="285" stroke="#38bdf8" stroke-width="0.6" opacity="0.7" style="animation-delay:0.7s"/>
-    <line x1="345" y1="310" x2="395" y2="320" stroke="#38bdf8" stroke-width="0.6" opacity="0.6" style="animation-delay:1.2s"/>
-    <line x1="395" y1="320" x2="410" y2="270" stroke="#38bdf8" stroke-width="0.5" opacity="0.5" style="animation-delay:0.9s"/>
-
-    <!-- Cross-region long edges -->
-    <line x1="290" y1="175" x2="420" y2="168" stroke="#60a5fa" stroke-width="0.4" opacity="0.25" style="animation-delay:2s"/>
-    <line x1="308" y1="230" x2="470" y2="250" stroke="#38bdf8" stroke-width="0.3" opacity="0.2" style="animation-delay:1.8s"/>
-    <line x1="370" y1="210" x2="370" y2="285" stroke="#22d3ee" stroke-width="0.4" opacity="0.3" style="animation-delay:2.2s"/>
-    <line x1="263" y1="215" x2="345" y2="255" stroke="#60a5fa" stroke-width="0.3" opacity="0.2" style="animation-delay:2.5s"/>
-    <line x1="490" y1="215" x2="410" y2="270" stroke="#a78bfa" stroke-width="0.3" opacity="0.2" style="animation-delay:2.8s"/>
-
-    <!-- Extra mesh edges for density -->
-    <line x1="330" y1="195" x2="395" y2="145" stroke="#60a5fa" stroke-width="0.4" opacity="0.3" style="animation-delay:1.6s"/>
-    <line x1="420" y1="210" x2="470" y2="250" stroke="#a78bfa" stroke-width="0.4" opacity="0.3" style="animation-delay:1.9s"/>
-    <line x1="345" y1="255" x2="345" y2="310" stroke="#38bdf8" stroke-width="0.4" opacity="0.3" style="animation-delay:2.1s"/>
-    <line x1="370" y1="285" x2="395" y2="320" stroke="#22d3ee" stroke-width="0.4" opacity="0.3" style="animation-delay:2.4s"/>
+    <line x1="362" y1="218" x2="425" y2="218" stroke="#60a5fa" opacity="0.8" style="animation-delay:0.4s"/>
+    <line x1="388" y1="150" x2="362" y2="218" stroke="#60a5fa" opacity="0.6" style="animation-delay:0.9s"/>
+    <line x1="388" y1="150" x2="425" y2="175" stroke="#60a5fa" opacity="0.5" style="animation-delay:1.3s"/>
+    <line x1="388" y1="150" x2="318" y2="202" stroke="#60a5fa" opacity="0.3" style="animation-delay:2.0s"/>
+    <!-- NLP (teal) -->
+    <line x1="338" y1="258" x2="362" y2="288" stroke="#22d3ee" opacity="0.8" style="animation-delay:0.5s"/>
+    <line x1="362" y1="288" x2="408" y2="275" stroke="#22d3ee" opacity="0.7" style="animation-delay:1.0s"/>
+    <line x1="408" y1="275" x2="478" y2="258" stroke="#22d3ee" opacity="0.6" style="animation-delay:0.8s"/>
+    <line x1="338" y1="258" x2="408" y2="275" stroke="#22d3ee" opacity="0.4" style="animation-delay:1.5s"/>
+    <line x1="362" y1="288" x2="478" y2="258" stroke="#22d3ee" opacity="0.3" style="animation-delay:2.1s"/>
+    <!-- CV -->
+    <line x1="248" y1="222" x2="295" y2="238" stroke="#38bdf8" opacity="0.6" style="animation-delay:0.6s"/>
+    <line x1="248" y1="222" x2="275" y2="182" stroke="#38bdf8" opacity="0.5" style="animation-delay:1.2s"/>
+    <line x1="248" y1="222" x2="338" y2="258" stroke="#38bdf8" opacity="0.3" style="animation-delay:1.9s"/>
+    <!-- Cloud -->
+    <line x1="338" y1="318" x2="362" y2="288" stroke="#38bdf8" opacity="0.7" style="animation-delay:0.7s"/>
+    <line x1="338" y1="318" x2="388" y2="328" stroke="#38bdf8" opacity="0.6" style="animation-delay:1.2s"/>
+    <line x1="388" y1="328" x2="408" y2="275" stroke="#38bdf8" opacity="0.5" style="animation-delay:0.9s"/>
+    <!-- Long cross-region -->
+    <line x1="275" y1="182" x2="425" y2="175" stroke="#60a5fa" opacity="0.2" style="animation-delay:2.2s"/>
+    <line x1="295" y1="238" x2="478" y2="258" stroke="#38bdf8" opacity="0.15" style="animation-delay:2.5s"/>
+    <line x1="362" y1="218" x2="362" y2="288" stroke="#22d3ee" opacity="0.3" style="animation-delay:2.0s"/>
+    <line x1="318" y1="202" x2="388" y2="150" stroke="#60a5fa" opacity="0.3" style="animation-delay:1.5s"/>
+    <line x1="425" y1="218" x2="478" y2="258" stroke="#a78bfa" opacity="0.3" style="animation-delay:1.7s"/>
+    <line x1="338" y1="258" x2="338" y2="318" stroke="#38bdf8" opacity="0.3" style="animation-delay:2.3s"/>
   </g>
 
-  <!-- Small background nodes (mesh density) -->
-  <g fill="#38bdf8" opacity="0.35">
-    <circle class="node-sm" cx="275" cy="155" r="2" style="animation-delay:0.3s"/>
-    <circle class="node-sm" cx="440" cy="145" r="2" style="animation-delay:1.1s"/>
-    <circle class="node-sm" cx="502" cy="178" r="2" style="animation-delay:0.7s"/>
-    <circle class="node-sm" cx="510" cy="232" r="2" style="animation-delay:1.5s"/>
-    <circle class="node-sm" cx="498" cy="262" r="2" style="animation-delay:0.5s"/>
-    <circle class="node-sm" cx="440" cy="290" r="2" style="animation-delay:1.8s"/>
-    <circle class="node-sm" cx="303" cy="300" r="2" style="animation-delay:0.9s"/>
-    <circle class="node-sm" cx="258" cy="265" r="2" style="animation-delay:1.3s"/>
-    <circle class="node-sm" cx="258" cy="175" r="1.5" style="animation-delay:2.1s"/>
-    <circle class="node-sm" cx="350" cy="135" r="1.5" style="animation-delay:0.4s"/>
-    <circle class="node-sm" cx="415" cy="300" r="1.5" style="animation-delay:1.6s"/>
-    <circle class="node-sm" cx="330" cy="315" r="1.5" style="animation-delay:0.8s"/>
-  </g>
-  <g fill="#a78bfa" opacity="0.3">
-    <circle class="node-sm" cx="455" cy="160" r="2" style="animation-delay:1.2s"/>
-    <circle class="node-sm" cx="480" cy="195" r="1.8" style="animation-delay:0.6s"/>
-    <circle class="node-sm" cx="475" cy="240" r="1.5" style="animation-delay:1.9s"/>
+  <!-- Extra mesh for polygon density -->
+  <g class="edge" fill="none" stroke-width="0.4">
+    <line x1="295" y1="182" x2="338" y2="202" stroke="#38bdf8" opacity="0.5" style="animation-delay:0.8s"/>
+    <line x1="338" y1="202" x2="362" y2="175" stroke="#60a5fa" opacity="0.4" style="animation-delay:1.3s"/>
+    <line x1="405" y1="192" x2="425" y2="218" stroke="#a78bfa" opacity="0.5" style="animation-delay:0.9s"/>
+    <line x1="405" y1="258" x2="425" y2="218" stroke="#c084fc" opacity="0.4" style="animation-delay:1.6s"/>
+    <line x1="275" y1="258" x2="295" y2="238" stroke="#38bdf8" opacity="0.4" style="animation-delay:1.1s"/>
+    <line x1="275" y1="258" x2="338" y2="258" stroke="#22d3ee" opacity="0.3" style="animation-delay:1.8s"/>
+    <line x1="362" y1="308" x2="338" y2="288" stroke="#38bdf8" opacity="0.4" style="animation-delay:1.4s"/>
+    <line x1="388" y1="308" x2="408" y2="288" stroke="#22d3ee" opacity="0.3" style="animation-delay:1.7s"/>
   </g>
 
-  <!-- ===================================================== -->
-  <!-- MAIN SKILL REGION NODES (large glowing)               -->
-  <!-- ===================================================== -->
-
-  <!-- ML Node (cyan) -->
-  <g filter="url(#glowStrong)" class="node-ml">
-    <circle cx="308" cy="230" r="7" fill="#38bdf8" opacity="0.9"/>
-    <circle cx="308" cy="230" r="11" fill="#38bdf8" opacity="0.15"/>
+  <!-- ── Background small nodes ── -->
+  <g class="twinkle" fill="#38bdf8">
+    <circle cx="262" cy="165" r="1.8" style="animation-delay:0.2s"/>
+    <circle cx="310" cy="148" r="1.5" style="animation-delay:0.9s"/>
+    <circle cx="358" cy="140" r="1.5" style="animation-delay:1.6s"/>
+    <circle cx="435" cy="148" r="1.8" style="animation-delay:0.5s"/>
+    <circle cx="502" cy="175" r="1.5" style="animation-delay:1.3s"/>
+    <circle cx="518" cy="225" r="1.8" style="animation-delay:0.7s"/>
+    <circle cx="510" cy="262" r="1.5" style="animation-delay:1.8s"/>
+    <circle cx="478" cy="295" r="1.5" style="animation-delay:0.4s"/>
+    <circle cx="435" cy="308" r="1.8" style="animation-delay:1.1s"/>
+    <circle cx="295" cy="308" r="1.5" style="animation-delay:1.5s"/>
+    <circle cx="248" cy="275" r="1.5" style="animation-delay:0.8s"/>
+    <circle cx="238" cy="235" r="1.8" style="animation-delay:1.9s"/>
+  </g>
+  <g class="twinkle" fill="#a78bfa" style="animation-delay:0.5s">
+    <circle cx="455" cy="162" r="1.8"/>
+    <circle cx="482" cy="198" r="1.5"/>
+    <circle cx="478" cy="238" r="1.8"/>
+  </g>
+  <g class="twinkle" fill="#22d3ee" style="animation-delay:1.2s">
+    <circle cx="378" cy="298" r="1.5"/>
+    <circle cx="345" cy="275" r="1.5"/>
   </g>
 
-  <!-- GenAI Node (purple) -->
-  <g filter="url(#glowStrong)" class="node-gen">
-    <circle cx="460" cy="185" r="7" fill="#a78bfa" opacity="0.9"/>
-    <circle cx="460" cy="185" r="11" fill="#a78bfa" opacity="0.15"/>
+  <!-- ── MAIN REGION NODES (large glowing) ── -->
+  <!-- ML — cyan -->
+  <g filter="url(#nodeGlow)" class="np">
+    <circle cx="295" cy="238" r="8"  fill="#38bdf8" opacity="0.95"/>
+    <circle cx="295" cy="238" r="14" fill="#38bdf8" opacity="0.12"/>
+    <circle cx="295" cy="238" r="20" fill="#38bdf8" opacity="0.05"/>
   </g>
-
-  <!-- Agentic Node (blue) -->
-  <g filter="url(#glowStrong)" class="node-agent">
-    <circle cx="395" cy="145" r="7" fill="#60a5fa" opacity="0.9"/>
-    <circle cx="395" cy="145" r="11" fill="#60a5fa" opacity="0.15"/>
+  <!-- GenAI — purple -->
+  <g filter="url(#nodeGlow)" class="np1">
+    <circle cx="468" cy="192" r="8"  fill="#a78bfa" opacity="0.95"/>
+    <circle cx="468" cy="192" r="14" fill="#a78bfa" opacity="0.12"/>
+    <circle cx="468" cy="192" r="20" fill="#a78bfa" opacity="0.05"/>
   </g>
-
-  <!-- NLP Node (teal) -->
-  <g filter="url(#glowStrong)" class="node-nlp">
-    <circle cx="410" cy="270" r="7" fill="#22d3ee" opacity="0.9"/>
-    <circle cx="410" cy="270" r="11" fill="#22d3ee" opacity="0.15"/>
+  <!-- Agentic — blue -->
+  <g filter="url(#nodeGlow)" class="np2">
+    <circle cx="388" cy="150" r="8"  fill="#60a5fa" opacity="0.95"/>
+    <circle cx="388" cy="150" r="14" fill="#60a5fa" opacity="0.12"/>
+    <circle cx="388" cy="150" r="20" fill="#60a5fa" opacity="0.05"/>
   </g>
-
-  <!-- CV Node (cyan) -->
-  <g filter="url(#glowStrong)" class="node-cv">
-    <circle cx="263" cy="215" r="7" fill="#38bdf8" opacity="0.85"/>
-    <circle cx="263" cy="215" r="11" fill="#38bdf8" opacity="0.12"/>
+  <!-- NLP — teal -->
+  <g filter="url(#nodeGlow)" class="np3">
+    <circle cx="408" cy="275" r="8"  fill="#22d3ee" opacity="0.95"/>
+    <circle cx="408" cy="275" r="14" fill="#22d3ee" opacity="0.12"/>
+    <circle cx="408" cy="275" r="20" fill="#22d3ee" opacity="0.05"/>
   </g>
-
-  <!-- Cloud/Backend Node (blue) -->
-  <g filter="url(#glowStrong)" class="node-cloud">
-    <circle cx="345" cy="310" r="7" fill="#60a5fa" opacity="0.85"/>
-    <circle cx="345" cy="310" r="11" fill="#60a5fa" opacity="0.12"/>
+  <!-- CV — cyan -->
+  <g filter="url(#nodeGlow)" class="np4">
+    <circle cx="248" cy="222" r="8"  fill="#38bdf8" opacity="0.9"/>
+    <circle cx="248" cy="222" r="14" fill="#38bdf8" opacity="0.1"/>
+    <circle cx="248" cy="222" r="20" fill="#38bdf8" opacity="0.04"/>
+  </g>
+  <!-- Cloud — blue -->
+  <g filter="url(#nodeGlow)" class="np5">
+    <circle cx="338" cy="318" r="8"  fill="#60a5fa" opacity="0.9"/>
+    <circle cx="338" cy="318" r="14" fill="#60a5fa" opacity="0.1"/>
+    <circle cx="338" cy="318" r="20" fill="#60a5fa" opacity="0.04"/>
   </g>
 
   <!-- Secondary nodes -->
-  <g filter="url(#glow)">
-    <circle class="node-ml" cx="290" cy="175" r="5" fill="#38bdf8" opacity="0.85" style="animation-delay:0.3s"/>
-    <circle class="node-gen" cx="490" cy="215" r="5" fill="#a78bfa" opacity="0.85" style="animation-delay:0.5s"/>
-    <circle class="node-agent" cx="420" cy="168" r="5" fill="#60a5fa" opacity="0.8" style="animation-delay:0.8s"/>
-    <circle class="node-nlp" cx="345" cy="255" r="5" fill="#22d3ee" opacity="0.8" style="animation-delay:0.4s"/>
-    <circle class="node-cv" cx="330" cy="195" r="5" fill="#38bdf8" opacity="0.75" style="animation-delay:0.9s"/>
-    <circle class="node-cloud" cx="395" cy="320" r="5" fill="#38bdf8" opacity="0.75" style="animation-delay:1.1s"/>
-    <circle class="node-ml" cx="370" cy="210" r="5" fill="#60a5fa" opacity="0.75" style="animation-delay:1.2s"/>
-    <circle class="node-nlp" cx="470" cy="250" r="5" fill="#c084fc" opacity="0.75" style="animation-delay:0.6s"/>
-    <circle class="node-cloud" cx="370" cy="285" r="5" fill="#22d3ee" opacity="0.7" style="animation-delay:1.0s"/>
-    <circle class="node-agent" cx="420" cy="210" r="4.5" fill="#60a5fa" opacity="0.7" style="animation-delay:0.7s"/>
+  <g filter="url(#nodeGlowSm)">
+    <circle class="np"  cx="275" cy="182" r="5.5" fill="#38bdf8" opacity="0.9" style="animation-delay:0.3s"/>
+    <circle class="np1" cx="498" cy="222" r="5.5" fill="#a78bfa" opacity="0.9" style="animation-delay:0.5s"/>
+    <circle class="np2" cx="425" cy="175" r="5.5" fill="#60a5fa" opacity="0.85" style="animation-delay:0.8s"/>
+    <circle class="np3" cx="338" cy="258" r="5.5" fill="#22d3ee" opacity="0.85" style="animation-delay:0.4s"/>
+    <circle class="np4" cx="318" cy="202" r="5.5" fill="#38bdf8" opacity="0.8"  style="animation-delay:0.9s"/>
+    <circle class="np5" cx="388" cy="328" r="5.5" fill="#38bdf8" opacity="0.8"  style="animation-delay:1.1s"/>
+    <circle class="np"  cx="362" cy="218" r="5"   fill="#60a5fa" opacity="0.75" style="animation-delay:1.2s"/>
+    <circle class="np1" cx="478" cy="258" r="5"   fill="#c084fc" opacity="0.75" style="animation-delay:0.6s"/>
+    <circle class="np3" cx="362" cy="288" r="5"   fill="#22d3ee" opacity="0.7"  style="animation-delay:1.0s"/>
+    <circle class="np2" cx="425" cy="218" r="4.5" fill="#60a5fa" opacity="0.7"  style="animation-delay:0.7s"/>
   </g>
 
-  <!-- ===================================================== -->
-  <!-- SKILL LABELS - cycling one at a time                  -->
-  <!-- Each anchored near its skill region node              -->
-  <!-- Colors: ML=cyan, GenAI=purple, Agentic=blue,          -->
-  <!--         NLP=teal, CV=cyan, Cloud=blue                 -->
-  <!-- ===================================================== -->
+  <!-- Traveling particles along edges -->
+  <g class="pt" fill="#38bdf8" opacity="0.9" style="animation-duration:2.8s;animation-delay:0.5s">
+    <circle r="2.2">
+      <animateMotion dur="2.8s" repeatCount="indefinite" begin="0.5s">
+        <mpath href="#path1"/>
+      </animateMotion>
+    </circle>
+  </g>
+  <path id="path1" d="M275,182 L318,202 L295,238 L338,258 L362,288" fill="none"/>
 
-  <!-- Connector lines (match delay of label) -->
-  <!-- ML region connectors -->
-  <line class="connector s0"  x1="308" y1="230" x2="175" y2="225" stroke="#38bdf8" stroke-width="1" filter="url(#glow)" style="animation-delay:0s"/>
-  <line class="connector s1"  x1="308" y1="230" x2="145" y2="240" stroke="#38bdf8" stroke-width="1" filter="url(#glow)" style="animation-delay:3s"/>
-  <line class="connector s2"  x1="290" y1="175" x2="150" y2="175" stroke="#38bdf8" stroke-width="1" filter="url(#glow)" style="animation-delay:6s"/>
-  <line class="connector s3"  x1="290" y1="175" x2="150" y2="155" stroke="#38bdf8" stroke-width="1" filter="url(#glow)" style="animation-delay:9s"/>
-  <line class="connector s4"  x1="308" y1="230" x2="145" y2="265" stroke="#38bdf8" stroke-width="1" filter="url(#glow)" style="animation-delay:12s"/>
-  <!-- GenAI region connectors -->
-  <line class="connector s5"  x1="460" y1="185" x2="580" y2="145" stroke="#a78bfa" stroke-width="1" filter="url(#glow)" style="animation-delay:15s"/>
-  <line class="connector s6"  x1="460" y1="185" x2="595" y2="165" stroke="#a78bfa" stroke-width="1" filter="url(#glow)" style="animation-delay:18s"/>
-  <line class="connector s7"  x1="490" y1="215" x2="590" y2="195" stroke="#a78bfa" stroke-width="1" filter="url(#glow)" style="animation-delay:21s"/>
-  <line class="connector s8"  x1="460" y1="185" x2="575" y2="125" stroke="#a78bfa" stroke-width="1" filter="url(#glow)" style="animation-delay:24s"/>
-  <line class="connector s9"  x1="490" y1="215" x2="590" y2="225" stroke="#a78bfa" stroke-width="1" filter="url(#glow)" style="animation-delay:27s"/>
-  <!-- Agentic region connectors -->
-  <line class="connector s10" x1="395" y1="145" x2="380" y2="62"  stroke="#60a5fa" stroke-width="1" filter="url(#glow)" style="animation-delay:30s"/>
-  <line class="connector s11" x1="395" y1="145" x2="430" y2="62"  stroke="#60a5fa" stroke-width="1" filter="url(#glow)" style="animation-delay:33s"/>
-  <line class="connector s12" x1="395" y1="145" x2="470" y2="62"  stroke="#60a5fa" stroke-width="1" filter="url(#glow)" style="animation-delay:36s"/>
-  <line class="connector s13" x1="395" y1="145" x2="345" y2="62"  stroke="#60a5fa" stroke-width="1" filter="url(#glow)" style="animation-delay:39s"/>
-  <!-- NLP region connectors -->
-  <line class="connector s14" x1="410" y1="270" x2="560" y2="285" stroke="#22d3ee" stroke-width="1" filter="url(#glow)" style="animation-delay:42s"/>
-  <line class="connector s15" x1="410" y1="270" x2="560" y2="310" stroke="#22d3ee" stroke-width="1" filter="url(#glow)" style="animation-delay:45s"/>
-  <line class="connector s16" x1="470" y1="250" x2="580" y2="250" stroke="#22d3ee" stroke-width="1" filter="url(#glow)" style="animation-delay:48s"/>
-  <line class="connector s17" x1="410" y1="270" x2="555" y2="338" stroke="#22d3ee" stroke-width="1" filter="url(#glow)" style="animation-delay:51s"/>
-  <line class="connector s18" x1="345" y1="255" x2="555" y2="265" stroke="#22d3ee" stroke-width="1" filter="url(#glow)" style="animation-delay:54s"/>
-  <!-- CV region connectors -->
-  <line class="connector s19" x1="263" y1="215" x2="130" y2="308" stroke="#38bdf8" stroke-width="1" filter="url(#glow)" style="animation-delay:57s"/>
-  <line class="connector s20" x1="263" y1="215" x2="130" y2="338" stroke="#38bdf8" stroke-width="1" filter="url(#glow)" style="animation-delay:60s"/>
-  <line class="connector s21" x1="263" y1="215" x2="130" y2="368" stroke="#38bdf8" stroke-width="1" filter="url(#glow)" style="animation-delay:63s"/>
-  <line class="connector s22" x1="263" y1="215" x2="130" y2="278" stroke="#38bdf8" stroke-width="1" filter="url(#glow)" style="animation-delay:66s"/>
-  <!-- Cloud region connectors -->
-  <line class="connector s23" x1="345" y1="310" x2="195" y2="398" stroke="#60a5fa" stroke-width="1" filter="url(#glow)" style="animation-delay:69s"/>
-  <line class="connector s24" x1="345" y1="310" x2="245" y2="415" stroke="#60a5fa" stroke-width="1" filter="url(#glow)" style="animation-delay:72s"/>
-  <line class="connector s25" x1="395" y1="320" x2="330" y2="415" stroke="#60a5fa" stroke-width="1" filter="url(#glow)" style="animation-delay:75s"/>
-  <line class="connector s26" x1="345" y1="310" x2="150" y2="398" stroke="#60a5fa" stroke-width="1" filter="url(#glow)" style="animation-delay:78s"/>
-  <line class="connector s27" x1="345" y1="310" x2="395" y2="415" stroke="#60a5fa" stroke-width="1" filter="url(#glow)" style="animation-delay:81s"/>
-  <line class="connector s28" x1="395" y1="320" x2="440" y2="415" stroke="#60a5fa" stroke-width="1" filter="url(#glow)" style="animation-delay:84s"/>
+  <g class="pt" fill="#a78bfa" opacity="0.9" style="animation-duration:3.2s;animation-delay:1.2s">
+    <circle r="2.2">
+      <animateMotion dur="3.2s" repeatCount="indefinite" begin="1.2s">
+        <mpath href="#path2"/>
+      </animateMotion>
+    </circle>
+  </g>
+  <path id="path2" d="M425,175 L468,192 L498,222 L478,258 L408,275" fill="none"/>
 
-  <!-- ===== LABEL CARDS ===== -->
-  <!-- ML (5 skills) - left side -->
-  <g class="skill-label s0" style="animation-delay:0s" filter="url(#labelGlow)">
-    <rect x="60" y="212" width="112" height="24" fill="rgba(8,12,24,0.75)" stroke="#38bdf8" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="74" cy="224" r="3" fill="#38bdf8" class="blink"/>
-    <text x="82" y="228" fill="#38bdf8" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">MACHINE LEARNING</text>
+  <g class="pt" fill="#60a5fa" opacity="0.9" style="animation-duration:2.5s;animation-delay:0s">
+    <circle r="2">
+      <animateMotion dur="2.5s" repeatCount="indefinite" begin="0s">
+        <mpath href="#path3"/>
+      </animateMotion>
+    </circle>
   </g>
-  <g class="skill-label s1" style="animation-delay:3s" filter="url(#labelGlow)">
-    <rect x="40" y="228" width="102" height="24" fill="rgba(8,12,24,0.75)" stroke="#38bdf8" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="54" cy="240" r="3" fill="#38bdf8" class="blink"/>
-    <text x="62" y="244" fill="#38bdf8" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">DEEP LEARNING</text>
-  </g>
-  <g class="skill-label s2" style="animation-delay:6s" filter="url(#labelGlow)">
-    <rect x="40" y="163" width="106" height="24" fill="rgba(8,12,24,0.75)" stroke="#38bdf8" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="54" cy="175" r="3" fill="#38bdf8" class="blink"/>
-    <text x="62" y="179" fill="#38bdf8" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">PYTORCH</text>
-  </g>
-  <g class="skill-label s3" style="animation-delay:9s" filter="url(#labelGlow)">
-    <rect x="40" y="143" width="106" height="24" fill="rgba(8,12,24,0.75)" stroke="#38bdf8" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="54" cy="155" r="3" fill="#38bdf8" class="blink"/>
-    <text x="62" y="159" fill="#38bdf8" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">TENSORFLOW</text>
-  </g>
-  <g class="skill-label s4" style="animation-delay:12s" filter="url(#labelGlow)">
-    <rect x="40" y="253" width="102" height="24" fill="rgba(8,12,24,0.75)" stroke="#38bdf8" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="54" cy="265" r="3" fill="#38bdf8" class="blink"/>
-    <text x="62" y="269" fill="#38bdf8" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">SCIKIT-LEARN</text>
-  </g>
+  <path id="path3" d="M388,150 L362,218 L425,218 L408,275 L338,318" fill="none"/>
 
-  <!-- GenAI (5 skills) - right side top -->
-  <g class="skill-label s5" style="animation-delay:15s" filter="url(#labelGlow)">
-    <rect x="582" y="133" width="136" height="24" fill="rgba(8,12,24,0.75)" stroke="#a78bfa" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="596" cy="145" r="3" fill="#a78bfa" class="blink"/>
-    <text x="604" y="149" fill="#a78bfa" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">LARGE LLM MODELS</text>
+  <!-- ════════════════════════════════════════════ -->
+  <!-- SKILL LABEL CONNECTORS                       -->
+  <!-- ════════════════════════════════════════════ -->
+  <!-- ML left -->
+  <line class="conn d0"  x1="295" y1="238" x2="168" y2="228" stroke="#38bdf8" stroke-width="1" filter="url(#nodeGlowSm)"/>
+  <line class="conn d1"  x1="295" y1="238" x2="142" y2="248" stroke="#38bdf8" stroke-width="1" filter="url(#nodeGlowSm)"/>
+  <line class="conn d2"  x1="275" y1="182" x2="142" y2="175" stroke="#38bdf8" stroke-width="1" filter="url(#nodeGlowSm)"/>
+  <line class="conn d3"  x1="275" y1="182" x2="142" y2="155" stroke="#38bdf8" stroke-width="1" filter="url(#nodeGlowSm)"/>
+  <line class="conn d4"  x1="295" y1="238" x2="142" y2="268" stroke="#38bdf8" stroke-width="1" filter="url(#nodeGlowSm)"/>
+  <!-- GenAI right -->
+  <line class="conn d5"  x1="468" y1="192" x2="582" y2="148" stroke="#a78bfa" stroke-width="1" filter="url(#nodeGlowSm)"/>
+  <line class="conn d6"  x1="468" y1="192" x2="598" y2="168" stroke="#a78bfa" stroke-width="1" filter="url(#nodeGlowSm)"/>
+  <line class="conn d7"  x1="498" y1="222" x2="592" y2="198" stroke="#a78bfa" stroke-width="1" filter="url(#nodeGlowSm)"/>
+  <line class="conn d8"  x1="468" y1="192" x2="578" y2="128" stroke="#a78bfa" stroke-width="1" filter="url(#nodeGlowSm)"/>
+  <line class="conn d9"  x1="498" y1="222" x2="592" y2="228" stroke="#a78bfa" stroke-width="1" filter="url(#nodeGlowSm)"/>
+  <!-- Agentic top -->
+  <line class="conn d10" x1="388" y1="150" x2="310" y2="58"  stroke="#60a5fa" stroke-width="1" filter="url(#nodeGlowSm)"/>
+  <line class="conn d11" x1="388" y1="150" x2="380" y2="58"  stroke="#60a5fa" stroke-width="1" filter="url(#nodeGlowSm)"/>
+  <line class="conn d12" x1="388" y1="150" x2="455" y2="58"  stroke="#60a5fa" stroke-width="1" filter="url(#nodeGlowSm)"/>
+  <line class="conn d13" x1="388" y1="150" x2="265" y2="58"  stroke="#60a5fa" stroke-width="1" filter="url(#nodeGlowSm)"/>
+  <!-- NLP right-mid -->
+  <line class="conn d14" x1="408" y1="275" x2="558" y2="278" stroke="#22d3ee" stroke-width="1" filter="url(#nodeGlowSm)"/>
+  <line class="conn d15" x1="408" y1="275" x2="558" y2="308" stroke="#22d3ee" stroke-width="1" filter="url(#nodeGlowSm)"/>
+  <line class="conn d16" x1="478" y1="258" x2="582" y2="248" stroke="#22d3ee" stroke-width="1" filter="url(#nodeGlowSm)"/>
+  <line class="conn d17" x1="408" y1="275" x2="555" y2="338" stroke="#22d3ee" stroke-width="1" filter="url(#nodeGlowSm)"/>
+  <line class="conn d18" x1="338" y1="258" x2="555" y2="265" stroke="#22d3ee" stroke-width="1" filter="url(#nodeGlowSm)"/>
+  <!-- CV left-mid -->
+  <line class="conn d19" x1="248" y1="222" x2="128" y2="308" stroke="#38bdf8" stroke-width="1" filter="url(#nodeGlowSm)"/>
+  <line class="conn d20" x1="248" y1="222" x2="128" y2="338" stroke="#38bdf8" stroke-width="1" filter="url(#nodeGlowSm)"/>
+  <line class="conn d21" x1="248" y1="222" x2="128" y2="368" stroke="#38bdf8" stroke-width="1" filter="url(#nodeGlowSm)"/>
+  <line class="conn d22" x1="248" y1="222" x2="128" y2="278" stroke="#38bdf8" stroke-width="1" filter="url(#nodeGlowSm)"/>
+  <!-- Cloud bottom -->
+  <line class="conn d23" x1="338" y1="318" x2="188" y2="400" stroke="#60a5fa" stroke-width="1" filter="url(#nodeGlowSm)"/>
+  <line class="conn d24" x1="338" y1="318" x2="248" y2="415" stroke="#60a5fa" stroke-width="1" filter="url(#nodeGlowSm)"/>
+  <line class="conn d25" x1="388" y1="328" x2="332" y2="415" stroke="#60a5fa" stroke-width="1" filter="url(#nodeGlowSm)"/>
+  <line class="conn d26" x1="338" y1="318" x2="145" y2="400" stroke="#60a5fa" stroke-width="1" filter="url(#nodeGlowSm)"/>
+  <line class="conn d27" x1="388" y1="328" x2="402" y2="415" stroke="#60a5fa" stroke-width="1" filter="url(#nodeGlowSm)"/>
+  <line class="conn d28" x1="388" y1="328" x2="455" y2="415" stroke="#60a5fa" stroke-width="1" filter="url(#nodeGlowSm)"/>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- SKILL LABELS                                 -->
+  <!-- ════════════════════════════════════════════ -->
+  <!-- ML (5) — left -->
+  <g class="sl d0" filter="url(#labelGlow)">
+    <rect x="52" y="216" width="114" height="24" fill="rgba(5,10,22,0.82)" stroke="#38bdf8" stroke-width="0.9" rx="5"/>
+    <circle cx="66" cy="228" r="3.5" fill="#38bdf8" class="blink"/>
+    <text x="76" y="232" fill="#38bdf8" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">MACHINE LEARNING</text>
   </g>
-  <g class="skill-label s6" style="animation-delay:18s" filter="url(#labelGlow)">
-    <rect x="597" y="153" width="118" height="24" fill="rgba(8,12,24,0.75)" stroke="#a78bfa" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="611" cy="165" r="3" fill="#a78bfa" class="blink"/>
-    <text x="619" y="169" fill="#a78bfa" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">GENERATIVE AI</text>
+  <g class="sl d1" filter="url(#labelGlow)">
+    <rect x="30" y="236" width="110" height="24" fill="rgba(5,10,22,0.82)" stroke="#38bdf8" stroke-width="0.9" rx="5"/>
+    <circle cx="44" cy="248" r="3.5" fill="#38bdf8" class="blink"/>
+    <text x="54" y="252" fill="#38bdf8" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">DEEP LEARNING</text>
   </g>
-  <g class="skill-label s7" style="animation-delay:21s" filter="url(#labelGlow)">
-    <rect x="592" y="183" width="82" height="24" fill="rgba(8,12,24,0.75)" stroke="#a78bfa" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="606" cy="195" r="3" fill="#a78bfa" class="blink"/>
-    <text x="614" y="199" fill="#a78bfa" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">RAG</text>
+  <g class="sl d2" filter="url(#labelGlow)">
+    <rect x="30" y="163" width="110" height="24" fill="rgba(5,10,22,0.82)" stroke="#38bdf8" stroke-width="0.9" rx="5"/>
+    <circle cx="44" cy="175" r="3.5" fill="#38bdf8" class="blink"/>
+    <text x="54" y="179" fill="#38bdf8" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">PYTORCH</text>
   </g>
-  <g class="skill-label s8" style="animation-delay:24s" filter="url(#labelGlow)">
-    <rect x="577" y="113" width="130" height="24" fill="rgba(8,12,24,0.75)" stroke="#a78bfa" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="591" cy="125" r="3" fill="#a78bfa" class="blink"/>
-    <text x="599" y="129" fill="#a78bfa" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">LLM FINE-TUNING</text>
+  <g class="sl d3" filter="url(#labelGlow)">
+    <rect x="30" y="143" width="110" height="24" fill="rgba(5,10,22,0.82)" stroke="#38bdf8" stroke-width="0.9" rx="5"/>
+    <circle cx="44" cy="155" r="3.5" fill="#38bdf8" class="blink"/>
+    <text x="54" y="159" fill="#38bdf8" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">TENSORFLOW</text>
   </g>
-  <g class="skill-label s9" style="animation-delay:27s" filter="url(#labelGlow)">
-    <rect x="592" y="213" width="118" height="24" fill="rgba(8,12,24,0.75)" stroke="#a78bfa" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="606" cy="225" r="3" fill="#a78bfa" class="blink"/>
-    <text x="614" y="229" fill="#a78bfa" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">HUGGING FACE</text>
+  <g class="sl d4" filter="url(#labelGlow)">
+    <rect x="30" y="256" width="110" height="24" fill="rgba(5,10,22,0.82)" stroke="#38bdf8" stroke-width="0.9" rx="5"/>
+    <circle cx="44" cy="268" r="3.5" fill="#38bdf8" class="blink"/>
+    <text x="54" y="272" fill="#38bdf8" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">SCIKIT-LEARN</text>
   </g>
 
-  <!-- Agentic (4 skills) - top center -->
-  <g class="skill-label s10" style="animation-delay:30s" filter="url(#labelGlow)">
-    <rect x="307" y="50" width="145" height="24" fill="rgba(8,12,24,0.75)" stroke="#60a5fa" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="321" cy="62" r="3" fill="#60a5fa" class="blink"/>
-    <text x="329" y="66" fill="#60a5fa" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">MULTI-AGENT SYSTEMS</text>
+  <!-- GenAI (5) — right top -->
+  <g class="sl d5" filter="url(#labelGlow)">
+    <rect x="584" y="136" width="136" height="24" fill="rgba(5,10,22,0.82)" stroke="#a78bfa" stroke-width="0.9" rx="5"/>
+    <circle cx="598" cy="148" r="3.5" fill="#a78bfa" class="blink"/>
+    <text x="608" y="152" fill="#a78bfa" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">LARGE LLM MODELS</text>
   </g>
-  <g class="skill-label s11" style="animation-delay:33s" filter="url(#labelGlow)">
-    <rect x="357" y="50" width="96" height="24" fill="rgba(8,12,24,0.75)" stroke="#60a5fa" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="371" cy="62" r="3" fill="#60a5fa" class="blink"/>
-    <text x="379" y="66" fill="#60a5fa" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">AI AGENTS</text>
+  <g class="sl d6" filter="url(#labelGlow)">
+    <rect x="600" y="156" width="120" height="24" fill="rgba(5,10,22,0.82)" stroke="#a78bfa" stroke-width="0.9" rx="5"/>
+    <circle cx="614" cy="168" r="3.5" fill="#a78bfa" class="blink"/>
+    <text x="624" y="172" fill="#a78bfa" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">GENERATIVE AI</text>
   </g>
-  <g class="skill-label s12" style="animation-delay:36s" filter="url(#labelGlow)">
-    <rect x="400" y="50" width="84" height="24" fill="rgba(8,12,24,0.75)" stroke="#60a5fa" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="414" cy="62" r="3" fill="#60a5fa" class="blink"/>
-    <text x="422" y="66" fill="#60a5fa" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">MCP ENGINE</text>
+  <g class="sl d7" filter="url(#labelGlow)">
+    <rect x="594" y="186" width="80" height="24" fill="rgba(5,10,22,0.82)" stroke="#a78bfa" stroke-width="0.9" rx="5"/>
+    <circle cx="608" cy="198" r="3.5" fill="#a78bfa" class="blink"/>
+    <text x="618" y="202" fill="#a78bfa" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">RAG</text>
   </g>
-  <g class="skill-label s13" style="animation-delay:39s" filter="url(#labelGlow)">
-    <rect x="263" y="50" width="102" height="24" fill="rgba(8,12,24,0.75)" stroke="#60a5fa" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="277" cy="62" r="3" fill="#60a5fa" class="blink"/>
-    <text x="285" y="66" fill="#60a5fa" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">TOOL CALLING</text>
+  <g class="sl d8" filter="url(#labelGlow)">
+    <rect x="580" y="116" width="130" height="24" fill="rgba(5,10,22,0.82)" stroke="#a78bfa" stroke-width="0.9" rx="5"/>
+    <circle cx="594" cy="128" r="3.5" fill="#a78bfa" class="blink"/>
+    <text x="604" y="132" fill="#a78bfa" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">LLM FINE-TUNING</text>
   </g>
-
-  <!-- NLP (5 skills) - right side middle-low -->
-  <g class="skill-label s14" style="animation-delay:42s" filter="url(#labelGlow)">
-    <rect x="562" y="273" width="82" height="24" fill="rgba(8,12,24,0.75)" stroke="#22d3ee" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="576" cy="285" r="3" fill="#22d3ee" class="blink"/>
-    <text x="584" y="289" fill="#22d3ee" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">NLP</text>
-  </g>
-  <g class="skill-label s15" style="animation-delay:45s" filter="url(#labelGlow)">
-    <rect x="562" y="298" width="82" height="24" fill="rgba(8,12,24,0.75)" stroke="#22d3ee" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="576" cy="310" r="3" fill="#22d3ee" class="blink"/>
-    <text x="584" y="314" fill="#22d3ee" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">BERT</text>
-  </g>
-  <g class="skill-label s16" style="animation-delay:48s" filter="url(#labelGlow)">
-    <rect x="582" y="238" width="140" height="24" fill="rgba(8,12,24,0.75)" stroke="#22d3ee" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="596" cy="250" r="3" fill="#22d3ee" class="blink"/>
-    <text x="604" y="254" fill="#22d3ee" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">SENTENCE TRANSFORM.</text>
-  </g>
-  <g class="skill-label s17" style="animation-delay:51s" filter="url(#labelGlow)">
-    <rect x="557" y="326" width="82" height="24" fill="rgba(8,12,24,0.75)" stroke="#22d3ee" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="571" cy="338" r="3" fill="#22d3ee" class="blink"/>
-    <text x="579" y="342" fill="#22d3ee" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">SPACY</text>
-  </g>
-  <g class="skill-label s18" style="animation-delay:54s" filter="url(#labelGlow)">
-    <rect x="557" y="253" width="140" height="24" fill="rgba(8,12,24,0.75)" stroke="#22d3ee" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="571" cy="265" r="3" fill="#22d3ee" class="blink"/>
-    <text x="579" y="269" fill="#22d3ee" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">SENTIMENT ANALYSIS</text>
+  <g class="sl d9" filter="url(#labelGlow)">
+    <rect x="594" y="216" width="118" height="24" fill="rgba(5,10,22,0.82)" stroke="#a78bfa" stroke-width="0.9" rx="5"/>
+    <circle cx="608" cy="228" r="3.5" fill="#a78bfa" class="blink"/>
+    <text x="618" y="232" fill="#a78bfa" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">HUGGING FACE</text>
   </g>
 
-  <!-- CV (4 skills) - left side lower -->
-  <g class="skill-label s19" style="animation-delay:57s" filter="url(#labelGlow)">
-    <rect x="40" y="296" width="86" height="24" fill="rgba(8,12,24,0.75)" stroke="#38bdf8" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="54" cy="308" r="3" fill="#38bdf8" class="blink"/>
-    <text x="62" y="312" fill="#38bdf8" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">OPENCV</text>
+  <!-- Agentic (4) — top -->
+  <g class="sl d10" filter="url(#labelGlow)">
+    <rect x="236" y="46" width="150" height="24" fill="rgba(5,10,22,0.82)" stroke="#60a5fa" stroke-width="0.9" rx="5"/>
+    <circle cx="250" cy="58" r="3.5" fill="#60a5fa" class="blink"/>
+    <text x="260" y="62" fill="#60a5fa" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">MULTI-AGENT SYSTEMS</text>
   </g>
-  <g class="skill-label s20" style="animation-delay:60s" filter="url(#labelGlow)">
-    <rect x="40" y="326" width="86" height="24" fill="rgba(8,12,24,0.75)" stroke="#38bdf8" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="54" cy="338" r="3" fill="#38bdf8" class="blink"/>
-    <text x="62" y="342" fill="#38bdf8" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">YOLOV8</text>
+  <g class="sl d11" filter="url(#labelGlow)">
+    <rect x="334" y="46" width="90" height="24" fill="rgba(5,10,22,0.82)" stroke="#60a5fa" stroke-width="0.9" rx="5"/>
+    <circle cx="348" cy="58" r="3.5" fill="#60a5fa" class="blink"/>
+    <text x="358" y="62" fill="#60a5fa" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">AI AGENTS</text>
   </g>
-  <g class="skill-label s21" style="animation-delay:63s" filter="url(#labelGlow)">
-    <rect x="40" y="356" width="128" height="24" fill="rgba(8,12,24,0.75)" stroke="#38bdf8" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="54" cy="368" r="3" fill="#38bdf8" class="blink"/>
-    <text x="62" y="372" fill="#38bdf8" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">VISION TRANSFORM.</text>
+  <g class="sl d12" filter="url(#labelGlow)">
+    <rect x="406" y="46" width="96" height="24" fill="rgba(5,10,22,0.82)" stroke="#60a5fa" stroke-width="0.9" rx="5"/>
+    <circle cx="420" cy="58" r="3.5" fill="#60a5fa" class="blink"/>
+    <text x="430" y="62" fill="#60a5fa" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">MCP ENGINE</text>
   </g>
-  <g class="skill-label s22" style="animation-delay:66s" filter="url(#labelGlow)">
-    <rect x="40" y="266" width="86" height="24" fill="rgba(8,12,24,0.75)" stroke="#38bdf8" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="54" cy="278" r="3" fill="#38bdf8" class="blink"/>
-    <text x="62" y="282" fill="#38bdf8" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">OBJECT DET.</text>
-  </g>
-
-  <!-- Cloud/Backend (6 skills) - bottom -->
-  <g class="skill-label s23" style="animation-delay:69s" filter="url(#labelGlow)">
-    <rect x="105" y="386" width="82" height="24" fill="rgba(8,12,24,0.75)" stroke="#60a5fa" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="119" cy="398" r="3" fill="#60a5fa" class="blink"/>
-    <text x="127" y="402" fill="#60a5fa" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">PYTHON</text>
-  </g>
-  <g class="skill-label s24" style="animation-delay:72s" filter="url(#labelGlow)">
-    <rect x="155" y="403" width="82" height="24" fill="rgba(8,12,24,0.75)" stroke="#60a5fa" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="169" cy="415" r="3" fill="#60a5fa" class="blink"/>
-    <text x="177" y="419" fill="#60a5fa" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">FASTAPI</text>
-  </g>
-  <g class="skill-label s25" style="animation-delay:75s" filter="url(#labelGlow)">
-    <rect x="240" y="403" width="82" height="24" fill="rgba(8,12,24,0.75)" stroke="#60a5fa" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="254" cy="415" r="3" fill="#60a5fa" class="blink"/>
-    <text x="262" y="419" fill="#60a5fa" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">DOCKER</text>
-  </g>
-  <g class="skill-label s26" style="animation-delay:78s" filter="url(#labelGlow)">
-    <rect x="60" y="386" width="82" height="24" fill="rgba(8,12,24,0.75)" stroke="#60a5fa" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="74" cy="398" r="3" fill="#60a5fa" class="blink"/>
-    <text x="82" y="402" fill="#60a5fa" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">AWS</text>
-  </g>
-  <g class="skill-label s27" style="animation-delay:81s" filter="url(#labelGlow)">
-    <rect x="316" y="403" width="72" height="24" fill="rgba(8,12,24,0.75)" stroke="#60a5fa" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="330" cy="415" r="3" fill="#60a5fa" class="blink"/>
-    <text x="338" y="419" fill="#60a5fa" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">AZURE</text>
-  </g>
-  <g class="skill-label s28" style="animation-delay:84s" filter="url(#labelGlow)">
-    <rect x="390" y="403" width="72" height="24" fill="rgba(8,12,24,0.75)" stroke="#60a5fa" stroke-width="0.8" rx="5" ry="5"/>
-    <circle cx="404" cy="415" r="3" fill="#60a5fa" class="blink"/>
-    <text x="412" y="419" fill="#60a5fa" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">MLOPS</text>
+  <g class="sl d13" filter="url(#labelGlow)">
+    <rect x="192" y="46" width="108" height="24" fill="rgba(5,10,22,0.82)" stroke="#60a5fa" stroke-width="0.9" rx="5"/>
+    <circle cx="206" cy="58" r="3.5" fill="#60a5fa" class="blink"/>
+    <text x="216" y="62" fill="#60a5fa" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">TOOL CALLING</text>
   </g>
 
-  <!-- ===== SECTION LABELS (always visible, dim) ===== -->
-  <g opacity="0.3" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="8" letter-spacing="0.14em" text-transform="uppercase">
-    <text x="265" y="195" fill="#38bdf8" text-anchor="middle">ML</text>
-    <text x="462" y="178" fill="#a78bfa" text-anchor="middle">GEN AI</text>
-    <text x="396" y="138" fill="#60a5fa" text-anchor="middle">AGENTIC</text>
-    <text x="412" y="264" fill="#22d3ee" text-anchor="middle">NLP</text>
-    <text x="250" y="208" fill="#38bdf8" text-anchor="middle">CV</text>
-    <text x="358" y="306" fill="#60a5fa" text-anchor="middle">CLOUD</text>
+  <!-- NLP (5) — right mid -->
+  <g class="sl d14" filter="url(#labelGlow)">
+    <rect x="560" y="266" width="80" height="24" fill="rgba(5,10,22,0.82)" stroke="#22d3ee" stroke-width="0.9" rx="5"/>
+    <circle cx="574" cy="278" r="3.5" fill="#22d3ee" class="blink"/>
+    <text x="584" y="282" fill="#22d3ee" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">NLP</text>
+  </g>
+  <g class="sl d15" filter="url(#labelGlow)">
+    <rect x="560" y="296" width="80" height="24" fill="rgba(5,10,22,0.82)" stroke="#22d3ee" stroke-width="0.9" rx="5"/>
+    <circle cx="574" cy="308" r="3.5" fill="#22d3ee" class="blink"/>
+    <text x="584" y="312" fill="#22d3ee" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">BERT</text>
+  </g>
+  <g class="sl d16" filter="url(#labelGlow)">
+    <rect x="584" y="236" width="136" height="24" fill="rgba(5,10,22,0.82)" stroke="#22d3ee" stroke-width="0.9" rx="5"/>
+    <circle cx="598" cy="248" r="3.5" fill="#22d3ee" class="blink"/>
+    <text x="608" y="252" fill="#22d3ee" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">SENTENCE TRANSFORM.</text>
+  </g>
+  <g class="sl d17" filter="url(#labelGlow)">
+    <rect x="557" y="326" width="80" height="24" fill="rgba(5,10,22,0.82)" stroke="#22d3ee" stroke-width="0.9" rx="5"/>
+    <circle cx="571" cy="338" r="3.5" fill="#22d3ee" class="blink"/>
+    <text x="581" y="342" fill="#22d3ee" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">SPACY</text>
+  </g>
+  <g class="sl d18" filter="url(#labelGlow)">
+    <rect x="557" y="253" width="140" height="24" fill="rgba(5,10,22,0.82)" stroke="#22d3ee" stroke-width="0.9" rx="5"/>
+    <circle cx="571" cy="265" r="3.5" fill="#22d3ee" class="blink"/>
+    <text x="581" y="269" fill="#22d3ee" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">SENTIMENT ANALYSIS</text>
   </g>
 
-  <!-- Footer caption -->
-  <text x="380" y="460" fill="#475569" font-family="ui-monospace,'JetBrains Mono',Consolas,monospace" font-size="9" text-anchor="middle" letter-spacing="0.1em">Animated preview — click for the interactive 3D skill map</text>
+  <!-- CV (4) — left lower -->
+  <g class="sl d19" filter="url(#labelGlow)">
+    <rect x="30" y="296" width="96" height="24" fill="rgba(5,10,22,0.82)" stroke="#38bdf8" stroke-width="0.9" rx="5"/>
+    <circle cx="44" cy="308" r="3.5" fill="#38bdf8" class="blink"/>
+    <text x="54" y="312" fill="#38bdf8" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">OPENCV</text>
+  </g>
+  <g class="sl d20" filter="url(#labelGlow)">
+    <rect x="30" y="326" width="96" height="24" fill="rgba(5,10,22,0.82)" stroke="#38bdf8" stroke-width="0.9" rx="5"/>
+    <circle cx="44" cy="338" r="3.5" fill="#38bdf8" class="blink"/>
+    <text x="54" y="342" fill="#38bdf8" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">YOLOV8</text>
+  </g>
+  <g class="sl d21" filter="url(#labelGlow)">
+    <rect x="30" y="356" width="130" height="24" fill="rgba(5,10,22,0.82)" stroke="#38bdf8" stroke-width="0.9" rx="5"/>
+    <circle cx="44" cy="368" r="3.5" fill="#38bdf8" class="blink"/>
+    <text x="54" y="372" fill="#38bdf8" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">VISION TRANSFORMERS</text>
+  </g>
+  <g class="sl d22" filter="url(#labelGlow)">
+    <rect x="30" y="266" width="96" height="24" fill="rgba(5,10,22,0.82)" stroke="#38bdf8" stroke-width="0.9" rx="5"/>
+    <circle cx="44" cy="278" r="3.5" fill="#38bdf8" class="blink"/>
+    <text x="54" y="282" fill="#38bdf8" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">OBJECT DETECTION</text>
+  </g>
+
+  <!-- Cloud (6) — bottom -->
+  <g class="sl d23" filter="url(#labelGlow)">
+    <rect x="102" y="388" width="84" height="24" fill="rgba(5,10,22,0.82)" stroke="#60a5fa" stroke-width="0.9" rx="5"/>
+    <circle cx="116" cy="400" r="3.5" fill="#60a5fa" class="blink"/>
+    <text x="126" y="404" fill="#60a5fa" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">PYTHON</text>
+  </g>
+  <g class="sl d24" filter="url(#labelGlow)">
+    <rect x="160" y="403" width="86" height="24" fill="rgba(5,10,22,0.82)" stroke="#60a5fa" stroke-width="0.9" rx="5"/>
+    <circle cx="174" cy="415" r="3.5" fill="#60a5fa" class="blink"/>
+    <text x="184" y="419" fill="#60a5fa" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">FASTAPI</text>
+  </g>
+  <g class="sl d25" filter="url(#labelGlow)">
+    <rect x="250" y="403" width="80" height="24" fill="rgba(5,10,22,0.82)" stroke="#60a5fa" stroke-width="0.9" rx="5"/>
+    <circle cx="264" cy="415" r="3.5" fill="#60a5fa" class="blink"/>
+    <text x="274" y="419" fill="#60a5fa" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">DOCKER</text>
+  </g>
+  <g class="sl d26" filter="url(#labelGlow)">
+    <rect x="55" y="388" width="46" height="24" fill="rgba(5,10,22,0.82)" stroke="#60a5fa" stroke-width="0.9" rx="5"/>
+    <circle cx="69" cy="400" r="3.5" fill="#60a5fa" class="blink"/>
+    <text x="79" y="404" fill="#60a5fa" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">AWS</text>
+  </g>
+  <g class="sl d27" filter="url(#labelGlow)">
+    <rect x="334" y="403" width="66" height="24" fill="rgba(5,10,22,0.82)" stroke="#60a5fa" stroke-width="0.9" rx="5"/>
+    <circle cx="348" cy="415" r="3.5" fill="#60a5fa" class="blink"/>
+    <text x="358" y="419" fill="#60a5fa" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">AZURE</text>
+  </g>
+  <g class="sl d28" filter="url(#labelGlow)">
+    <rect x="402" y="403" width="68" height="24" fill="rgba(5,10,22,0.82)" stroke="#60a5fa" stroke-width="0.9" rx="5"/>
+    <circle cx="416" cy="415" r="3.5" fill="#60a5fa" class="blink"/>
+    <text x="426" y="419" fill="#60a5fa" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9.5" font-weight="700" letter-spacing="0.1em">MLOPS</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="380" y="478" fill="#334155" font-family="ui-monospace,'JetBrains Mono',monospace" font-size="9" text-anchor="middle" letter-spacing="0.1em">Click to open the interactive 3D skill map</text>
 
 </g>
 </svg>
